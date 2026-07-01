@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E1526'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23CBA85C' font-family='Georgia,serif'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
+<title>The Orrery of Ideas — An Atlas of Human Thought</title>
+<meta name="description" content="Not the facts humanity discovered, but the ways of thinking it invented — mapped from antiquity to now, and recombined into new ideas." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spectral:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0E1526;
+    --ink-2:#15203A;
+    --ink-3:#1C294A;
+    --bone:#ECE3D0;
+    --bone-dim:#C7C0AE;
+    --haze:#8C95AC;
+    --brass:#CBA85C;
+    --brass-deep:#9C7C36;
+    --lapis:#6E9BEE;
+    --line:rgba(203,168,92,.22);
+    --line-soft:rgba(236,227,208,.10);
+    --maxw:1180px;
+    --display:"Fraunces",Georgia,"Times New Roman",serif;
+    --body:"Spectral",Georgia,serif;
+    --mono:"Space Mono","SFMono-Regular",Menlo,monospace;
+    /* category hues */
+    --c-rl:#CBA85C; --c-ks:#6E9BEE; --c-eth:#7FBE9C; --c-mind:#B197E0;
+    --c-soc:#E0936F; --c-econ:#46B6AE; --c-sys:#C2C66E; --c-real:#74C6E2; --c-lang:#E08FAE;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:
+      radial-gradient(120% 90% at 50% -10%, #18233E 0%, var(--ink) 55%, #0A101D 100%) fixed;
+    color:var(--bone);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+  ::selection{background:rgba(110,155,238,.30)}
+  :focus-visible{outline:2px solid var(--lapis);outline-offset:3px;border-radius:3px}
+  .astro .pt:focus-visible{outline:2px solid var(--lapis);outline-offset:2px}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- type primitives ---------- */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin:0 0 1.1rem;
+    display:flex;align-items:center;gap:.7rem;
+    text-wrap:balance;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);opacity:.7}
+  h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.04;letter-spacing:-.012em;margin:0}
+  .lede{color:var(--bone-dim);font-size:1.16rem}
+  em{font-style:italic;color:var(--bone)}
+
+  /* ---------- top nav ---------- */
+  .nav{
+    position:sticky;top:0;z-index:60;
+    backdrop-filter:blur(10px);
+    background:linear-gradient(180deg, rgba(10,16,29,.86), rgba(10,16,29,.32));
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:13px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .mark{font-family:var(--mono);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);display:flex;align-items:center;gap:.6rem;white-space:nowrap}
+  .mark b{color:var(--brass);font-weight:700}
+  .nav-links{display:flex;gap:6px;flex-wrap:wrap}
+  .nav-links a{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--haze);text-decoration:none;padding:6px 11px;border-radius:999px;transition:color .2s,background .2s;
+  }
+  .nav-links a:hover{color:var(--bone);background:rgba(236,227,208,.06)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(48px,9vh,104px) 0 clamp(40px,7vh,76px)}
+  .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:clamp(28px,5vw,68px);align-items:center}
+  .hero h1{font-size:clamp(2.7rem,6.4vw,5.3rem);margin:.2rem 0 0}
+  .hero h1 .ital{font-style:italic;font-weight:400}
+  .hero h1 .br-accent{color:var(--brass)}
+  .hero-thesis{margin:1.7rem 0 0;max-width:34ch;font-size:1.22rem;color:var(--bone-dim)}
+  .hero-thesis b{color:var(--bone);font-weight:500}
+  .hero-meta{margin-top:2.2rem;display:flex;gap:30px;flex-wrap:wrap}
+  .stat{display:flex;flex-direction:column;gap:.15rem}
+  .stat .num{font-family:var(--display);font-size:1.9rem;font-weight:600;color:var(--brass);line-height:1}
+  .stat .lab{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--haze)}
+
+  /* ---------- astrolabe ---------- */
+  .astro-stage{position:relative;width:100%;aspect-ratio:1/1;max-width:540px;margin-left:auto}
+  .astro{width:100%;height:100%;display:block;overflow:visible}
+  .astro .ring{fill:none;stroke:var(--line);stroke-width:1}
+  .astro .ring.outer{stroke:rgba(203,168,92,.34)}
+  .astro .tick{stroke:rgba(203,168,92,.30);stroke-width:1}
+  .astro .spoke{stroke:var(--line-soft);stroke-width:1}
+  .astro .alidade{stroke:var(--brass);stroke-width:1.4;opacity:.55}
+  .astro .alidade-dot{fill:var(--brass)}
+  .astro .sweep{transform-origin:300px 300px;animation:spin 64s linear infinite}
+  .astro .core{fill:var(--ink-2);stroke:var(--brass);stroke-width:1.2}
+  .astro .core-glyph{fill:none;stroke:var(--brass);stroke-width:1.1;opacity:.85}
+  .astro .pt{cursor:pointer;transition:r .18s ease, filter .18s ease}
+  .astro .pt:hover, .astro .pt.lit{filter:drop-shadow(0 0 7px currentColor)}
+  .astro .era-label{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;fill:var(--bone-dim);paint-order:stroke;stroke:#080D18;stroke-width:3.4px;stroke-linejoin:round}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  .astro-tip{
+    position:absolute;pointer-events:none;z-index:5;
+    transform:translate(-50%,-120%);
+    background:rgba(8,13,24,.94);border:1px solid var(--line);
+    padding:8px 11px;border-radius:8px;min-width:120px;max-width:230px;
+    opacity:0;transition:opacity .14s;backdrop-filter:blur(4px);
+  }
+  .astro-tip .t-name{font-family:var(--display);font-size:.96rem;line-height:1.15;color:var(--bone)}
+  .astro-tip .t-meta{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--haze);margin-top:3px;text-transform:uppercase}
+  .astro-cap{font-family:var(--mono);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;color:var(--haze);text-align:center;margin-top:14px}
+
+  /* ---------- section frame ---------- */
+  section{padding:clamp(56px,9vh,108px) 0;border-top:1px solid var(--line-soft)}
+  .sec-head{max-width:62ch;margin-bottom:clamp(30px,5vh,52px)}
+  .sec-head h2{font-size:clamp(2rem,4.2vw,3.1rem);text-wrap:balance}
+  .sec-head p{color:var(--bone-dim);margin:1.1rem 0 0;font-size:1.1rem}
+
+  /* ---------- manifesto ---------- */
+  .manifesto{border-top:none}
+  .manifesto-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,60px);align-items:start}
+  .manifesto .big{font-family:var(--display);font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.3;font-style:italic;color:var(--bone);font-weight:400}
+  .manifesto p{margin:0 0 1.1rem;color:var(--bone-dim)}
+  .manifesto p:last-child{margin-bottom:0}
+  .pull{color:var(--brass);font-style:italic}
+
+  /* ---------- modes ---------- */
+  .modes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .mode-card{
+    position:relative;padding:26px 24px 24px;border:1px solid var(--line-soft);border-radius:14px;
+    background:linear-gradient(165deg, rgba(28,41,74,.34), rgba(21,32,58,.10));
+    overflow:hidden;
+  }
+  .mode-card::before{
+    content:attr(data-i);position:absolute;top:14px;right:18px;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--brass-deep);opacity:.8;
+  }
+  .mode-card h3{font-size:1.32rem;margin-bottom:.5rem;padding-right:30px}
+  .mode-card .glyph{font-size:1.15rem;color:var(--brass);margin-bottom:.85rem;font-family:var(--display)}
+  .mode-card p{margin:0;color:var(--bone-dim);font-size:.98rem;line-height:1.55}
+
+  /* ---------- atlas controls ---------- */
+  .controls{display:flex;flex-direction:column;gap:18px;margin-bottom:30px}
+  .control-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .flabel{font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--haze);margin-right:4px}
+  .chip{
+    font-family:var(--mono);font-size:.69rem;letter-spacing:.05em;
+    padding:7px 13px;border-radius:999px;border:1px solid var(--line);
+    background:transparent;color:var(--bone-dim);cursor:pointer;transition:all .18s;
+    display:inline-flex;align-items:center;gap:7px;
+  }
+  .chip:hover{border-color:var(--brass);color:var(--bone)}
+  .chip[aria-pressed="true"]{background:var(--brass);border-color:var(--brass);color:#1a1408;font-weight:700}
+  .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--swatch,var(--brass))}
+  .chip[aria-pressed="true"] .dot{outline:1.5px solid rgba(26,20,8,.4)}
+  .search-wrap{position:relative;flex:0 0 auto}
+  .search{
+    font-family:var(--mono);font-size:.78rem;color:var(--bone);
+    background:rgba(8,13,24,.6);border:1px solid var(--line);border-radius:999px;
+    padding:9px 16px 9px 36px;width:230px;max-width:50vw;outline:none;transition:border-color .2s;
+  }
+  .search::placeholder{color:var(--haze)}
+  .search:focus{border-color:var(--lapis)}
+  .search-ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--haze);font-size:.85rem;pointer-events:none}
+  .count{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--haze);text-transform:uppercase;white-space:nowrap}
+  .count b{color:var(--brass)}
+
+  /* ---------- atlas grid ---------- */
+  .atlas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .idea-card{
+    position:relative;display:flex;flex-direction:column;
+    padding:20px 20px 18px;border-radius:14px;
+    border:1px solid var(--line-soft);
+    background:linear-gradient(168deg, rgba(28,41,74,.30), rgba(16,21,38,.18));
+    border-left:2px solid var(--cat,var(--brass));
+    transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .idea-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px -22px rgba(0,0,0,.9)}
+  .idea-card.flash{animation:flash 1.6s ease}
+  @keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(110,155,238,0)}18%{box-shadow:0 0 0 2px var(--lapis), 0 14px 40px -16px var(--lapis)}}
+  .ic-top{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--haze);margin-bottom:.7rem}
+  .ic-cat{color:var(--cat,var(--brass))}
+  .ic-name{font-family:var(--display);font-size:1.28rem;line-height:1.12;margin:0 0 .15rem}
+  .ic-who{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);margin-bottom:.7rem}
+  .ic-idea{font-size:.97rem;color:var(--bone-dim);margin:0 0 .95rem;line-height:1.5}
+  .ic-way{margin-top:auto;padding-top:.85rem;border-top:1px dashed var(--line);font-size:.93rem;line-height:1.45}
+  .ic-way .way-lab{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:.3rem}
+  .ic-way .way-lab::after{content:" ↘"}
+  .idea-card.hidden{display:none}
+  .no-match{grid-column:1/-1;font-family:var(--mono);font-size:.82rem;color:var(--haze);text-align:center;padding:40px 0;letter-spacing:.08em}
+
+  /* ---------- synthesis ---------- */
+  .synth{background:linear-gradient(180deg, rgba(20,30,55,.4), transparent)}
+  .synth-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .synth-card{
+    position:relative;padding:26px 26px 24px;border-radius:16px;
+    border:1px solid var(--line);
+    background:
+      radial-gradient(120% 140% at 100% 0%, rgba(110,155,238,.10), transparent 60%),
+      linear-gradient(168deg, rgba(28,41,74,.42), rgba(16,21,38,.2));
+  }
+  .synth-card .recipe{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:1rem}
+  .ingredient{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;padding:4px 10px;border:1px solid var(--line);border-radius:999px;color:var(--bone-dim)}
+  .cross{color:var(--brass);font-size:1rem;line-height:1}
+  .synth-card h3{font-size:1.5rem;margin-bottom:.55rem}
+  .synth-card h3 .spark{color:var(--brass)}
+  .synth-card p{margin:0;color:var(--bone-dim);font-size:1rem;line-height:1.55}
+
+  /* ---------- footer ---------- */
+  .site-foot{border-top:1px solid var(--line-soft);padding:70px 0 56px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end}
+  .foot-grid .closer{font-family:var(--display);font-size:clamp(1.4rem,2.6vw,2.1rem);font-style:italic;line-height:1.3;color:var(--bone);max-width:24ch}
+  .foot-grid .closer .br-accent{color:var(--brass);font-style:normal}
+  .foot-meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--haze);line-height:1.9;text-transform:uppercase}
+  .foot-meta a{color:var(--brass);text-decoration:none}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:38px}
+    .astro-stage{margin:0 auto;max-width:420px}
+    .hero-thesis{max-width:none}
+    .manifesto-grid{grid-template-columns:1fr;gap:18px}
+    .modes-grid{grid-template-columns:1fr 1fr}
+    .synth-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr;gap:26px}
+    .nav-links{display:none}
+  }
+  @media (max-width:520px){
+    body{font-size:16px}
+    .modes-grid{grid-template-columns:1fr}
+    .control-row{flex-direction:column;align-items:flex-start}
+    .search{width:100%}
+    .search-wrap{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .astro .sweep{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
+    .idea-card.flash{animation:none}
+    .idea-card:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <span class="mark"><b>✦</b> The Orrery of Ideas</span>
+    <div class="nav-links">
+      <a href="#modes">Modes</a>
+      <a href="#atlas">The Atlas</a>
+      <a href="#synthesis">Synthesis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">An Atlas of Human Thought · Antiquity → Now</p>
+      <h1>The <span class="ital br-accent">Orrery</span><br>of Ideas</h1>
+      <p class="hero-thesis">Humanity's real inheritance isn't its facts — it's the <b>ways of thinking</b> it invented to find them. Here are the great ones, charted by age and lens, then crossed to forge new ones.</p>
+      <div class="hero-meta">
+        <div class="stat"><span class="num" id="stat-ideas">74</span><span class="lab">Ideas charted</span></div>
+        <div class="stat"><span class="num">9</span><span class="lab">Lenses</span></div>
+        <div class="stat"><span class="num">7</span><span class="lab">Ages</span></div>
+        <div class="stat"><span class="num" id="stat-synth">12</span><span class="lab">New syntheses</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="astro-stage">
+        <svg class="astro" id="astro" viewBox="0 0 600 600" role="img" aria-label="An astrolabe mapping great ideas: rings are ages from ancient at the center to contemporary at the edge; each point is an idea, colored by its category. The full, filterable list is in the Atlas section below."></svg>
+        <div class="astro-tip" id="astro-tip" aria-hidden="true"></div>
+      </div>
+      <p class="astro-cap">Inner rings are ancient · outer rings are now · hover or tap</p>
+    </div>
+  </div>
+</header>
+
+<section class="manifesto" id="why">
+  <div class="wrap manifesto-grid">
+    <div>
+      <p class="eyebrow">The Premise</p>
+      <p class="big">A fact is an answer. A way of thinking is a method for generating answers.</p>
+    </div>
+    <div>
+      <p>Civilizations lose their facts and rediscover them. What actually compounds across the centuries is something subtler: the set of cognitive <em>moves</em> humans invented to make sense of things — to doubt, to abstract, to invert, to model, to update, to subtract.</p>
+      <p>This atlas gathers the durable ones, from Bronze-Age cosmology to information theory, and sorts them two ways at once: by the <span class="pull">lens</span> they hand you, and by the <span class="pull">age</span> that produced them. A handful of meta-patterns — the <a href="#modes" style="color:var(--brass)">Modes</a> — recur beneath them all.</p>
+      <p>Then it does the thing every thinker here did: it <span class="pull">recombines</span>. The final section forges new ideas by crossing old ones — because that, too, is a way of thinking.</p>
+    </div>
+  </div>
+</section>
+
+<section id="modes">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The Operating System of Thought</p>
+      <h2>Nine modes that recur beneath everything</h2>
+      <p>Strip the great ideas of their content and a small set of reusable maneuvers remains. Where the nine <em>lenses</em> below sort ideas by subject, these nine <em>modes</em> cut clean across them. Learn these and you own the engines, not just their outputs.</p>
+    </div>
+    <div class="modes-grid" id="modes-grid"></div>
+  </div>
+</section>
+
+<section id="atlas">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span id="atlas-eyebrow">74 ideas · 9 categories · 7 ages</span></p>
+      <h2>The Atlas</h2>
+      <p>Every entry pairs the idea with <em>the move</em> it teaches — the transferable way of thinking you can carry into your own problems. Filter by lens or age, or search.</p>
+    </div>
+
+    <div class="controls">
+      <div class="control-row">
+        <div class="filters" id="cat-filters"><span class="flabel">Lens</span></div>
+      </div>
+      <div class="control-row">
+        <div class="filters" id="era-filters"><span class="flabel">Age</span></div>
+        <div class="search-wrap">
+          <span class="search-ico">⌕</span>
+          <input class="search" id="search" type="search" placeholder="search ideas, thinkers…" aria-label="Search ideas and thinkers" />
+        </div>
+      </div>
+      <div class="control-row" style="justify-content:flex-end">
+        <span class="count" id="count" aria-live="polite"></span>
+      </div>
+    </div>
+
+    <div class="atlas-grid" id="atlas-grid"></div>
+  </div>
+</section>
+
+<section class="synth" id="synthesis">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">New Ideas, Combined From Old</p>
+      <h2>The Synthesis Lab</h2>
+      <p>The whole atlas is raw material. Cross two ways of thinking and a third appears — sometimes useful, sometimes strange. Twelve worth keeping.</p>
+    </div>
+    <div class="synth-grid" id="synth-grid"></div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <p class="closer">An idea is a tool. A way of thinking is the <span class="br-accent">workshop</span> that makes tools — borrow freely, cross them often.</p>
+    <div class="foot-meta">
+      The Orrery of Ideas<br>
+      Built from <a href="#atlas"><span id="foot-ideas">74</span> ideas</a> · <a href="#synthesis"><span id="foot-synth">12</span> syntheses</a><br>
+      <span style="color:var(--bone-dim)">Remember: the map is not the territory — including this one.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================ DATA ============================ */
+const CATS = {
+  rl:  {label:"Reason & Logic",        color:"var(--c-rl)"},
+  ks:  {label:"Knowledge & Science",   color:"var(--c-ks)"},
+  eth: {label:"Ethics & the Good Life",color:"var(--c-eth)"},
+  mind:{label:"Mind & Self",           color:"var(--c-mind)"},
+  soc: {label:"Society & Power",       color:"var(--c-soc)"},
+  econ:{label:"Economics & Exchange",  color:"var(--c-econ)"},
+  sys: {label:"Systems & Complexity",  color:"var(--c-sys)"},
+  real:{label:"Reality & Cosmos",      color:"var(--c-real)"},
+  lang:{label:"Language & Meaning",    color:"var(--c-lang)"},
+};
+const ERAS = ["Ancient","Classical","Medieval","Renaissance","Enlightenment","Modern","Contemporary"];
+
+const IDEAS = [
+  {name:`Yin–Yang Complementarity`, who:`Chinese cosmology`, year:`~900 BCE`, era:0, cat:`real`, idea:`Reality is woven from paired opposites — light and dark, active and receptive — that define and contain each other.`, way:`See polarity as partnership: opposites aren't at war, they generate each other.`},
+  {name:`Karma`, who:`Vedic & Upanishadic thought`, year:`~800 BCE`, era:0, cat:`eth`, idea:`Every action plants a seed whose fruit returns to the actor across time.`, way:`Treat each act as a cause you will eventually inherit.`},
+  {name:`Wu Wei — Effortless Action`, who:`Laozi`, year:`~6th c. BCE`, era:1, cat:`eth`, idea:`The highest skill is acting with the grain of things rather than forcing them.`, way:`Achieve more by aligning with a system's flow than by fighting it.`},
+  {name:`The Logos`, who:`Heraclitus`, year:`~500 BCE`, era:1, cat:`real`, idea:`Beneath ceaseless change runs a single rational order; "everything flows."`, way:`Look for the law that persists underneath the flux.`},
+  {name:`Rectification of Names`, who:`Confucius`, year:`~500 BCE`, era:1, cat:`lang`, idea:`If names don't match reality, language fails and society unravels; fix the words to fix the world.`, way:`Repair a system by first making its language honest.`},
+  {name:`Ren & Reciprocity`, who:`Confucius`, year:`~500 BCE`, era:1, cat:`eth`, idea:`"Do not impose on others what you do not wish for yourself" — humaneness as the social bond.`, way:`Use reciprocity as the test of right action.`},
+  {name:`Atomism`, who:`Democritus & Leucippus`, year:`~430 BCE`, era:1, cat:`real`, idea:`All that exists is indivisible atoms moving in empty void.`, way:`Explain complex wholes by the arrangement of simple parts.`},
+  {name:`Zeno's Paradoxes`, who:`Zeno of Elea`, year:`~450 BCE`, era:1, cat:`rl`, idea:`Arrows that never arrive and runners who never finish expose hidden cracks in our notions of motion and infinity.`, way:`Stress-test a concept by pushing it to paradox.`},
+  {name:`The Socratic Method`, who:`Socrates`, year:`~430 BCE`, era:1, cat:`rl`, idea:`Truth is approached by relentless questioning that exposes contradictions in what we assume we know.`, way:`Interrogate a claim until its hidden assumptions surface.`},
+  {name:`The Examined Life`, who:`Socrates`, year:`~430 BCE`, era:1, cat:`eth`, idea:`"The unexamined life is not worth living" — self-scrutiny is a duty, not a luxury.`, way:`Make turning the question on yourself a standing habit.`},
+  {name:`Theory of Forms`, who:`Plato`, year:`~380 BCE`, era:1, cat:`real`, idea:`Behind imperfect particulars lie perfect, unchanging ideals that they imitate.`, way:`Look past instances to the pattern they share.`},
+  {name:`The Four Causes`, who:`Aristotle`, year:`~350 BCE`, era:1, cat:`ks`, idea:`To explain anything, ask after its matter, its form, its maker, and its purpose.`, way:`Explain a thing by asking "why" in several different senses at once.`},
+  {name:`The Golden Mean`, who:`Aristotle`, year:`~350 BCE`, era:1, cat:`eth`, idea:`Virtue lives between two vices — courage between cowardice and recklessness.`, way:`Find the excellence that sits between opposing excesses.`},
+  {name:`Eudaimonia`, who:`Aristotle`, year:`~350 BCE`, era:1, cat:`eth`, idea:`The good life isn't pleasure but flourishing — the full activity of a life lived well.`, way:`Judge a life by its activity and character, not its passing moods.`},
+  {name:`Dependent Origination`, who:`Early Buddhism`, year:`~450 BCE`, era:1, cat:`real`, idea:`Nothing exists on its own; everything arises through a web of conditions.`, way:`Trace the conditions of a thing, not its essence in isolation.`},
+  {name:`Impermanence (Anicca)`, who:`Early Buddhism`, year:`~450 BCE`, era:1, cat:`mind`, idea:`Everything that arises also passes; clinging to the fixed is the root of suffering.`, way:`Hold things loosely; expect and allow change.`},
+  {name:`The Middle Way`, who:`The Buddha`, year:`~450 BCE`, era:1, cat:`eth`, idea:`Wisdom avoids both indulgence and harsh denial, walking between the extremes.`, way:`Reject the false choice between craving and self-punishment.`},
+  {name:`Pyrrhonian Skepticism`, who:`Pyrrho & Sextus`, year:`~300 BCE`, era:1, cat:`ks`, idea:`Where the evidence is balanced, suspend firm judgment — and tranquility follows.`, way:`Withhold certainty as a discipline, not a failure.`},
+  {name:`The Dichotomy of Control`, who:`Epictetus & the Stoics`, year:`~100 CE`, era:1, cat:`eth`, idea:`Some things are up to us and some are not; peace lies in knowing the line.`, way:`Spend effort only where you actually have agency.`},
+  {name:`Memento Mori`, who:`Roman Stoics`, year:`~100 CE`, era:1, cat:`eth`, idea:`Keep death in view and the trivial loses its grip on you.`, way:`Use mortality as a lens to sort what truly matters.`},
+  {name:`The Algorithm`, who:`al-Khwārizmī`, year:`~820`, era:2, cat:`ks`, idea:`Problems can be solved by a fixed sequence of mechanical steps — and so algebra is born.`, way:`Turn a hard problem into a repeatable procedure.`},
+  {name:`Experimental Optics`, who:`Ibn al-Haytham`, year:`~1020`, era:2, cat:`ks`, idea:`Claims about light must be settled by controlled experiment, not authority.`, way:`Let a designed test, not a text, decide what's true.`},
+  {name:`Negative Theology`, who:`Maimonides`, year:`~1190`, era:2, cat:`lang`, idea:`The infinite can be approached only by saying what it is not.`, way:`Define the elusive by negation when positive terms fail.`},
+  {name:`The Five Ways`, who:`Thomas Aquinas`, year:`~1270`, era:2, cat:`real`, idea:`The motion and order we observe can be reasoned back toward a first cause.`, way:`Argue from the structure of the world toward its grounds.`},
+  {name:`Occam's Razor`, who:`William of Ockham`, year:`~1320`, era:2, cat:`rl`, idea:`Among explanations that fit, prefer the one that assumes the least.`, way:`Cut every assumption a theory doesn't need.`},
+  {name:`Asabiyyah — Social Cohesion`, who:`Ibn Khaldūn`, year:`1377`, era:2, cat:`soc`, idea:`Group solidarity is the hidden engine of history: it lifts a people to power, then decays in the comfort it wins until a more cohesive group displaces them.`, way:`Watch the rise and fall of collective solidarity beneath political events.`},
+  {name:`Heliocentrism`, who:`Nicolaus Copernicus`, year:`1543`, era:3, cat:`real`, idea:`The Earth is not the center; it and the planets circle the Sun.`, way:`Be willing to remove yourself from the center of the picture.`},
+  {name:`Observation over Authority`, who:`Galileo Galilei`, year:`1610`, era:3, cat:`ks`, idea:`What the telescope shows outranks what the canon says.`, way:`Let the instrument overrule the inherited text.`},
+  {name:`The Inductive Method`, who:`Francis Bacon`, year:`1620`, era:3, cat:`ks`, idea:`Knowledge is built upward from patient, systematic observation.`, way:`Assemble general laws from carefully gathered particulars.`},
+  {name:`Cogito, Ergo Sum`, who:`René Descartes`, year:`1637`, era:3, cat:`mind`, idea:`Doubt everything you can; the one thing left — that you doubt — becomes bedrock.`, way:`Rebuild knowledge from a foundation that cannot be doubted.`},
+  {name:`The Social Contract`, who:`Thomas Hobbes`, year:`1651`, era:4, cat:`soc`, idea:`Legitimate power rests on a tacit agreement to escape the war of all against all.`, way:`Justify an institution by the agreement that would create it.`},
+  {name:`Tabula Rasa`, who:`John Locke`, year:`1689`, era:4, cat:`mind`, idea:`The mind begins blank and is written on by experience.`, way:`Trace each idea back to the experience that planted it.`},
+  {name:`Universal Gravitation`, who:`Isaac Newton`, year:`1687`, era:4, cat:`real`, idea:`One law binds the fall of an apple and the orbit of the Moon.`, way:`Seek the single rule that unifies separate phenomena.`},
+  {name:`Separation of Powers`, who:`Montesquieu`, year:`1748`, era:4, cat:`soc`, idea:`Liberty survives only when power is divided so each part checks the others.`, way:`Build a system whose parts restrain one another by design.`},
+  {name:`The General Will`, who:`Jean-Jacques Rousseau`, year:`1762`, era:4, cat:`soc`, idea:`Legitimacy flows from the common good, which is more than the sum of private wants.`, way:`Separate the shared interest from the mere tally of wants.`},
+  {name:`Bayesian Inference`, who:`Thomas Bayes & Laplace`, year:`1763`, era:4, cat:`rl`, idea:`Belief is a probability, to be revised in exact proportion to new evidence.`, way:`Hold beliefs as odds and update them as evidence arrives.`},
+  {name:`The Invisible Hand`, who:`Adam Smith`, year:`1776`, era:4, cat:`econ`, idea:`Individuals pursuing private gain can, through markets, produce an order no one intended.`, way:`Look for order that emerges without a designer.`},
+  {name:`Sapere Aude`, who:`Immanuel Kant`, year:`1784`, era:4, cat:`mind`, idea:`"Dare to know": maturity is daring to use your own reason without a guardian.`, way:`Claim the right — and the duty — to think for yourself.`},
+  {name:`The Categorical Imperative`, who:`Immanuel Kant`, year:`1785`, era:4, cat:`eth`, idea:`Act only on a rule you could will everyone to follow.`, way:`Test an action by imagining it as a universal law.`},
+  {name:`Utilitarianism`, who:`Bentham & J.S. Mill`, year:`1789`, era:4, cat:`eth`, idea:`The right act produces the greatest good for the greatest number — pleasure and pain, summed across everyone alike.`, way:`Weigh actions by the total of their consequences, each person counting once.`},
+  {name:`The Dialectic`, who:`G. W. F. Hegel`, year:`1807`, era:5, cat:`rl`, idea:`Ideas advance by generating their own opposites and resolving into a richer whole.`, way:`Let a claim collide with its negation to reach a better one.`},
+  {name:`Comparative Advantage`, who:`David Ricardo`, year:`1817`, era:5, cat:`econ`, idea:`Two parties both gain from trade even when one is better at everything.`, way:`Reason in relative costs, not absolute ability.`},
+  {name:`Invert, Always Invert`, who:`Carl Jacobi`, year:`1840`, era:5, cat:`rl`, idea:`Many problems that resist a forward attack dissolve when approached backward.`, way:`Solve for the failure you want to avoid, then steer clear of it.`},
+  {name:`Historical Materialism`, who:`Karl Marx`, year:`1848`, era:5, cat:`soc`, idea:`History is driven by material and economic forces beneath its ideas and ideals.`, way:`Follow the material interests underneath stated beliefs.`},
+  {name:`Natural Selection`, who:`Charles Darwin`, year:`1859`, era:5, cat:`sys`, idea:`Variation plus selection, repeated over time, produces design without a designer.`, way:`Explain complexity as the residue of cumulative selection.`},
+  {name:`Marginalism`, who:`Jevons, Menger & Walras`, year:`1871`, era:5, cat:`econ`, idea:`Value and choice are settled at the margin — by the next unit, not the whole.`, way:`Decide by the next increment, not the average.`},
+  {name:`Eternal Recurrence`, who:`Friedrich Nietzsche`, year:`1882`, era:5, cat:`eth`, idea:`Live as though you'd have to relive this exact life endlessly.`, way:`Use a thought experiment as a test of how to live.`},
+  {name:`The Will to Power`, who:`Friedrich Nietzsche`, year:`1883`, era:5, cat:`mind`, idea:`Inherited values are human creations; ask whose strength they serve.`, way:`When handed a value, ask who made it and who it benefits.`},
+  {name:`The Pareto Principle`, who:`Vilfredo Pareto`, year:`1896`, era:5, cat:`sys`, idea:`A small share of causes tends to produce most of the effects.`, way:`Hunt for the vital few inputs behind the many outputs.`},
+  {name:`The Unconscious`, who:`Sigmund Freud`, year:`1900`, era:5, cat:`mind`, idea:`Much of what drives us runs below the surface of awareness.`, way:`Look beneath stated reasons for the hidden ones.`},
+  {name:`Phenomenology`, who:`Edmund Husserl`, year:`1900`, era:5, cat:`mind`, idea:`Set theories aside and describe experience exactly as it presents itself.`, way:`Bracket your assumptions and attend to the thing as given.`},
+  {name:`Pragmatism`, who:`Peirce, James & Dewey`, year:`1907`, era:5, cat:`ks`, idea:`An idea's meaning and truth lie in its practical consequences.`, way:`Judge a belief by what difference it makes in practice.`},
+  {name:`Opportunity Cost`, who:`Friedrich von Wieser`, year:`1914`, era:5, cat:`econ`, idea:`The real cost of any choice is not its price but the value of the best alternative you gave up to make it.`, way:`Price every choice in what it forecloses, not only what it consumes.`},
+  {name:`The Sign`, who:`Ferdinand de Saussure`, year:`1916`, era:5, cat:`lang`, idea:`A sign ties a sound-image to a concept by pure convention; meaning arises from differences within the whole system, not from things themselves.`, way:`Read meaning as a position in a web of contrasts, not a label on the world.`},
+  {name:`Symmetry & Conservation`, who:`Emmy Noether`, year:`1918`, era:5, cat:`rl`, idea:`Every continuous symmetry of a system corresponds to a conserved quantity — invariance and conservation law are two faces of one truth.`, way:`Hunt for what stays fixed under change; the invariant is where the law is hiding.`},
+  {name:`Relativity`, who:`Albert Einstein`, year:`1905`, era:5, cat:`real`, idea:`Space and time are not absolute; measurements depend on the observer's frame of motion.`, way:`Drop the privileged viewpoint; always specify your frame.`},
+  {name:`Archetypes`, who:`Carl Jung`, year:`1919`, era:5, cat:`mind`, idea:`Shared symbolic patterns surface across myths, dreams, and cultures.`, way:`Read recurring symbols as clues to a common structure.`},
+  {name:`The Uncertainty Principle`, who:`Werner Heisenberg`, year:`1927`, era:5, cat:`real`, idea:`Some pairs of properties cannot both be known precisely at once.`, way:`Accept hard limits and trade-offs in what can be known.`},
+  {name:`Complementarity`, who:`Niels Bohr`, year:`1928`, era:5, cat:`real`, idea:`Light is wave and particle — models that exclude each other yet are both needed.`, way:`Hold incompatible models together when each captures part of the truth.`},
+  {name:`Incompleteness`, who:`Kurt Gödel`, year:`1931`, era:5, cat:`rl`, idea:`Any system rich enough for arithmetic holds truths it cannot prove.`, way:`Expect every formal system to have a beyond it can't reach.`},
+  {name:`The Map Is Not the Territory`, who:`Alfred Korzybski`, year:`1933`, era:5, cat:`lang`, idea:`A model is a useful abstraction, never the reality it stands for.`, way:`Never mistake your model for the world it describes.`},
+  {name:`Falsifiability`, who:`Karl Popper`, year:`1934`, era:5, cat:`ks`, idea:`A claim is scientific only if it could, in principle, be proven wrong.`, way:`Seek the test that would refute you, not the one that flatters.`},
+  {name:`Creative Destruction`, who:`Joseph Schumpeter`, year:`1942`, era:5, cat:`econ`, idea:`Innovation renews an economy by dismantling the structures it outgrows.`, way:`See disruption as the mechanism of renewal, not just loss.`},
+  {name:`Existential Freedom`, who:`Sartre & Kierkegaard`, year:`1943`, era:5, cat:`mind`, idea:`Existence precedes essence; we are "condemned to be free" and to choose our meaning.`, way:`Own your choices as fully authored, without alibi.`},
+  {name:`Information Theory`, who:`Claude Shannon`, year:`1948`, era:5, cat:`sys`, idea:`Information is the reduction of uncertainty, measurable in bits.`, way:`Quantify a message by how much surprise it removes.`},
+  {name:`Cybernetics`, who:`Norbert Wiener`, year:`1948`, era:5, cat:`sys`, idea:`Machines and organisms alike steer by feeding their output back as input.`, way:`Think in feedback loops, not one-way causes.`},
+  {name:`Social Construction`, who:`Simone de Beauvoir`, year:`1949`, era:5, cat:`soc`, idea:`"One is not born, but becomes, a woman" — much of what a society calls natural is in fact made by history, role, and expectation.`, way:`Ask which "natural" facts are actually built — then ask whom the story serves.`},
+  {name:`The Nash Equilibrium`, who:`John Nash`, year:`1950`, era:6, cat:`econ`, idea:`In strategic games, players settle where no one can gain by changing alone.`, way:`Reason about others reasoning about you.`},
+  {name:`The Prisoner's Dilemma`, who:`Flood, Dresher & Tucker`, year:`1950`, era:6, cat:`soc`, idea:`Individually rational choices can leave everyone collectively worse off.`, way:`Spot where private incentives betray the shared good.`},
+  {name:`Language-Games`, who:`Ludwig Wittgenstein`, year:`1953`, era:6, cat:`lang`, idea:`A word's meaning is not a thing it points to but the role it plays in a form of life — meaning is use.`, way:`Stop asking what a word means; watch how it is used in the game being played.`},
+  {name:`Bounded Rationality`, who:`Herbert Simon`, year:`1955`, era:6, cat:`mind`, idea:`Real minds don't optimize; they "satisfice" within limits of time and information.`, way:`Design for limited minds, not idealized ones.`},
+  {name:`Paradigm Shifts`, who:`Thomas Kuhn`, year:`1962`, era:6, cat:`ks`, idea:`Science changes less by accumulation than by revolutions that replace whole frameworks.`, way:`Watch the frame, not only the facts inside it.`},
+  {name:`The Veil of Ignorance`, who:`John Rawls`, year:`1971`, era:6, cat:`soc`, idea:`Choose the rules of society as if you didn't know which person you'd be.`, way:`Strip away self-interest to find what's fair.`},
+  {name:`Emergence — More Is Different`, who:`Philip Anderson`, year:`1972`, era:6, cat:`sys`, idea:`Assemble enough simple parts and wholly new laws appear at the higher level.`, way:`The interesting behavior often lives a level above its parts.`},
+  {name:`Cognitive Biases`, who:`Kahneman & Tversky`, year:`1974`, era:6, cat:`mind`, idea:`Intuition runs on fast heuristics that misfire in predictable ways.`, way:`Distrust the quick judgment exactly where bias is known to lurk.`},
+  {name:`Memetics`, who:`Richard Dawkins`, year:`1976`, era:6, cat:`sys`, idea:`Genes — and ideas — behave as replicators competing to be copied.`, way:`Treat ideas as replicators that evolve and spread.`},
+  {name:`Network Effects`, who:`Robert Metcalfe`, year:`1980`, era:6, cat:`econ`, idea:`A network's value rises with the square of the people connected to it.`, way:`Value things by their connections, not their units.`},
+  {name:`Governing the Commons`, who:`Elinor Ostrom`, year:`1990`, era:6, cat:`econ`, idea:`Shared resources need not collapse under private greed; communities repeatedly craft their own durable rules to sustain them without market or state.`, way:`Between "privatize it" and "let the state run it" sits a third path: let the users govern it.`},
+  {name:`The Adjacent Possible`, who:`Stuart Kauffman`, year:`2000`, era:6, cat:`sys`, idea:`At each moment, only the neighboring states of what exists can come next.`, way:`Reach the future one reachable step at a time.`},
+  {name:`The Black Swan`, who:`Nassim Taleb`, year:`2007`, era:6, cat:`ks`, idea:`Rare, unpredicted, high-impact events shape history more than the ordinary.`, way:`Plan around the tails, not the average.`},
+  {name:`Antifragility`, who:`Nassim Taleb`, year:`2012`, era:6, cat:`sys`, idea:`Some things don't merely survive disorder — they improve because of it.`, way:`Seek exposures that gain from volatility rather than fear it.`},
+];
+
+const MODES = [
+  {glyph:`▽`, name:`First Principles`, body:`Boil a problem down to what must be true, then build back up. Trust the foundation, not the inheritance.`},
+  {glyph:`↺`, name:`Inversion`, body:`Don't ask how to win — ask how you'd guarantee a loss, then avoid it. Problems often read easier backward.`},
+  {glyph:`⇄`, name:`Dialectic`, body:`Set a claim against its opposite and let the collision yield a better third. Progress is an argument with itself.`},
+  {glyph:`≈`, name:`Analogy`, body:`Carry the shape of a solved problem into an unsolved one. Most new ideas are old ideas in a new domain.`},
+  {glyph:`◴`, name:`Systems & Feedback`, body:`Look for loops, stocks, and delays, not single causes. In a system you can never do just one thing.`},
+  {glyph:`%`, name:`Probabilistic`, body:`Hold beliefs as bets, not facts. Assign odds, then move them as the evidence lands.`},
+  {glyph:`✶`, name:`Evolutionary`, body:`Vary, select, repeat. Design can come from no designer if good guesses are allowed to outlive bad ones.`},
+  {glyph:`−`, name:`Via Negativa`, body:`Improve by removal. What to stop, avoid, and delete is often surer knowledge than what to add.`},
+  {glyph:`◇`, name:`Emergence`, body:`Watch simple parts produce behavior none of them contain. The interesting level is rarely the lowest one.`},
+];
+
+const SYNTH = [
+  {parents:[`Dichotomy of Control`,`Bayesian Inference`], name:`Bayesian Stoicism`, body:`Treat "what's up to me" not as a fixed line but as a probability you re-estimate as evidence arrives. Invest effort in proportion to your current control-estimate, and let calm come from updating the odds rather than pretending the boundary is sharp.`},
+  {parents:[`The Golden Mean`,`Cybernetics`], name:`The Virtue Thermostat`, body:`The mean between two vices isn't a dead midpoint but a setpoint held by feedback — courage drifting toward recklessness gets pulled back by its own consequences. The harder the target is perturbed, the sharper the system re-finds it, so both the balance and the correcting loop do real work.`},
+  {parents:[`Falsifiability`,`The Examined Life`], name:`The Falsifiable Self`, body:`Run your self-image like a scientific theory. Live in a way that could disprove the story you tell about yourself, and deliberately seek the experiences most likely to refute it. An identity that can't be falsified isn't known — it's defended.`},
+  {parents:[`Karma`,`Cybernetics`], name:`Karmic Feedback`, body:`Your actions are outputs that re-enter the system as inputs — the norms you model, the reputations you accrue, the reactions you provoke — and loop back to shape the world you next act into. "What comes around" isn't cosmic bookkeeping but a closed feedback loop: the very return that mere broadcasting can't deliver.`},
+  {parents:[`Marginalism`,`The Veil of Ignorance`], name:`Marginal Maximin`, body:`Spend each next unit of help where you'd want it if you didn't yet know whose life you'd wake into — which is almost always the worst-off, since that's where a marginal unit buys the most relief. "Greatest good" turns precise: the good you'd insure yourself for before the lottery of birth.`},
+  {parents:[`The Adjacent Possible`,`Eudaimonia`], name:`The Adjacent Good Life`, body:`Flourishing isn't a distant ideal but the best version of yourself that's one reachable step away. Stop optimizing for the perfect life; iterate toward the nearest better one, then stand on it and look again.`},
+  {parents:[`Invert, Always Invert`,`The Map Is Not the Territory`], name:`Inverse Cartography`, body:`Before trusting a model, map all the ways it's wrong. Chart its blind spots first — the regions where the map and the terrain diverge — and navigate by that error-map as much as by the model itself.`},
+  {parents:[`Complementarity`,`The Dialectic`], name:`Complementarity Ethics`, body:`Some moral truths behave like wave and particle: justice and mercy can't be fully measured at the same time, yet both are real. Not every tension wants a synthesis — some are meant to be held as complementary, alternated by context.`},
+  {parents:[`Wu Wei — Effortless Action`,`Emergence — More Is Different`], name:`The Flocking Move`, body:`Effortless action isn't steering the system — it's tuning the simple local rule that lets it organize itself. You don't herd the flock; you set the spacing that makes it flock: least intervention at the level of the rule, most order at the level of the whole.`},
+  {parents:[`Memento Mori`,`The Black Swan`], name:`The Sudden Memento`, body:`Don't just remember that you'll die — remember it could be a tail event: sudden, unscheduled, off the model. Let the fat tail of mortality, not its comfortable average, set what you do with today.`},
+  {parents:[`The Veil of Ignorance`,`Network Effects`], name:`Veil of the Network`, body:`Design institutions as if you didn't know which node you'd occupy — hub or edge, early or late, connected or isolated. Fairness should be robust to your position in the graph, not just to your identity.`},
+  {parents:[`Incompleteness`,`Falsifiability`], name:`Recursive Doubt`, body:`Every model holds truths it can't prove from inside. So keep a second model whose only job is to find the first one's blind spots — and a third for the second. Doubt, structured as a stack rather than a mood.`},
+];
+
+/* ============================ RENDER ============================ */
+const $ = (s,el=document)=>el.querySelector(s);
+const $$ = (s,el=document)=>[...el.querySelectorAll(s)];
+const catColor = k => CATS[k].color;
+
+document.getElementById('stat-ideas').textContent = IDEAS.length;
+document.getElementById('stat-synth').textContent = SYNTH.length;
+document.getElementById('atlas-eyebrow').textContent =
+  `${IDEAS.length} ideas · ${Object.keys(CATS).length} categories · ${ERAS.length} ages`;
+document.getElementById('foot-ideas').textContent = IDEAS.length;
+document.getElementById('foot-synth').textContent = SYNTH.length;
+
+/* --- modes --- */
+$('#modes-grid').innerHTML = MODES.map((m,i)=>`
+  <article class="mode-card reveal" data-i="${String(i+1).padStart(2,'0')}">
+    <div class="glyph">${m.glyph}</div>
+    <h3>${m.name}</h3>
+    <p>${m.body}</p>
+  </article>`).join('');
+
+/* --- filters --- */
+const state = {cat:'all', era:'all', q:''};
+
+function chip(label, value, group, swatch){
+  const b = document.createElement('button');
+  b.className='chip';
+  b.type='button';
+  b.setAttribute('aria-pressed', value==='all' && (group==='cat'?state.cat:state.era)==='all' ? 'true':'false');
+  b.dataset.group=group; b.dataset.value=value;
+  b.innerHTML = (swatch?`<span class="dot" style="--swatch:${swatch}"></span>`:'') + label;
+  b.addEventListener('click',()=>{
+    state[group]=value;
+    $$(`.chip[data-group="${group}"]`).forEach(c=>c.setAttribute('aria-pressed', c.dataset.value===value?'true':'false'));
+    applyFilters();
+  });
+  return b;
+}
+const catBox = $('#cat-filters'), eraBox = $('#era-filters');
+catBox.appendChild(chip('All','all','cat',null));
+Object.entries(CATS).forEach(([k,v])=>catBox.appendChild(chip(v.label,k,'cat',v.color)));
+eraBox.appendChild(chip('All','all','era',null));
+ERAS.forEach((e,i)=>eraBox.appendChild(chip(e,String(i),'era',null)));
+
+/* --- atlas cards --- */
+$('#atlas-grid').innerHTML = IDEAS.map((d,i)=>`
+  <article class="idea-card reveal" id="idea-${i}" style="--cat:${catColor(d.cat)}"
+           data-cat="${d.cat}" data-era="${d.era}"
+           data-search="${(d.name+' '+d.who+' '+d.idea).toLowerCase().replace(/"/g,'')}">
+    <div class="ic-top">
+      <span>№ ${String(i+1).padStart(3,'0')} · ${d.year}</span>
+      <span class="ic-cat">${CATS[d.cat].label}</span>
+    </div>
+    <h3 class="ic-name">${d.name}</h3>
+    <div class="ic-who">${d.who} · ${ERAS[d.era]}</div>
+    <p class="ic-idea">${d.idea}</p>
+    <div class="ic-way"><span class="way-lab">The move</span>${d.way}</div>
+  </article>`).join('') + `<div class="no-match" id="no-match" style="display:none">No idea matches that filter. Try widening it.</div>`;
+
+const countEl = $('#count');
+function applyFilters(){
+  const q = state.q.trim().toLowerCase();
+  let shown = 0;
+  IDEAS.forEach((d,i)=>{
+    const card = document.getElementById('idea-'+i);
+    const ok = (state.cat==='all'||d.cat===state.cat)
+            && (state.era==='all'||String(d.era)===state.era)
+            && (q===''||card.dataset.search.includes(q));
+    card.classList.toggle('hidden', !ok);
+    if(ok) shown++;
+  });
+  $('#no-match').style.display = shown? 'none':'block';
+  countEl.innerHTML = `Showing <b>${shown}</b> / ${IDEAS.length}`;
+}
+$('#search').addEventListener('input', e=>{state.q=e.target.value; applyFilters();});
+applyFilters();
+
+/* --- synthesis --- */
+$('#synth-grid').innerHTML = SYNTH.map(s=>`
+  <article class="synth-card reveal">
+    <div class="recipe">${s.parents.map((p,i)=>
+      `${i?'<span class="cross">✕</span>':''}<span class="ingredient">${p}</span>`).join('')}</div>
+    <h3><span class="spark">✦</span> ${s.name}</h3>
+    <p>${s.body}</p>
+  </article>`).join('');
+
+/* ============================ ASTROLABE ============================ */
+(function buildAstro(){
+  const NS='http://www.w3.org/2000/svg';
+  const svg = $('#astro');
+  const cx=300, cy=300;
+  const rings = [60,93,126,159,192,225,258]; // ancient -> contemporary
+  const mk=(tag,attrs)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;};
+
+  // faint spokes
+  for(let a=0;a<360;a+=30){
+    const r=(a*Math.PI)/180;
+    svg.appendChild(mk('line',{class:'spoke',x1:cx,y1:cy,x2:cx+270*Math.cos(r),y2:cy+270*Math.sin(r)}));
+  }
+  // rings
+  rings.forEach((r,i)=>svg.appendChild(mk('circle',{class:'ring'+(i===rings.length-1?' outer':''),cx,cy,r})));
+  // bezel ticks on outer ring
+  for(let a=0;a<360;a+=6){
+    const r=(a*Math.PI)/180, ro=272, ri=(a%30===0)?262:267;
+    svg.appendChild(mk('line',{class:'tick',x1:cx+ri*Math.cos(r),y1:cy+ri*Math.sin(r),x2:cx+ro*Math.cos(r),y2:cy+ro*Math.sin(r)}));
+  }
+  // group ideas by era, distribute angles
+  const byEra={};
+  IDEAS.forEach((d,i)=>{(byEra[d.era]=byEra[d.era]||[]).push(i);});
+  const tip = $('#astro-tip'); const stage = $('.astro-stage');
+  function showTip(idx, ptEl){
+    const d=IDEAS[idx];
+    tip.innerHTML=`<div class="t-name">${d.name}</div><div class="t-meta">${d.who} · ${d.year}</div>`;
+    const pr=ptEl.getBoundingClientRect(), sr=stage.getBoundingClientRect();
+    tip.style.left=(pr.left-sr.left+pr.width/2)+'px';
+    tip.style.top=(pr.top-sr.top+pr.height/2)+'px';
+    tip.style.opacity='1';
+  }
+  const hideTip=()=>{tip.style.opacity='0';};
+
+  // resolve the 9 category colors once, not per-point
+  const CATCOLOR={};
+  Object.keys(CATS).forEach(k=>{CATCOLOR[k]=getComputedStyle(document.documentElement).getPropertyValue('--c-'+k).trim()||'#CBA85C';});
+  // reserve a wedge at the top of each ring so points never collide with the era labels stacked there
+  const GAP=0.62, SPAN=Math.PI*2-GAP;
+  Object.keys(byEra).forEach(eraStr=>{
+    const era=+eraStr, list=byEra[era], r=rings[era];
+    const phase=(era*0.37)%1; // per-ring stagger, stays within the reserved span
+    list.forEach((idx,k)=>{
+      const ang = -Math.PI/2 + GAP/2 + ((k+phase)/list.length)*SPAN;
+      const x=cx+r*Math.cos(ang), y=cy+r*Math.sin(ang);
+      const d=IDEAS[idx];
+      const pt=mk('circle',{class:'pt',cx:x,cy:y,r:4.4,fill:CATCOLOR[d.cat]||'#CBA85C'});
+      pt.style.color = pt.getAttribute('fill');
+      const title=mk('title',{}); title.textContent=`${d.name} — ${d.who} (${d.year})`; pt.appendChild(title);
+      pt.addEventListener('mouseenter',()=>{pt.setAttribute('r',7);showTip(idx,pt);});
+      pt.addEventListener('mouseleave',()=>{pt.setAttribute('r',4.4);hideTip();});
+      pt.addEventListener('click',()=>jumpToIdea(idx));
+      svg.appendChild(pt);
+    });
+  });
+
+  // era labels stacked up the reserved top wedge — drawn last so they read above the points
+  rings.forEach((r,i)=>{
+    const t=mk('text',{class:'era-label',x:cx+4,y:cy-r+12,'text-anchor':'start'});
+    t.textContent = ERAS[i].toUpperCase();
+    svg.appendChild(t);
+  });
+
+  // core + sweeping alidade (decorative, reduced-motion safe)
+  const sweep=mk('g',{class:'sweep'});
+  sweep.appendChild(mk('line',{class:'alidade',x1:cx,y1:cy,x2:cx,y2:cy-268}));
+  sweep.appendChild(mk('line',{class:'alidade',x1:cx,y1:cy,x2:cx,y2:cy+150,opacity:.25}));
+  sweep.appendChild(mk('circle',{class:'alidade-dot',cx:cx,cy:cy-258,r:3}));
+  svg.appendChild(sweep);
+  svg.appendChild(mk('circle',{class:'core',cx,cy,r:30}));
+  svg.appendChild(mk('circle',{class:'core-glyph',cx,cy,r:18}));
+  svg.appendChild(mk('circle',{class:'core-glyph',cx,cy,r:9}));
+  const star=mk('text',{x:cx,y:cy+5,'text-anchor':'middle','font-size':16,fill:'var(--brass)','font-family':'Fraunces, serif'});
+  star.textContent='✦'; svg.appendChild(star);
+})();
+
+function jumpToIdea(idx){
+  // reset filters so the target is visible
+  state.cat='all'; state.era='all'; state.q='';
+  $('#search').value='';
+  $$('.chip[data-value="all"]').forEach(c=>c.setAttribute('aria-pressed','true'));
+  $$('.chip').forEach(c=>{ if(c.dataset.value!=='all') c.setAttribute('aria-pressed','false'); });
+  applyFilters();
+  const card=document.getElementById('idea-'+idx);
+  card.scrollIntoView({behavior:'smooth',block:'center'});
+  card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+}
+
+/* ============================ REVEAL ============================ */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.08, rootMargin:'0px 0px -40px 0px'});
+  $$('.reveal').forEach(el=>io.observe(el));
+}else{
+  $$('.reveal').forEach(el=>el.classList.add('in'));
+}
+</script>
+</body>
+</html>
