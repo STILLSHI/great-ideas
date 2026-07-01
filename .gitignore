@@ -1,2 +1,6 @@
 .DS_Store
 .playwright-mcp/
+
+# Never commit SSH keys that live in the working tree
+id_ed25519
+id_ed25519.pub
