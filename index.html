@@ -82,6 +82,8 @@
     color:var(--haze);text-decoration:none;padding:6px 11px;border-radius:999px;transition:color .2s,background .2s;
   }
   .nav-links a:hover{color:var(--bone);background:rgba(236,227,208,.06)}
+  .lang-sel{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;background:rgba(8,13,24,.6);color:var(--bone-dim);border:1px solid var(--line);border-radius:999px;padding:6px 10px;cursor:pointer}
+  .lang-sel:hover{border-color:var(--brass);color:var(--bone)}
 
   /* ---------- hero ---------- */
   .hero{padding:clamp(48px,9vh,104px) 0 clamp(40px,7vh,76px)}
@@ -289,28 +291,30 @@
 
 <nav class="nav">
   <div class="nav-in">
-    <span class="mark"><b>✦</b> The Orrery of Ideas</span>
+    <span class="mark" id="nav-mark"><b>✦</b> The Orrery of Ideas</span>
     <div class="nav-links">
-      <a href="#modes">Modes</a>
-      <a href="#atlas">The Atlas</a>
-      <a href="#proof">Proof</a>
-      <a href="#synthesis">Synthesis</a>
+      <a href="#modes" id="nav-modes">Modes</a>
+      <a href="#atlas" id="nav-atlas">The Atlas</a>
+      <a href="#proof" id="nav-proof">Proof</a>
+      <a href="#synthesis" id="nav-synth">Synthesis</a>
+      <a href="#" id="open-map">Map ↗</a>
     </div>
+    <select class="lang-sel" id="lang-sel" aria-label="Language"></select>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <p class="eyebrow">An Atlas of Human Thought · Antiquity → Now</p>
-      <h1>The <span class="ital br-accent">Orrery</span><br>of Ideas</h1>
-      <p class="hero-thesis">Humanity's real inheritance isn't its facts — it's the <b>ways of thinking</b> it invented to find them. Here are the great ones, charted by age and lens, then crossed to forge new ones.</p>
+      <p class="eyebrow" id="hero-eyebrow">An Atlas of Human Thought · Antiquity → Now</p>
+      <h1 id="hero-title">The <span class="ital br-accent">Orrery</span><br>of Ideas</h1>
+      <p class="hero-thesis" id="hero-thesis">Humanity's real inheritance isn't its facts — it's the <b>ways of thinking</b> it invented to find them. Here are the great ones, charted by age and lens, then crossed to forge new ones.</p>
       <div class="hero-meta">
-        <div class="stat"><span class="num" id="stat-ideas">74</span><span class="lab">Ideas charted</span></div>
-        <div class="stat"><span class="num">9</span><span class="lab">Lenses</span></div>
-        <div class="stat"><span class="num">7</span><span class="lab">Ages</span></div>
-        <div class="stat"><span class="num" id="stat-synth">12</span><span class="lab">New syntheses</span></div>
-        <div class="stat"><span class="num" id="stat-proofs">9</span><span class="lab">Proofs at work</span></div>
+        <div class="stat"><span class="num" id="stat-ideas">74</span><span class="lab" id="lab-ideas">Ideas charted</span></div>
+        <div class="stat"><span class="num">9</span><span class="lab" id="lab-lenses">Lenses</span></div>
+        <div class="stat"><span class="num">7</span><span class="lab" id="lab-ages">Ages</span></div>
+        <div class="stat"><span class="num" id="stat-synth">12</span><span class="lab" id="lab-synth">New syntheses</span></div>
+        <div class="stat"><span class="num" id="stat-proofs">9</span><span class="lab" id="lab-proofs">Proofs at work</span></div>
       </div>
     </div>
     <div>
@@ -318,7 +322,7 @@
         <svg class="astro" id="astro" viewBox="0 0 600 600" role="group" aria-label="An astrolabe mapping great ideas: rings are ages from ancient at the center to contemporary at the edge; each point is an idea, colored by its category. Use arrow keys to move between ideas and Enter to open one in the Atlas below; threads show what an idea draws on and what it feeds."></svg>
         <div class="astro-tip" id="astro-tip" aria-hidden="true"></div>
       </div>
-      <p class="astro-cap">Inner rings ancient · outer now · hover, tap, or arrow-key · <span style="color:var(--brass)">gold = draws on</span> · <span style="color:var(--lapis)">blue = feeds</span></p>
+      <p class="astro-cap" id="astro-cap">Inner rings ancient · outer now · hover, tap, or arrow-key · <span style="color:var(--brass)">gold = draws on</span> · <span style="color:var(--lapis)">blue = feeds</span> · <a href="#" id="open-map-cap" style="color:var(--brass)">full map ↗</a></p>
     </div>
   </div>
 </header>
@@ -326,10 +330,10 @@
 <section class="manifesto" id="why">
   <div class="wrap manifesto-grid">
     <div>
-      <p class="eyebrow">The Premise</p>
-      <p class="big">A fact is an answer. A way of thinking is a method for generating answers.</p>
+      <p class="eyebrow" id="mf-eyebrow">The Premise</p>
+      <p class="big" id="mf-big">A fact is an answer. A way of thinking is a method for generating answers.</p>
     </div>
-    <div>
+    <div id="mf-body">
       <p>Civilizations lose their facts and rediscover them. What actually compounds across the centuries is something subtler: the set of cognitive <em>moves</em> humans invented to make sense of things — to doubt, to abstract, to invert, to model, to update, to subtract.</p>
       <p>This atlas gathers the durable ones, from Bronze-Age cosmology to information theory, and sorts them two ways at once: by the <span class="pull">lens</span> they hand you, and by the <span class="pull">age</span> that produced them. A handful of meta-patterns — the <a href="#modes" style="color:var(--brass)">Modes</a> — recur beneath them all.</p>
       <p>Ideas here aren't kept behind glass. Each card traces its <span class="pull">lineage</span> — what it drew on, what it fed — and a <a href="#proof" style="color:var(--brass)">Proving Ground</a> follows the great moves out of the library and into moonshots, constitutions, and eradications.</p>
@@ -341,9 +345,9 @@
 <section id="modes">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">The Operating System of Thought</p>
-      <h2>Nine modes that recur beneath everything</h2>
-      <p>Strip the great ideas of their content and a small set of reusable maneuvers remains. Where the nine <em>lenses</em> below sort ideas by subject, these nine <em>modes</em> cut clean across them. Learn these and you own the engines, not just their outputs.</p>
+      <p class="eyebrow" id="modes-eyebrow">The Operating System of Thought</p>
+      <h2 id="modes-h2">Nine modes that recur beneath everything</h2>
+      <p id="modes-lede">Strip the great ideas of their content and a small set of reusable maneuvers remains. Where the nine <em>lenses</em> below sort ideas by subject, these nine <em>modes</em> cut clean across them. Learn these and you own the engines, not just their outputs.</p>
     </div>
     <div class="modes-grid" id="modes-grid"></div>
   </div>
@@ -353,8 +357,8 @@
   <div class="wrap">
     <div class="sec-head">
       <p class="eyebrow"><span id="atlas-eyebrow">74 ideas · 9 categories · 7 ages</span></p>
-      <h2>The Atlas</h2>
-      <p>Every entry pairs the idea with <em>the move</em> it teaches — the transferable way of thinking you can carry into your own problems. Filter by lens or age, or search. Lineage links on each card trace what it <span style="color:var(--brass)">draws on</span> and what it <span style="color:var(--lapis)">feeds</span>.</p>
+      <h2 id="atlas-h2">The Atlas</h2>
+      <p id="atlas-lede">Every entry pairs the idea with <em>the move</em> it teaches — the transferable way of thinking you can carry into your own problems. Filter by lens or age, or search. Lineage links on each card trace what it <span style="color:var(--brass)">draws on</span> and what it <span style="color:var(--lapis)">feeds</span>.</p>
     </div>
 
     <div class="controls">
@@ -380,9 +384,9 @@
 <section class="proof" id="proof">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Ideas Meet the World</p>
-      <h2>The Proving Ground</h2>
-      <p>A way of thinking proves itself the day it moves matter — or history. Here are great achievements traced back to the moves inside them; follow a chip to the idea it names.</p>
+      <p class="eyebrow" id="proof-eyebrow">Ideas Meet the World</p>
+      <h2 id="proof-h2">The Proving Ground</h2>
+      <p id="proof-lede">A way of thinking proves itself the day it moves matter — or history. Here are great achievements traced back to the moves inside them; follow a chip to the idea it names.</p>
     </div>
     <div class="proof-grid" id="proof-grid"></div>
   </div>
@@ -391,9 +395,9 @@
 <section class="synth" id="synthesis">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">New Ideas, Combined From Old</p>
-      <h2>The Synthesis Lab</h2>
-      <p>The whole atlas is raw material. Cross two ways of thinking and a third appears — sometimes useful, sometimes strange. These are the keepers.</p>
+      <p class="eyebrow" id="synth-eyebrow">New Ideas, Combined From Old</p>
+      <h2 id="synth-h2">The Synthesis Lab</h2>
+      <p id="synth-lede">The whole atlas is raw material. Cross two ways of thinking and a third appears — sometimes useful, sometimes strange. These are the keepers.</p>
     </div>
     <div class="synth-grid" id="synth-grid"></div>
   </div>
@@ -401,10 +405,10 @@
 
 <footer class="site-foot">
   <div class="wrap foot-grid">
-    <p class="closer">An idea is a tool. A way of thinking is the <span class="br-accent">workshop</span> that makes tools — borrow freely, cross them often.</p>
-    <div class="foot-meta">
+    <p class="closer" id="foot-closer">An idea is a tool. A way of thinking is the <span class="br-accent">workshop</span> that makes tools — borrow freely, cross them often.</p>
+    <div class="foot-meta" id="foot-meta">
       The Orrery of Ideas<br>
-      Built from <a href="#atlas"><span id="foot-ideas">74</span> ideas</a> · <a href="#proof"><span id="foot-proofs">9</span> proofs</a> · <a href="#synthesis"><span id="foot-synth">12</span> syntheses</a><br>
+      Built from <a href="#atlas">85 ideas</a> · <a href="#proof">9 proofs</a> · <a href="#synthesis">14 syntheses</a><br>
       <span style="color:var(--bone-dim)">Remember: the map is not the territory — including this one.</span>
     </div>
   </div>
@@ -514,15 +518,15 @@ const IDEAS = [
 ];
 
 const MODES = [
-  {glyph:`▽`, name:`First Principles`, body:`Boil a problem down to what must be true, then build back up. Trust the foundation, not the inheritance.`},
-  {glyph:`↺`, name:`Inversion`, body:`Don't ask how to win — ask how you'd guarantee a loss, then avoid it. Problems often read easier backward.`},
-  {glyph:`⇄`, name:`Dialectic`, body:`Set a claim against its opposite and let the collision yield a better third. Progress is an argument with itself.`},
-  {glyph:`≈`, name:`Analogy`, body:`Carry the shape of a solved problem into an unsolved one. Most new ideas are old ideas in a new domain.`},
-  {glyph:`◴`, name:`Systems & Feedback`, body:`Look for loops, stocks, and delays, not single causes. In a system you can never do just one thing.`},
-  {glyph:`%`, name:`Probabilistic`, body:`Hold beliefs as bets, not facts. Assign odds, then move them as the evidence lands.`},
-  {glyph:`✶`, name:`Evolutionary`, body:`Vary, select, repeat. Design can come from no designer if good guesses are allowed to outlive bad ones.`},
-  {glyph:`−`, name:`Via Negativa`, body:`Improve by removal. What to stop, avoid, and delete is often surer knowledge than what to add.`},
-  {glyph:`◇`, name:`Emergence`, body:`Watch simple parts produce behavior none of them contain. The interesting level is rarely the lowest one.`},
+  {glyph:`▽`, name:`First Principles`, body:`Boil a problem down to what must be true, then build back up. Trust the foundation, not the inheritance.`, exemplars:[`Atomism`,`Cogito, Ergo Sum`,`Universal Gravitation`]},
+  {glyph:`↺`, name:`Inversion`, body:`Don't ask how to win — ask how you'd guarantee a loss, then avoid it. Problems often read easier backward.`, exemplars:[`Invert, Always Invert`,`Falsifiability`,`Negative Theology`]},
+  {glyph:`⇄`, name:`Dialectic`, body:`Set a claim against its opposite and let the collision yield a better third. Progress is an argument with itself.`, exemplars:[`The Socratic Method`,`The Dialectic`,`Complementarity`]},
+  {glyph:`≈`, name:`Analogy`, body:`Carry the shape of a solved problem into an unsolved one. Most new ideas are old ideas in a new domain.`, exemplars:[`Memetics`,`Cybernetics`,`Archetypes`]},
+  {glyph:`◴`, name:`Systems & Feedback`, body:`Look for loops, stocks, and delays, not single causes. In a system you can never do just one thing.`, exemplars:[`Cybernetics`,`Karma`,`Dependent Origination`,`The Nash Equilibrium`]},
+  {glyph:`%`, name:`Probabilistic`, body:`Hold beliefs as bets, not facts. Assign odds, then move them as the evidence lands.`, exemplars:[`Bayesian Inference`,`The Uncertainty Principle`,`The Black Swan`]},
+  {glyph:`✶`, name:`Evolutionary`, body:`Vary, select, repeat. Design can come from no designer if good guesses are allowed to outlive bad ones.`, exemplars:[`Natural Selection`,`Creative Destruction`,`The Adjacent Possible`,`Memetics`]},
+  {glyph:`−`, name:`Via Negativa`, body:`Improve by removal. What to stop, avoid, and delete is often surer knowledge than what to add.`, exemplars:[`Occam's Razor`,`Wu Wei — Effortless Action`,`Memento Mori`]},
+  {glyph:`◇`, name:`Emergence`, body:`Watch simple parts produce behavior none of them contain. The interesting level is rarely the lowest one.`, exemplars:[`Emergence — More Is Different`,`The Invisible Hand`,`Governing the Commons`,`Asabiyyah — Social Cohesion`]},
 ];
 
 const SYNTH = [
@@ -554,19 +558,962 @@ const PROOFS = [
   {name:`Truth & Reconciliation`, year:`1996`, uses:[`Ubuntu — I Am Because We Are`,`The Social Contract`], body:`South Africa ended apartheid without the civil war nearly everyone expected. Its interim constitution named the way of thinking that made this possible — "a need for ubuntu but not for victimisation" — trading amnesty for truth to buy a new social contract.`},
 ];
 
+/* ============================ I18N ============================ */
+/* English is canonical: the content arrays above are the single source of truth.
+   Each language pack overlays translated DISPLAY fields only; all structure
+   (deps, parents, uses, cat/era keys) references canonical English names.
+   Pack shape: {label, ui:{...}, eras:[7], cats:{9 keys}, ideas:[85 {name,who,year,idea,way}],
+   modes:[9 {name,body}], synth:[14 {name,body}], proofs:[9 {name,year,body}]} */
+const I18N = {
+  en: {
+    label:`English`,
+    ui:{
+      docTitle:`The Orrery of Ideas — An Atlas of Human Thought`,
+      mark:`<b>✦</b> The Orrery of Ideas`,
+      navModes:`Modes`, navAtlas:`The Atlas`, navProof:`Proof`, navSynth:`Synthesis`, navMap:`Map ↗`,
+      heroEyebrow:`An Atlas of Human Thought · Antiquity → Now`,
+      heroTitle:`The <span class="ital br-accent">Orrery</span><br>of Ideas`,
+      heroThesis:`Humanity's real inheritance isn't its facts — it's the <b>ways of thinking</b> it invented to find them. Here are the great ones, charted by age and lens, then crossed to forge new ones.`,
+      statIdeas:`Ideas charted`, statLenses:`Lenses`, statAges:`Ages`, statSynth:`New syntheses`, statProofs:`Proofs at work`,
+      astroAria:`An astrolabe mapping great ideas: rings are ages from ancient at the center to contemporary at the edge; each point is an idea, colored by its category. Use arrow keys to move between ideas and Enter to open one in the Atlas below; threads show what an idea draws on and what it feeds.`,
+      astroCap:`Inner rings ancient · outer now · hover, tap, or arrow-key · <span style="color:var(--brass)">gold = draws on</span> · <span style="color:var(--lapis)">blue = feeds</span> · <a href="#" id="open-map-cap" style="color:var(--brass)">full map ↗</a>`,
+      mfEyebrow:`The Premise`,
+      mfBig:`A fact is an answer. A way of thinking is a method for generating answers.`,
+      mfBody:`<p>Civilizations lose their facts and rediscover them. What actually compounds across the centuries is something subtler: the set of cognitive <em>moves</em> humans invented to make sense of things — to doubt, to abstract, to invert, to model, to update, to subtract.</p><p>This atlas gathers the durable ones, from Bronze-Age cosmology to information theory, and sorts them two ways at once: by the <span class="pull">lens</span> they hand you, and by the <span class="pull">age</span> that produced them. A handful of meta-patterns — the <a href="#modes" style="color:var(--brass)">Modes</a> — recur beneath them all.</p><p>Ideas here aren't kept behind glass. Each card traces its <span class="pull">lineage</span> — what it drew on, what it fed — and a <a href="#proof" style="color:var(--brass)">Proving Ground</a> follows the great moves out of the library and into moonshots, constitutions, and eradications.</p><p>Then the atlas does the thing every thinker here did: it <span class="pull">recombines</span>. The final section forges new ideas by crossing old ones — because that, too, is a way of thinking.</p>`,
+      modesEyebrow:`The Operating System of Thought`,
+      modesH2:`Nine modes that recur beneath everything`,
+      modesLede:`Strip the great ideas of their content and a small set of reusable maneuvers remains. Where the nine <em>lenses</em> below sort ideas by subject, these nine <em>modes</em> cut clean across them. Learn these and you own the engines, not just their outputs.`,
+      atlasEyebrow:`{i} ideas · {c} categories · {a} ages`,
+      atlasH2:`The Atlas`,
+      atlasLede:`Every entry pairs the idea with <em>the move</em> it teaches — the transferable way of thinking you can carry into your own problems. Filter by lens or age, or search. Lineage links on each card trace what it <span style="color:var(--brass)">draws on</span> and what it <span style="color:var(--lapis)">feeds</span>.`,
+      lensLabel:`Lens`, ageLabel:`Age`, allChip:`All`,
+      searchPh:`search ideas, thinkers…`, searchAria:`Search ideas and thinkers`,
+      countTpl:`Showing <b>{n}</b> / {t}`,
+      noMatch:`No idea matches that filter. Try widening it.`,
+      moveLab:`The move`, drawsOn:`↖ draws on`, feedsLab:`↘ feeds`,
+      proofEyebrow:`Ideas Meet the World`, proofH2:`The Proving Ground`,
+      proofLede:`A way of thinking proves itself the day it moves matter — or history. Here are great achievements traced back to the moves inside them; follow a chip to the idea it names.`,
+      movesInside:`The moves inside ↘`,
+      synthEyebrow:`New Ideas, Combined From Old`, synthH2:`The Synthesis Lab`,
+      synthLede:`The whole atlas is raw material. Cross two ways of thinking and a third appears — sometimes useful, sometimes strange. These are the keepers.`,
+      footCloser:`An idea is a tool. A way of thinking is the <span class="br-accent">workshop</span> that makes tools — borrow freely, cross them often.`,
+      footMeta:`The Orrery of Ideas<br>Built from <a href="#atlas">{i} ideas</a> · <a href="#proof">{p} proofs</a> · <a href="#synthesis">{s} syntheses</a><br><span style="color:var(--bone-dim)">Remember: the map is not the territory — including this one.</span>`,
+      mapTitle:`The Orrery of Ideas — The Full Map`,
+      mapSub:`HOVER ANY NODE TO TRACE ITS CONNECTIONS`,
+      legendMode:`mode → exemplar idea`, legendLineage:`lineage: draws on → feeds`, legendProof:`idea → real-world proof`,
+      headModes:`NINE MODES`, headIdeas:`{n} IDEAS · ANCIENT → NOW`, headProofs:`{n} PROOFS`,
+    },
+  },
+  'zh-Hans': {
+  label:`简体中文`,
+  ui:{
+    docTitle:`思想的天象仪 — 人类思想的地图集`,
+    mark:`<b>✦</b> 思想的天象仪`,
+    navModes:`思维模式`, navAtlas:`思想地图`, navProof:`验证`, navSynth:`综合`, navMap:`全图 ↗`,
+    heroEyebrow:`人类思想的地图集 · 上古 → 当下`,
+    heroTitle:`思想的<br><span class="ital br-accent">天象仪</span>`,
+    heroThesis:`人类真正的遗产并非它所积累的事实，而是它为求得这些事实所发明的<b>思维方式</b>。这里汇集了其中最伟大的那些，按时代与视角一一标定，再相互交叉，锻造出新的思想。`,
+    statIdeas:`已标定的思想`, statLenses:`视角`, statAges:`时代`, statSynth:`新的综合`, statProofs:`实践中的验证`,
+    astroAria:`一具为伟大思想绘图的星盘：一圈圈同心环代表时代，中心为上古，边缘为当代；每一个点是一个思想，颜色对应它所属的类别。用方向键在思想之间移动，按回车即可在下方的思想地图中打开对应条目；连线显示一个思想借鉴了什么、又滋养了什么。`,
+    astroCap:`内环为上古 · 外环为当下 · 悬停、轻触或按方向键 · <span style="color:var(--brass)">金色 = 借鉴自</span> · <span style="color:var(--lapis)">蓝色 = 滋养出</span> · <a href="#" id="open-map-cap" style="color:var(--brass)">完整地图 ↗</a>`,
+    mfEyebrow:`前提`,
+    mfBig:`一个事实是一个答案。一种思维方式，则是生成答案的方法。`,
+    mfBody:`<p>文明会遗失自己的事实，又将它们重新发现。真正能跨越数个世纪不断累积的，是更为微妙的东西：人类为理解万物而发明的一整套认知<em>招式</em>——怀疑、抽象、反转、建模、更新、删减。</p><p>这份地图集收集了其中经久不衰者，从青铜时代的宇宙观到信息论，并同时以两种方式为它们归类：按它们递给你的<span class="pull">视角</span>，以及按孕育它们的<span class="pull">时代</span>。少数几种元模式——即<a href="#modes" style="color:var(--brass)">思维模式</a>——潜藏在这一切之下，反复浮现。</p><p>这里的思想并未被供奉在玻璃柜后。每一张卡片都追溯它的<span class="pull">谱系</span>——它借鉴了什么，又滋养了什么——而一处<a href="#proof" style="color:var(--brass)">试炼场</a>则追随这些伟大的招式走出书斋，走进登月工程、宪法与瘟疫的根除。</p><p>随后，这份地图集做了此处每一位思想家都做过的事：<span class="pull">重新组合</span>。最后一节通过交叉旧的思想来锻造新的思想——因为这本身，也是一种思维方式。</p>`,
+    modesEyebrow:`思维的操作系统`,
+    modesH2:`潜藏在万物之下、反复浮现的九种模式`,
+    modesLede:`剥去伟大思想的具体内容，剩下的是一小组可复用的招法。下方的九种<em>视角</em>按主题为思想分类，而这九种<em>模式</em>则横切其间、贯通一切。学会它们，你便掌握了引擎本身，而不只是它们的产物。`,
+    atlasEyebrow:`{i} 个思想 · {c} 个类别 · {a} 个时代`,
+    atlasH2:`思想地图`,
+    atlasLede:`每一个条目都将思想与它所传授的<em>招式</em>相配——那种可迁移的思维方式，你能把它带进自己的问题里。可按视角或时代筛选，也可搜索。每张卡片上的谱系链接追溯它<span style="color:var(--brass)">借鉴自</span>什么、又<span style="color:var(--lapis)">滋养出</span>什么。`,
+    lensLabel:`视角`, ageLabel:`时代`, allChip:`全部`,
+    searchPh:`搜索思想、思想家……`, searchAria:`搜索思想与思想家`,
+    countTpl:`显示 <b>{n}</b> / {t}`,
+    noMatch:`没有思想符合该筛选条件。试着放宽一些。`,
+    moveLab:`招式`, drawsOn:`↖ 借鉴自`, feedsLab:`↘ 滋养出`,
+    proofEyebrow:`思想与世界相遇`, proofH2:`试炼场`,
+    proofLede:`一种思维方式，在它撼动物质——或历史——的那一天，便证明了自己。这里是一些伟大成就，被追溯回其内部的招式；点击标签，即可跳到它所指的思想。`,
+    movesInside:`内部的招式 ↘`,
+    synthEyebrow:`由旧思想组合而成的新思想`, synthH2:`综合实验室`,
+    synthLede:`整份地图集都是原料。交叉两种思维方式，第三种便会浮现——有时实用，有时奇异。以下是值得留存的那些。`,
+    footCloser:`一个思想是一件工具。一种思维方式，则是造出工具的<span class="br-accent">工坊</span>——尽管自由借用，常常让它们交叉。`,
+    footMeta:`思想的天象仪<br>由 <a href="#atlas">{i} 个思想</a> · <a href="#proof">{p} 项验证</a> · <a href="#synthesis">{s} 种综合</a>构成<br><span style="color:var(--bone-dim)">切记：地图并非疆域——包括这一份在内。</span>`,
+    mapTitle:`思想的天象仪 — 完整地图`,
+    mapSub:`悬停任一节点，追踪它的连接`,
+    legendMode:`模式 → 范例思想`, legendLineage:`谱系：借鉴自 → 滋养出`, legendProof:`思想 → 现实中的验证`,
+    headModes:`九种模式`, headIdeas:`{n} 个思想 · 上古 → 当下`, headProofs:`{n} 项验证`,
+  },
+  eras:[`上古`,`古典时代`,`中世纪`,`近代早期`,`启蒙时代`,`现代`,`当代`],
+  cats:{
+    rl:`理性与逻辑`,
+    ks:`知识与科学`,
+    eth:`伦理与美好生活`,
+    mind:`心灵与自我`,
+    soc:`社会与权力`,
+    econ:`经济与交换`,
+    sys:`系统与复杂性`,
+    real:`实在与宇宙`,
+    lang:`语言与意义`,
+  },
+  ideas:[
+    {name:`阴阳相生`, who:`中国宇宙观`, year:`约公元前900年`, idea:`实在由成对的对立面交织而成——明与暗、动与静——彼此界定，又彼此涵容。`, way:`把对立看作合作：对立面并非交战，而是彼此生成。`},
+    {name:`业力`, who:`吠陀与奥义书思想`, year:`约公元前800年`, idea:`每一个行为都种下一粒种子，其果实终将穿越时间，回到行为者自身。`, way:`把每一个行为都当作你终将承受的因。`},
+    {name:`无为`, who:`老子`, year:`约公元前6世纪`, idea:`最高的技艺，是顺应事物的纹理而为，而非强行扭曲它们。`, way:`顺应系统之势，比与之对抗更能成事。`},
+    {name:`逻各斯`, who:`赫拉克利特`, year:`约公元前500年`, idea:`在无休止的变化之下，运行着一种统一的理性秩序；"万物皆流"。`, way:`在流变之下，寻找那持存不变的法则。`},
+    {name:`正名`, who:`孔子`, year:`约公元前500年`, idea:`名若不符实，语言便失效，社会随之崩解；正其名，方能正其世。`, way:`修复一个系统，先让它的语言变得诚实。`},
+    {name:`仁与恕`, who:`孔子`, year:`约公元前500年`, idea:`"己所不欲，勿施于人"——以仁为维系社会的纽带。`, way:`以恕道作为正当行为的检验标准。`},
+    {name:`原子论`, who:`德谟克利特与留基伯`, year:`约公元前430年`, idea:`一切存在，不过是在虚空中运动的不可分割的原子。`, way:`以简单部件的排列，解释复杂的整体。`},
+    {name:`芝诺悖论`, who:`埃利亚的芝诺`, year:`约公元前450年`, idea:`永远射不中的箭、永远跑不完的赛跑，暴露出我们关于运动与无限的观念中隐藏的裂缝。`, way:`把一个概念推向悖论，以此对它施加压力测试。`},
+    {name:`苏格拉底方法`, who:`苏格拉底`, year:`约公元前430年`, idea:`真理是通过不懈的追问逼近的——追问会揭露我们自以为知的东西中的矛盾。`, way:`拷问一个论断，直到它隐藏的前提浮出水面。`},
+    {name:`受省察的人生`, who:`苏格拉底`, year:`约公元前430年`, idea:`"未经省察的人生不值得过"——自我审视是一种义务，而非奢侈。`, way:`把矛头转向自己发问，变成一种长驻的习惯。`},
+    {name:`理型论`, who:`柏拉图`, year:`约公元前380年`, idea:`在不完美的个别事物背后，是它们所摹仿的完美而不变的理型。`, way:`越过一个个实例，看向它们共有的那个模式。`},
+    {name:`四因说`, who:`亚里士多德`, year:`约公元前350年`, idea:`要解释任何事物，都要追问它的质料、它的形式、它的造作者，以及它的目的。`, way:`在几种不同的意义上同时追问"为什么"，以此解释一物。`},
+    {name:`中庸`, who:`亚里士多德`, year:`约公元前350年`, idea:`美德栖居于两种恶习之间——勇敢介于怯懦与鲁莽之间。`, way:`在相反的两个极端之间，找到那处卓越。`},
+    {name:`繁盛`, who:`亚里士多德`, year:`约公元前350年`, idea:`美好生活不在于快乐，而在于繁盛——一个活得好的生命所展开的完满活动。`, way:`以一个人的行动与品格来评判其一生，而非其转瞬即逝的心境。`},
+    {name:`缘起`, who:`早期佛教`, year:`约公元前450年`, idea:`没有什么能独自存在；万物皆借由一张条件之网而生起。`, way:`追溯一物的种种条件，而非孤立地追问它的本质。`},
+    {name:`无常`, who:`早期佛教`, year:`约公元前450年`, idea:`凡生起者，皆会消逝；执著于恒定，正是苦的根源。`, way:`松手待物；预期变化，也容许变化。`},
+    {name:`中道`, who:`佛陀`, year:`约公元前450年`, idea:`智慧既避开纵欲，也避开严苛的自我否定，行走于两极之间。`, way:`拒斥"纵欲或自惩"这一虚假的二选一。`},
+    {name:`皮浪主义怀疑论`, who:`皮浪与塞克斯图斯`, year:`约公元前300年`, idea:`当证据势均力敌时，便悬置断然的判断——随之而来的是宁静。`, way:`把搁置确定性当作一种修养，而非一种失败。`},
+    {name:`控制二分法`, who:`爱比克泰德与斯多亚学派`, year:`约公元100年`, idea:`有些事取决于我们，有些则不然；安宁在于认清这条界线。`, way:`只在你真正拥有能动性的地方投入气力。`},
+    {name:`铭记死亡`, who:`罗马斯多亚学派`, year:`约公元100年`, idea:`让死亡始终在视野之内，琐碎之事便再也抓不住你。`, way:`以必死为透镜，筛选出什么才真正要紧。`},
+    {name:`算法`, who:`花拉子米`, year:`约820年`, idea:`问题可以通过一串固定的机械步骤来求解——代数由此诞生。`, way:`把一个难题转化为一套可重复的程序。`},
+    {name:`实验光学`, who:`伊本·海赛姆`, year:`约1020年`, idea:`关于光的种种主张，须由受控实验来裁定，而非权威。`, way:`让精心设计的实验，而非某部典籍，来判定何为真。`},
+    {name:`否定神学`, who:`迈蒙尼德`, year:`约1190年`, idea:`唯有言说无限"不是什么"，才能趋近于它。`, way:`当正面的措辞失效时，以否定来界定那难以捉摸之物。`},
+    {name:`五路论证`, who:`托马斯·阿奎那`, year:`约1270年`, idea:`我们所观察到的运动与秩序，可以循理回溯至一个第一因。`, way:`从世界的结构出发，向着它的根据展开论证。`},
+    {name:`奥卡姆剃刀`, who:`奥卡姆的威廉`, year:`约1320年`, idea:`在同样成立的解释之中，优先选择假设最少的那一个。`, way:`凡理论用不上的假设，一律削去。`},
+    {name:`阿萨比亚——社会凝聚力`, who:`伊本·赫勒敦`, year:`1377年`, idea:`群体的团结是历史隐藏的引擎：它将一个族群托上权力之巅，随后在它赢得的安逸中衰朽，直到一个更具凝聚力的群体取而代之。`, way:`在政治事件的表象之下，留意集体凝聚力的兴与衰。`},
+    {name:`日心说`, who:`尼古拉·哥白尼`, year:`1543年`, idea:`地球并非中心；它与众行星一同绕太阳运行。`, way:`甘愿把自己从画面的中心移开。`},
+    {name:`观察高于权威`, who:`伽利略·伽利雷`, year:`1610年`, idea:`望远镜所显示的，胜过经典所言说的。`, way:`让仪器推翻承袭而来的典籍。`},
+    {name:`归纳法`, who:`弗朗西斯·培根`, year:`1620年`, idea:`知识是从耐心而系统的观察中自下而上建立起来的。`, way:`从悉心搜集的个别事实中，拼合出普遍的法则。`},
+    {name:`我思故我在`, who:`勒内·笛卡尔`, year:`1637年`, idea:`尽你所能怀疑一切；剩下的唯一一件事——你在怀疑——便成了基岩。`, way:`从一个无可怀疑的地基上，重建全部知识。`},
+    {name:`社会契约`, who:`托马斯·霍布斯`, year:`1651年`, idea:`合法的权力，建立在一份为逃离"一切人对一切人的战争"而达成的默契之上。`, way:`以那份足以缔造某项制度的契约，来为它辩护。`},
+    {name:`白板说`, who:`约翰·洛克`, year:`1689年`, idea:`心灵起初是一块白板，由经验在其上书写。`, way:`把每一个观念追溯回栽下它的那段经验。`},
+    {name:`万有引力`, who:`艾萨克·牛顿`, year:`1687年`, idea:`一条定律，同时约束着苹果的坠落与月亮的轨道。`, way:`寻找那条能统一各种分立现象的单一法则。`},
+    {name:`三权分立`, who:`孟德斯鸠`, year:`1748年`, idea:`唯有将权力加以分割、使各部分互相制衡，自由方能存续。`, way:`构建一个各部分依设计而彼此约束的系统。`},
+    {name:`公意`, who:`让-雅克·卢梭`, year:`1762年`, idea:`正当性源于共同善，而共同善不只是私人欲望的总和。`, way:`把共同的利益，从欲望的简单累加中区分出来。`},
+    {name:`贝叶斯推断`, who:`托马斯·贝叶斯与拉普拉斯`, year:`1763年`, idea:`信念是一种概率，须严格按新证据的分量加以修正。`, way:`把信念当作赔率来持有，并随证据的到来不断更新。`},
+    {name:`看不见的手`, who:`亚当·斯密`, year:`1776年`, idea:`追逐私利的个体，能够通过市场，造就出无人有意设计的秩序。`, way:`去寻找那种无需设计者便自行涌现的秩序。`},
+    {name:`敢于求知`, who:`伊曼努尔·康德`, year:`1784年`, idea:`"敢于求知"：成熟，就是敢于不依赖监护人而运用自己的理性。`, way:`主张为自己思考的权利——以及义务。`},
+    {name:`定言命令`, who:`伊曼努尔·康德`, year:`1785年`, idea:`只依照那种你能意愿人人都遵循的准则行事。`, way:`把一个行为设想为普遍法则，以此检验它。`},
+    {name:`功利主义`, who:`边沁与约翰·斯图尔特·密尔`, year:`1789年`, idea:`正当的行为，为最多的人带来最大的善——把快乐与痛苦，在每一个人身上一视同仁地加总。`, way:`按行为后果的总和来权衡行为，每个人只计作一份。`},
+    {name:`辩证法`, who:`黑格尔`, year:`1807年`, idea:`思想通过生成自身的对立面、再消融为一个更丰富的整体而前进。`, way:`让一个论断与它的否定相撞，从而抵达一个更好的论断。`},
+    {name:`比较优势`, who:`大卫·李嘉图`, year:`1817年`, idea:`即便一方样样都更擅长，双方仍能从贸易中各得其利。`, way:`以相对成本来推理，而非绝对能力。`},
+    {name:`反过来想，永远反过来想`, who:`卡尔·雅可比`, year:`1840年`, idea:`许多正面强攻不下的问题，一旦倒过来处理便迎刃而解。`, way:`先求解你想避开的那种失败，再远远绕开它。`},
+    {name:`通用机器`, who:`阿达·洛夫莱斯`, year:`1843年`, idea:`一台按规则操作符号的机器，不必止步于数字——凡能被编码之物，音乐也在其列，它原则上都能创作。`, way:`问一问：若把输入重新编码，某个机械还能做什么；一项操作即便眼下用途狭窄，本身仍可能是通用的。`},
+    {name:`历史唯物主义`, who:`卡尔·马克思`, year:`1848年`, idea:`历史由潜藏在观念与理想之下的物质和经济力量所驱动。`, way:`顺着宣称的信念之下的物质利益一路追查。`},
+    {name:`自然选择`, who:`查尔斯·达尔文`, year:`1859年`, idea:`变异加上选择，历经时间反复作用，便造出无需设计者的设计。`, way:`把复杂性解释为累积选择所留下的沉淀。`},
+    {name:`边际主义`, who:`杰文斯、门格尔与瓦尔拉斯`, year:`1871年`, idea:`价值与选择是在边际上决定的——取决于下一个单位，而非整体。`, way:`按下一个增量来决断，而非按平均值。`},
+    {name:`永恒轮回`, who:`弗里德里希·尼采`, year:`1882年`, idea:`活得仿佛你将不得不无穷无尽地重历这一模一样的一生。`, way:`以一场思想实验，作为如何生活的试金石。`},
+    {name:`权力意志`, who:`弗里德里希·尼采`, year:`1883年`, idea:`承袭而来的价值是人的造物；要追问它们服务于谁的强力。`, way:`当有人递给你一种价值，追问它是谁造的、又让谁得益。`},
+    {name:`帕累托法则`, who:`维尔弗雷多·帕累托 · 约瑟夫·朱兰`, year:`1896年`, idea:`一小部分原因往往造成大部分结果——帕累托发现了这一分布，朱兰则把它化作一条工作法则。`, way:`在众多产出的背后，搜寻那少数关键的投入。`},
+    {name:`无意识`, who:`西格蒙德·弗洛伊德`, year:`1900年`, idea:`驱动我们的许多东西，都在觉察的表层之下运行。`, way:`在言明的理由之下，寻找那些隐藏的理由。`},
+    {name:`现象学`, who:`埃德蒙德·胡塞尔`, year:`1900年`, idea:`把种种理论搁在一旁，如其所是地描述经验本身。`, way:`悬置你的预设，专注于如其被给予的那个事物。`},
+    {name:`相对论`, who:`阿尔伯特·爱因斯坦`, year:`1905年`, idea:`空间与时间并非绝对；测量结果取决于观察者的运动参照系。`, way:`放弃那个特权视点；永远言明你所处的参照系。`},
+    {name:`实用主义`, who:`皮尔士、詹姆斯与杜威`, year:`1907年`, idea:`一个观念的意义与真理，都在于它的实际后果。`, way:`以一个信念在实践中造成的差别来评判它。`},
+    {name:`机会成本`, who:`弗里德里希·冯·维塞尔`, year:`1914年`, idea:`任何选择的真实成本，不是它的价格，而是你为作出它而放弃的最佳替代方案的价值。`, way:`为每一个选择定价时，要看它排除了什么，而不只是它耗费了什么。`},
+    {name:`符号`, who:`费尔迪南·德·索绪尔`, year:`1916年`, idea:`一个符号凭纯粹的约定，把音响形象与概念系于一处；意义生于整个系统内部的差异，而非事物本身。`, way:`把意义读作差异之网中的一个位置，而非贴在世界上的一枚标签。`},
+    {name:`对称与守恒`, who:`埃米·诺特`, year:`1918年`, idea:`一个系统的每一种连续对称，都对应着一个守恒量——不变性与守恒律，是同一真理的两面。`, way:`搜寻那在变化中保持不动的东西；不变量所在之处，正是法则藏身之所。`},
+    {name:`原型`, who:`卡尔·荣格`, year:`1919年`, idea:`共通的象征模式，在神话、梦境与各种文化中反复浮现。`, way:`把反复出现的象征，读作通向某个共同结构的线索。`},
+    {name:`不确定性原理`, who:`维尔纳·海森堡`, year:`1927年`, idea:`有些成对的属性，无法同时被精确地知晓。`, way:`接受可知之物的硬性极限与取舍。`},
+    {name:`互补性`, who:`尼尔斯·玻尔`, year:`1928年`, idea:`光既是波，也是粒子——两个互相排斥、却又缺一不可的模型。`, way:`当每个模型各自捕捉到部分真相时，把互不相容的模型一并持有。`},
+    {name:`不完备性`, who:`库尔特·哥德尔`, year:`1931年`, idea:`任何丰富到足以容纳算术的系统，都藏有它无法证明的真理。`, way:`预期每一个形式系统，都有它触不可及的彼岸。`},
+    {name:`地图并非疆域`, who:`阿尔弗雷德·科日布斯基`, year:`1933年`, idea:`模型是一种有用的抽象，却永远不是它所代表的那个实在。`, way:`切勿把你的模型错当成它所描述的那个世界。`},
+    {name:`可证伪性`, who:`卡尔·波普尔`, year:`1934年`, idea:`一个主张唯有在原则上可能被证明为错，才称得上科学。`, way:`去寻找那个能驳倒你的检验，而非那个奉承你的。`},
+    {name:`创造性破坏`, who:`约瑟夫·熊彼特`, year:`1942年`, idea:`创新通过拆解经济已然超越的旧结构，来使经济获得新生。`, way:`把颠覆看作更新的机制，而不只是损失。`},
+    {name:`存在主义自由`, who:`萨特与克尔凯郭尔`, year:`1943年`, idea:`存在先于本质；我们"被判定为自由"，注定要选择自己的意义。`, way:`把你的选择当作全然出自己手来承担，绝不推诿。`},
+    {name:`信息论`, who:`克劳德·香农`, year:`1948年`, idea:`信息是不确定性的削减，可以用比特来度量。`, way:`以一条消息消除了多少意外，来量化它。`},
+    {name:`控制论`, who:`诺伯特·维纳`, year:`1948年`, idea:`机器与生物一样，都靠把自身的输出反馈为输入来调控方向。`, way:`以反馈回路来思考，而非单向的因果。`},
+    {name:`社会建构`, who:`西蒙娜·德·波伏娃`, year:`1949年`, idea:`"女人不是生成的，而是被造就的"——一个社会称之为"自然"的许多东西，实则由历史、角色与期待所造。`, way:`追问哪些"自然"事实其实是被建构的——再追问这套说法在为谁服务。`},
+    {name:`纳什均衡`, who:`约翰·纳什`, year:`1950年`, idea:`在策略博弈中，各方最终停在这样一点：无人能靠单方面改变而获益。`, way:`推演他人对你的推演。`},
+    {name:`囚徒困境`, who:`弗勒德、德雷舍与塔克`, year:`1950年`, idea:`个体理性的选择，可能让所有人在集体上都落得更糟。`, way:`识别出私人激励背叛共同善的那些地方。`},
+    {name:`语言游戏`, who:`路德维希·维特根斯坦`, year:`1953年`, idea:`一个词的意义，不在于它所指向的某物，而在于它在某种生活形式中所扮演的角色——意义即用法。`, way:`别再追问一个词是什么意思；去看它在所进行的游戏中如何被使用。`},
+    {name:`有限理性`, who:`赫伯特·西蒙`, year:`1955年`, idea:`真实的心智并不做最优化；它们在时间与信息的限度内"求满意即止"。`, way:`为有限的心智而设计，而非为理想化的心智。`},
+    {name:`范式转移`, who:`托马斯·库恩`, year:`1962年`, idea:`科学的变革，与其说靠积累，不如说靠那种整体替换框架的革命。`, way:`盯住那个框架，而不只是框架里的事实。`},
+    {name:`平庸之恶`, who:`汉娜·阿伦特`, year:`1963年`, idea:`滔天之恶，可能是由一些毫不出奇、只是停止了思考的人经手的——是照章办事的钻营者，而非蓄意行凶的恶魔。`, way:`永远别让某个角色替你思考；审视那些命令，仿佛审视本身就是你的分内之事。`},
+    {name:`乌班图——我在因我们在`, who:`恩古尼·班图哲学 · 约翰·姆比蒂`, year:`1969年`, idea:`"Umuntu ngumuntu ngabantu"——人之为人，是通过他人而成其为人。这一观念长久流传于南部非洲的口传传统中，认为自我并非私产，而是一种关系，在共同体中被不断造就、又不断重塑。`, way:`在关系之中安放自我：我在，因为我们在。`},
+    {name:`无知之幕`, who:`约翰·罗尔斯`, year:`1971年`, idea:`选择社会的规则时，仿佛你并不知道自己将会是哪一个人。`, way:`剥去自身利益，以找出何为公正。`},
+    {name:`涌现——多则不同`, who:`菲利普·安德森`, year:`1972年`, idea:`把足够多的简单部件聚拢在一起，全新的法则便会在更高的层级上出现。`, way:`有趣的行为，往往栖居在其组成部件之上的那一层级。`},
+    {name:`认知偏差`, who:`卡尼曼与特沃斯基`, year:`1974年`, idea:`直觉靠的是快速的启发法，而它们会以可预测的方式出错。`, way:`恰恰在已知偏差潜伏之处，不要轻信那个快速的判断。`},
+    {name:`模因学`, who:`理查德·道金斯`, year:`1976年`, idea:`基因——以及观念——都表现为争相被复制的复制子。`, way:`把观念当作会演化、会传播的复制子来看待。`},
+    {name:`网络效应`, who:`罗伯特·梅特卡夫`, year:`1980年`, idea:`一个网络的价值，随接入其中的人数的平方而增长。`, way:`以事物的连接来估其价值，而非以其单元数。`},
+    {name:`立场认识论`, who:`南希·哈特索克与桑德拉·哈丁`, year:`1983年`, idea:`知识总是从某个位置生产出来的。处在系统边缘的人，往往正好能看见系统的受益者在结构上注定看不见的真相。`, way:`把你的观察点本身当作数据：追问它遮蔽了什么，以及谁能看到你看不到的东西。`},
+    {name:`治理公地`, who:`埃莉诺·奥斯特罗姆`, year:`1990年`, idea:`共享的资源未必会在私欲之下崩溃；一次又一次，社群自行订立经久耐用的规则，无需市场或国家便将它们维系下去。`, way:`在"把它私有化"与"交给国家来管"之间，还有第三条路：让使用者自己来治理。`},
+    {name:`邻近可能`, who:`斯图尔特·考夫曼`, year:`2000年`, idea:`每一刻，唯有紧邻当下之物的那些状态，才可能成为下一步。`, way:`一次一步、每步皆可及地抵达未来。`},
+    {name:`黑天鹅`, who:`纳西姆·塔勒布`, year:`2007年`, idea:`罕见、未被预料、冲击巨大的事件，比寻常之事更能塑造历史。`, way:`围绕分布的尾部来谋划，而非围绕平均值。`},
+    {name:`反脆弱`, who:`纳西姆·塔勒布`, year:`2012年`, idea:`有些事物不只是在无序中幸存——它们正因无序而变得更好。`, way:`去寻求那些能从波动中获益、而非惧怕波动的处境。`},
+  ],
+  modes:[
+    {name:`第一性原理`, body:`把一个问题熬煮到只剩必然为真者，再从那里重新建构。信任地基，而非承袭之物。`},
+    {name:`反转`, body:`别问怎样才能赢——问你怎样才能确保输，再避开它。问题倒过来看，往往更易读懂。`},
+    {name:`辩证`, body:`让一个论断与它的对立面交锋，任由碰撞产出更好的第三者。进步是一场与自身的辩论。`},
+    {name:`类比`, body:`把一个已解问题的形状，搬进一个未解的问题里。多数新观念，不过是换了领域的旧观念。`},
+    {name:`系统与反馈`, body:`去寻找回路、存量与时滞，而非单一的原因。在一个系统里，你永远无法只做一件事。`},
+    {name:`概率`, body:`把信念当作赌注，而非事实。先赋予赔率，再随证据的落定而移动它们。`},
+    {name:`演化`, body:`变异、选择、重复。只要允许好的猜测活得比坏的久，设计便能无需设计者而生。`},
+    {name:`否定之道`, body:`以移除来改进。什么该停、该避、该删，往往比什么该添是更可靠的知识。`},
+    {name:`涌现`, body:`看简单的部件产出它们各自都不包含的行为。有趣的层级，很少是最低的那一层。`},
+  ],
+  synth:[
+    {name:`贝叶斯式斯多亚主义`, body:`把"什么取决于我"不当作一条固定的界线，而当作一种概率，随证据到来而重新估计。按你当前对掌控程度的估计，成比例地投入气力；让平静来自对赔率的更新，而非来自假装那条界线泾渭分明。`},
+    {name:`美德恒温器`, body:`两种恶习之间的中点，并非一个僵死的正中，而是一个由反馈维持的设定点——勇敢一旦滑向鲁莽，便会被它自身的后果拉回来。目标被扰动得越厉害，系统重新找回它就越果决，于是平衡与纠偏回路二者都在切实地起作用。`},
+    {name:`可证伪的自我`, body:`把你的自我形象当作一套科学理论来运行。以一种可能推翻你为自己讲述的那个故事的方式生活，并刻意去寻找最有可能驳倒它的经历。一个无法被证伪的身份认同，不是被认识的——它只是被辩护着。`},
+    {name:`业力反馈`, body:`你的行为是输出，它们又作为输入重新进入系统——你所示范的规范、你所积累的声誉、你所激起的反应——并回环往复，塑造出你下一步将要置身其中去行动的那个世界。"善恶终有报"不是宇宙的记账，而是一条闭合的反馈回路：这正是单纯的广播所无法带来的那种回返。`},
+    {name:`边际最大最小`, body:`把下一单位的帮助花在这样的地方：假如你还不知道自己将醒来进入谁的人生，你会希望它花在那里——而那几乎总是处境最差者，因为在那里，一单位边际的投入能换来最多的纾解。"最大的善"由此变得精确：那是在出生的抽签之前，你会为自己投保的那份善。`},
+    {name:`邻近的美好生活`, body:`繁盛不是一个遥远的理想，而是离你一步之遥、触手可及的那个最好的自己。别再为完美的人生做优化；朝着最近的那个更好一点的版本迭代，然后站上去，再看一眼。`},
+    {name:`逆向制图`, body:`在信任一个模型之前，先把它出错的所有方式都绘制成图。先标出它的盲区——地图与地形分道扬镳的那些区域——并且既凭模型本身、也凭那张误差之图来导航。`},
+    {name:`互补性伦理`, body:`有些道德真理表现得像波与粒子：正义与仁慈无法在同一时刻被完全度量，然而二者都真实存在。并非每一种张力都渴求一个综合——有些注定要作为互补者被一并持有，随情境而交替。`},
+    {name:`集群之招`, body:`无为并不是去操控系统——而是去调校那条让系统自行组织起来的简单局部规则。你不是驱赶鸟群；你只是设定那个使它成群的间距：在规则的层面上介入最少，在整体的层面上秩序最多。`},
+    {name:`骤然的死亡铭记`, body:`别只是记住你会死——记住它可能是一个尾部事件：突如其来、不按日程、超出模型之外。让死亡那肥厚的尾部、而非它那令人安心的平均值，来决定你如何度过今天。`},
+    {name:`网络的无知之幕`, body:`设计制度时，仿佛你不知道自己会占据哪一个节点——是枢纽还是边缘，是先来还是后到，是四通八达还是形单影只。公平应当对你在图中的位置稳健，而不只是对你的身份稳健。`},
+    {name:`递归怀疑`, body:`每个模型都藏有它无法从内部证明的真理。所以要备一个第二模型，它唯一的任务就是找出第一个的盲区——再为第二个备一个第三模型。让怀疑成为一个层层叠起的栈，而非一种情绪。`},
+    {name:`分层的简约`, body:`无情地削去假设——但要在正确的层级上削。对一群飞鸟最简单而真确的解释，是三条集群规则，而非十亿条羽毛方程；再往下还原，解释并没有变得更精简，而是变成了在讲另一回事。简约是相对于层级的：在行为真正栖身的那个高度上，采用最少的假设。`},
+    {name:`宪政式心智`, body:`如果判断会以可预测的方式产生偏差，就别把自己当作君主来治理。把你心智的权力加以分立：让冷静状态下订立的规则来立法，让当下的抉择来行政，让定期的复盘来司法——各方都能制衡其余。你无法为那位国王祛除偏差，但你可以剥夺他的绝对权力。`},
+  ],
+  proofs:[
+    {name:`阿波罗11号`, year:`1969年`, body:`导航员把三个人瞄准了一片空荡荡的空间——那里三天后才会出现月亮——全然信赖牛顿的一条定律。制导计算机凭花拉子米的招式飞行：把难题化约为机械步骤；又凭维纳的招式操控：每一次点火都被测量、反馈、修正。`},
+    {name:`美国宪法`, year:`1787年`, body:`费城的代表们频频援引孟德斯鸠，以致麦迪逊称他为"那位神谕"。其成果，是被编译成可运转机械的政治哲学：一份真正落笔签署的社会契约，权力被加以分割，好让野心制衡野心。`},
+    {name:`破解恩尼格玛`, year:`1941年`, body:`布莱切利园并非在猜谜上胜过密码，而是在程序上胜过它。图灵的"炸弹机"把搜索机械化，他的班伯里法则以"班"为单位为各种猜测评分——这是战时每日运行的贝叶斯更新，比这套方法登堂入室早了数十年。把信念当作赔率来持有，帮助缩短了一场世界大战。`},
+    {name:`根除天花`, year:`1980年`, body:`这种在它最后一个世纪里夺去三亿人性命的疾病，并非靠给所有人接种而被终结。终结它的，是以网络来思考：追踪每一次爆发，为其周围一圈接触者接种，把病毒的传播图切割成一座座孤岛，直到它无处可去。这是人类唯一一种被彻底清零的疾病。`},
+    {name:`全球定位系统`, year:`1978年 →`, body:`卫星上的时钟每天大约会快约38微秒，恰如爱因斯坦的参照系思考所预言——若不加校正，你那个蓝点每天就会漂移数公里。每一部知道自己身在何处的手机，都在牛顿的轨道上，把相对论投入实际运行。`},
+    {name:`互联网`, year:`1969–83年`, body:`香农证明了任何消息都能化为比特；分组交换则让这些比特在无人主宰的情况下自行寻路。从简单的局部规则——存储、转发、重试——中，涌现出一套行星尺度的神经系统，它的价值随连接而增长，恰如那些网络思想家所预言。`},
+    {name:`绿色革命`, year:`1965年 →`, body:`诺曼·博洛格有意地运行达尔文的循环：让小麦变异，选出存活者，如此往复——在墨西哥两种气候之间来回穿梭播种，把每年的世代数翻了一番。由此培育出的矮秆品种，被认为使多达十亿人免于饥荒。`},
+    {name:`维基百科`, year:`2001年 →`, body:`"人人皆可编辑"本该沦为一场公地悲剧。然而，志愿者们几乎原样演化出了奥斯特罗姆在阿尔卑斯山牧场与灌溉村落中发现的那些规则——清晰的边界、递进的惩戒、低廉的争端解决——于是史上最大的参考工具书，在毫无规划之下涌现而出。`},
+    {name:`真相与和解`, year:`1996年`, body:`南非终结了种族隔离，却未爆发几乎所有人都预料的内战。它的过渡宪法点明了使这一切成为可能的那种思维方式——"需要乌班图，而非报复"——以特赦换取真相，从而买来一份新的社会契约。`},
+  ],
+},
+  'zh-Hant': {
+  label:`繁體中文`,
+  ui:{
+    docTitle:`思想天象儀——人類思維的地圖集`,
+    mark:`<b>✦</b> 思想天象儀`,
+    navModes:`思維模式`, navAtlas:`思想地圖`, navProof:`驗證`, navSynth:`綜合`, navMap:`全圖 ↗`,
+    heroEyebrow:`人類思維的地圖集 · 遠古 → 當代`,
+    heroTitle:`思想的<br><span class="ital br-accent">天象儀</span>`,
+    heroThesis:`人類真正的遺產不是它發現的事實，而是它為了發現事實而發明的<b>思維方式</b>。這裡匯集了其中最偉大的幾種，依時代與視角繪製成圖，再彼此交叉，鍛造出全新的思想。`,
+    statIdeas:`已繪思想`, statLenses:`視角`, statAges:`時代`, statSynth:`新綜合`, statProofs:`驗證實例`,
+    astroAria:`一具繪製偉大思想的星盤：圓環代表時代，由中心的遠古延伸到邊緣的當代；每個點是一則思想，以其類別著色。用方向鍵在思想間移動，按 Enter 在下方的思想地圖中開啟該則思想；連線顯示一則思想汲取自何處、又滋養了什麼。`,
+    astroCap:`內環遠古 · 外環當代 · 懸停、點按或用方向鍵 · <span style="color:var(--brass)">金 = 汲取自</span> · <span style="color:var(--lapis)">藍 = 滋養</span> · <a href="#" id="open-map-cap" style="color:var(--brass)">完整全圖 ↗</a>`,
+    mfEyebrow:`前提`,
+    mfBig:`事實是一個答案。思維方式則是產生答案的方法。`,
+    mfBody:`<p>文明會遺失它們的事實，再重新發現它們。真正跨越數個世紀不斷累積的，是更為微妙的東西：人類為了理解萬物而發明的一整套認知<em>手法</em>——懷疑、抽象、反轉、建模、更新、削減。</p><p>這份地圖集匯集了其中歷久不衰者，從青銅時代的宇宙觀到資訊理論，並同時以兩種方式加以歸類：依它們遞給你的<span class="pull">視角</span>，以及孕育它們的<span class="pull">時代</span>。少數幾種元模式——即<a href="#modes" style="color:var(--brass)">思維模式</a>——潛藏於一切之下反覆浮現。</p><p>此處的思想並未鎖在玻璃櫃裡。每張卡片都追溯其<span class="pull">源流</span>——它汲取自什麼、又滋養了什麼——而一處<a href="#proof" style="color:var(--brass)">驗證場</a>則追隨這些偉大的手法走出書齋，進入登月工程、憲法與疾病的根除。</p><p>接著，這份地圖集做了此處每位思想家都做過的事：<span class="pull">重新組合</span>。最後一節藉由交叉舊思想來鍛造新思想——因為那，同樣是一種思維方式。</p>`,
+    modesEyebrow:`思維的作業系統`,
+    modesH2:`潛藏於一切之下、反覆浮現的九種模式`,
+    modesLede:`剝去偉大思想的內容，剩下的是一小組可反覆運用的招式。下方的九種<em>視角</em>依主題來歸類思想，而這九種<em>模式</em>則橫貫其間。學會它們，你擁有的便是引擎，而不只是它們的產物。`,
+    atlasEyebrow:`{i} 則思想 · {c} 個類別 · {a} 個時代`,
+    atlasH2:`思想地圖`,
+    atlasLede:`每則條目都將思想與它所教導的<em>那一手</em>配對——那是你能帶進自己問題裡、可遷移的思維方式。可依視角或時代篩選，也可搜尋。每張卡片上的源流連結，追溯它<span style="color:var(--brass)">汲取自</span>什麼、又<span style="color:var(--lapis)">滋養</span>了什麼。`,
+    lensLabel:`視角`, ageLabel:`時代`, allChip:`全部`,
+    searchPh:`搜尋思想、思想家…`, searchAria:`搜尋思想與思想家`,
+    countTpl:`顯示 <b>{n}</b> / {t}`,
+    noMatch:`沒有思想符合該篩選條件。試著放寬範圍。`,
+    moveLab:`這一手`, drawsOn:`↖ 汲取自`, feedsLab:`↘ 滋養`,
+    proofEyebrow:`思想與世界相遇`, proofH2:`驗證場`,
+    proofLede:`一種思維方式，在它撼動物質——或歷史——的那一天證明了自己。這裡是幾項偉大成就，回溯到其中蘊含的那些手法；點按標籤即可前往它所指名的思想。`,
+    movesInside:`內含的手法 ↘`,
+    synthEyebrow:`由舊思想組合而成的新思想`, synthH2:`綜合實驗室`,
+    synthLede:`整份地圖集都是原料。交叉兩種思維方式，第三種便浮現而出——有時實用，有時奇異。這些是值得留下的佳作。`,
+    footCloser:`一則思想是一件工具。一種思維方式則是製造工具的<span class="br-accent">工坊</span>——盡情借用，時常交叉。`,
+    footMeta:`思想天象儀<br>由 <a href="#atlas">{i} 則思想</a> · <a href="#proof">{p} 項驗證</a> · <a href="#synthesis">{s} 種綜合</a>構成<br><span style="color:var(--bone-dim)">切記：地圖不是疆域——包括這一份在內。</span>`,
+    mapTitle:`思想天象儀——完整全圖`,
+    mapSub:`懸停任一節點以追溯其連結`,
+    legendMode:`模式 → 範例思想`, legendLineage:`源流：汲取自 → 滋養`, legendProof:`思想 → 現實驗證`,
+    headModes:`九種模式`, headIdeas:`{n} 則思想 · 遠古 → 當代`, headProofs:`{n} 項驗證`,
+  },
+  eras:[`遠古`,`古典`,`中世紀`,`近代早期`,`啟蒙時代`,`現代`,`當代`],
+  cats:{
+    rl:`理性與邏輯`, ks:`知識與科學`, eth:`倫理與美好生活`, mind:`心靈與自我`, soc:`社會與權力`,
+    econ:`經濟與交換`, sys:`系統與複雜性`, real:`實在與宇宙`, lang:`語言與意義`,
+  },
+  ideas:[
+    {name:`陰陽相生`, who:`中國宇宙觀`, year:`約西元前900年`, idea:`實在由成對的對立交織而成——明與暗、動與靜——彼此界定、彼此涵容。`, way:`視兩極為夥伴：對立並非交戰，而是彼此生成。`},
+    {name:`業力`, who:`吠陀與奧義書思想`, year:`約西元前800年`, idea:`每個行為都種下一顆種子，其果實終將越過時間回到行為者身上。`, way:`將每個行為視為你終將承接的因。`},
+    {name:`無為——順勢而為`, who:`老子`, year:`約西元前6世紀`, idea:`最高的技藝，是順著事物的紋理而行，而非強加於它們。`, way:`順應系統的流向，比對抗它成就更多。`},
+    {name:`邏各斯`, who:`赫拉克利特`, year:`約西元前500年`, idea:`在不息的變化之下，貫穿著單一的理性秩序；「萬物皆流」。`, way:`在流變之下，尋找那持存的法則。`},
+    {name:`正名`, who:`孔子`, year:`約西元前500年`, idea:`名若不符實，語言便失效，社會隨之瓦解；端正名分，方能端正世界。`, way:`修補一個系統，先讓它的語言誠實。`},
+    {name:`仁與恕`, who:`孔子`, year:`約西元前500年`, idea:`「己所不欲，勿施於人」——以仁作為維繫社會的紐帶。`, way:`以推己及人作為正當行為的檢驗。`},
+    {name:`原子論`, who:`德謨克利特與留基伯`, year:`約西元前430年`, idea:`一切存在者，不過是在虛空中運動的不可分割的原子。`, way:`以簡單部件的排列，解釋複雜的整體。`},
+    {name:`芝諾悖論`, who:`埃利亞的芝諾`, year:`約西元前450年`, idea:`永遠射不到的箭、永遠跑不完的賽跑者，揭露了我們對運動與無限的觀念中隱藏的裂縫。`, way:`把一個概念推到悖論，藉此對它施加壓力測試。`},
+    {name:`蘇格拉底方法`, who:`蘇格拉底`, year:`約西元前430年`, idea:`真理要靠不懈的詰問來逼近，這種詰問揭露我們自以為知曉之事中的矛盾。`, way:`盤問一項主張，直到它隱藏的假設浮現。`},
+    {name:`經過省察的人生`, who:`蘇格拉底`, year:`約西元前430年`, idea:`「未經省察的人生不值得過」——自我審視是一項本分，而非奢侈。`, way:`把矛頭轉向自己發問，養成常態的習慣。`},
+    {name:`理型論`, who:`柏拉圖`, year:`約西元前380年`, idea:`在不完美的個別事物背後，存在著它們所摹仿的、完美而不變的理型。`, way:`越過個別實例，看向它們共有的模式。`},
+    {name:`四因說`, who:`亞里斯多德`, year:`約西元前350年`, idea:`要解釋任何事物，就追問它的質料、它的形式、它的造者，以及它的目的。`, way:`以幾種不同的意義同時追問「為什麼」，來解釋一件事物。`},
+    {name:`中庸之道`, who:`亞里斯多德`, year:`約西元前350年`, idea:`德性居於兩種惡習之間——勇氣介於怯懦與魯莽之間。`, way:`在相對立的兩種過度之間，尋得那份卓越。`},
+    {name:`幸福——人生的圓滿`, who:`亞里斯多德`, year:`約西元前350年`, idea:`美好生活不在於快樂，而在於圓滿——一個活得好的人生所展開的全部活動。`, way:`以一個人生的活動與品格來評斷它，而非其一時的心緒。`},
+    {name:`緣起`, who:`早期佛教`, year:`約西元前450年`, idea:`沒有任何事物獨自存在；一切都透過條件之網而生起。`, way:`追溯一件事物的種種條件，而非它孤立的本質。`},
+    {name:`無常`, who:`早期佛教`, year:`約西元前450年`, idea:`凡生起者皆會消逝；執著於恆常，正是苦的根源。`, way:`對事物寬鬆以待；預期並容許變化。`},
+    {name:`中道`, who:`佛陀`, year:`約西元前450年`, idea:`智慧既不縱慾，也不苦行自苦，而是行於兩端之間。`, way:`拒絕在貪求與自我懲罰之間作那虛假的抉擇。`},
+    {name:`皮浪懷疑主義`, who:`皮浪與塞克斯圖斯`, year:`約西元前300年`, idea:`當證據勢均力敵時，懸置堅定的判斷——而寧靜隨之而來。`, way:`把不下定論當作一種修練，而非一種失敗。`},
+    {name:`控制二分法`, who:`愛比克泰德與斯多噶學派`, year:`約西元100年`, idea:`有些事操之在我，有些則不然；安寧在於認清這條界線。`, way:`只在你真正握有主導權之處費心用力。`},
+    {name:`毋忘終有一死`, who:`羅馬斯多噶學派`, year:`約西元100年`, idea:`把死亡放在眼前，瑣碎之事便再也攫不住你。`, way:`以必死為鏡，篩選出真正要緊之事。`},
+    {name:`演算法`, who:`花剌子米`, year:`約820年`, idea:`問題可以透過一連串固定的機械步驟來解決——代數就此誕生。`, way:`把一個難題轉化為可反覆執行的程序。`},
+    {name:`實驗光學`, who:`海什木`, year:`約1020年`, idea:`關於光的主張，必須由受控實驗來裁定，而非由權威。`, way:`讓一場設計過的實驗、而非一部典籍，來裁定何者為真。`},
+    {name:`否定神學`, who:`邁蒙尼德`, year:`約1190年`, idea:`無限者只能藉由陳述它「不是什麼」來趨近。`, way:`當正面的語詞失效時，以否定來界定那難以捉摸者。`},
+    {name:`五路論證`, who:`托馬斯·阿奎那`, year:`約1270年`, idea:`我們所觀察到的運動與秩序，可以反推回一個第一因。`, way:`從世界的結構出發，論證通向它的根據。`},
+    {name:`奧坎剃刀`, who:`奧坎的威廉`, year:`約1320年`, idea:`在同樣說得通的解釋之中，偏好假設最少的那一個。`, way:`砍掉一個理論所不需要的每一項假設。`},
+    {name:`阿薩比亞——社會凝聚力`, who:`伊本·赫勒敦`, year:`1377年`, idea:`群體的團結是歷史隱藏的引擎：它把一個民族推上權力的頂峰，繼而在它所贏得的安逸中衰朽，直到一個更為凝聚的群體取而代之。`, way:`在政治事件之下，觀察集體團結的興衰起落。`},
+    {name:`日心說`, who:`哥白尼`, year:`1543年`, idea:`地球並非中心；它與眾行星一同繞行太陽。`, way:`願意把自己從畫面的中心移開。`},
+    {name:`觀察高於權威`, who:`伽利略`, year:`1610年`, idea:`望遠鏡所顯示的，勝過經典所宣稱的。`, way:`讓儀器推翻承襲而來的典籍。`},
+    {name:`歸納法`, who:`法蘭西斯·培根`, year:`1620年`, idea:`知識由耐心而有系統的觀察，自下而上地建立起來。`, way:`從細心蒐集的個別事例，匯集出普遍的法則。`},
+    {name:`我思故我在`, who:`笛卡兒`, year:`1637年`, idea:`盡你所能懷疑一切；剩下的唯一一件事——你正在懷疑——便成為磐石。`, way:`從一個無可懷疑的基礎，重建知識。`},
+    {name:`社會契約`, who:`霍布斯`, year:`1651年`, idea:`正當的權力，奠基於一項為擺脫一切人對一切人的戰爭而締結的默契。`, way:`以那足以締造一項制度的協議，來為它辯護。`},
+    {name:`白板說`, who:`洛克`, year:`1689年`, idea:`心靈起初是一塊白板，由經驗在其上書寫。`, way:`把每個觀念，回溯到播下它的那份經驗。`},
+    {name:`萬有引力`, who:`牛頓`, year:`1687年`, idea:`一條法則，同時約束蘋果的墜落與月亮的軌道。`, way:`尋找那能統一各別現象的單一法則。`},
+    {name:`三權分立`, who:`孟德斯鳩`, year:`1748年`, idea:`唯有將權力加以分割、使各部分彼此制衡，自由方能存續。`, way:`打造一個各部分依設計而彼此約束的系統。`},
+    {name:`公意`, who:`盧梭`, year:`1762年`, idea:`正當性源自公共善，而公共善大於私人欲求的總和。`, way:`把共同的利益，與欲求的單純加總區分開來。`},
+    {name:`貝氏推論`, who:`貝葉斯與拉普拉斯`, year:`1763年`, idea:`信念是一種機率，須依新證據按確切的比例加以修正。`, way:`把信念當作賠率來持有，並隨證據到來而更新。`},
+    {name:`看不見的手`, who:`亞當·斯密`, year:`1776年`, idea:`追求私利的個人，能透過市場，造就一種無人刻意設計的秩序。`, way:`尋找那無需設計者便浮現的秩序。`},
+    {name:`敢於求知`, who:`康德`, year:`1784年`, idea:`「敢於求知」：成熟，就是敢於在無人監護下運用你自己的理性。`, way:`主張為自己思考的權利——以及義務。`},
+    {name:`定言令式`, who:`康德`, year:`1785年`, idea:`只依那你能意願人人都遵循的準則而行動。`, way:`把一個行為設想成普遍法則，以此檢驗它。`},
+    {name:`功利主義`, who:`邊沁與彌爾`, year:`1789年`, idea:`正確的行為，為最多數人帶來最大的善——快樂與痛苦，一律跨越所有人加總計算。`, way:`以行為後果的總和來權衡它，每個人只算作一份。`},
+    {name:`辯證法`, who:`黑格爾`, year:`1807年`, idea:`思想的推進，靠的是產生自身的對立面，再消解為一個更豐富的整體。`, way:`讓一項主張與它的否定相撞，以抵達更好的一項。`},
+    {name:`比較利益`, who:`李嘉圖`, year:`1817年`, idea:`即使一方樣樣都做得更好，交易仍能讓雙方都獲益。`, way:`以相對成本、而非絕對能力來推理。`},
+    {name:`反過來想，永遠反過來想`, who:`雅可比`, year:`1840年`, idea:`許多正面難攻的問題，一旦倒過來著手便迎刃而解。`, way:`先求出你想避開的失敗，再設法繞過它。`},
+    {name:`通用機器`, who:`愛達·勒芙蕾絲`, year:`1843年`, idea:`一台依規則處理符號的機器，不必止步於數字——凡能被編碼者，包括音樂在內，它原則上都能譜寫。`, way:`試問：若把輸入重新編碼，一個機制還能做些什麼；一項運算即便當前用途狹窄，本質上仍可能是通用的。`},
+    {name:`歷史唯物論`, who:`馬克思`, year:`1848年`, idea:`歷史的推動力，是潛藏於其思想與理想之下的物質與經濟力量。`, way:`追蹤標榜的信念之下那些物質利益。`},
+    {name:`天擇`, who:`達爾文`, year:`1859年`, idea:`變異加上選擇，歷經時間反覆進行，便造就出無需設計者的設計。`, way:`把複雜性解釋為累積選擇所留下的殘餘。`},
+    {name:`邊際主義`, who:`傑文斯、門格爾與瓦爾拉斯`, year:`1871年`, idea:`價值與選擇取決於邊際——取決於下一個單位，而非整體。`, way:`依下一個增量來決定，而非依平均。`},
+    {name:`永恆回歸`, who:`尼采`, year:`1882年`, idea:`活得彷彿你將不得不無盡地重活這一模一樣的一生。`, way:`以一場思想實驗，作為該如何生活的檢驗。`},
+    {name:`權力意志`, who:`尼采`, year:`1883年`, idea:`承襲而來的價值皆為人的創造；試問它們服務於誰的強力。`, way:`當有人遞給你一種價值，問問是誰造了它、它讓誰得利。`},
+    {name:`帕雷托法則`, who:`帕雷托 · 朱蘭`, year:`1896年`, idea:`少數的原因往往造就了大部分的結果——帕雷托發現了這種分布，朱蘭則把它化為一條工作準則。`, way:`在眾多產出的背後，搜尋那關鍵的少數投入。`},
+    {name:`潛意識`, who:`佛洛伊德`, year:`1900年`, idea:`驅動我們的東西，大多在覺察的表面之下運行。`, way:`在言明的理由之下，尋找那些隱藏的理由。`},
+    {name:`現象學`, who:`胡塞爾`, year:`1900年`, idea:`把理論擱在一旁，如經驗自身呈現的那樣，如實地描述它。`, way:`把你的假設懸置起來，專注於事物如其所予的樣態。`},
+    {name:`相對論`, who:`愛因斯坦`, year:`1905年`, idea:`空間與時間並非絕對；測量結果取決於觀察者的運動參考系。`, way:`拋開那享有特權的視點；永遠指明你的參考系。`},
+    {name:`實用主義`, who:`皮爾士、詹姆斯與杜威`, year:`1907年`, idea:`一個觀念的意義與真理，在於它實際的後果。`, way:`以一個信念在實踐中造成的差異，來評斷它。`},
+    {name:`機會成本`, who:`維塞爾`, year:`1914年`, idea:`任何選擇的真實成本，不是它的價格，而是你為了作此選擇而放棄的最佳替代方案之價值。`, way:`為每個選擇標價時，看它排除了什麼，而不只是它耗用了什麼。`},
+    {name:`符號`, who:`索緒爾`, year:`1916年`, idea:`符號純粹憑約定，把一個音響形象繫連於一個概念；意義生自整個系統內部的差異，而非事物本身。`, way:`把意義讀作對比之網中的一個位置，而非貼在世界上的一張標籤。`},
+    {name:`對稱與守恆`, who:`諾特`, year:`1918年`, idea:`一個系統的每一種連續對稱，都對應著一個守恆量——不變性與守恆律，是同一真理的兩面。`, way:`搜尋那在變化下保持不動之物；不變量正是法則藏身之處。`},
+    {name:`原型`, who:`榮格`, year:`1919年`, idea:`共通的象徵模式，橫跨神話、夢境與各種文化浮現而出。`, way:`把反覆出現的象徵，讀作通向某種共同結構的線索。`},
+    {name:`測不準原理`, who:`海森堡`, year:`1927年`, idea:`某些成對的性質，無法同時被精確地知曉。`, way:`接受可知範圍內存在硬性的極限與取捨。`},
+    {name:`互補原理`, who:`波耳`, year:`1928年`, idea:`光既是波也是粒子——兩種相互排斥、卻缺一不可的模型。`, way:`當每個模型都捕捉到部分真理時，就把互不相容的模型一併把握。`},
+    {name:`不完備定理`, who:`哥德爾`, year:`1931年`, idea:`任何豐富到足以容納算術的系統，都藏有它無法證明的真理。`, way:`預期每個形式系統都有一處它觸及不到的彼岸。`},
+    {name:`地圖不是疆域`, who:`柯日布斯基`, year:`1933年`, idea:`模型是一種有用的抽象，卻絕非它所代表的實在。`, way:`切莫把你的模型誤認為它所描述的世界。`},
+    {name:`可否證性`, who:`波普爾`, year:`1934年`, idea:`一項主張唯有在原則上可能被證明為錯時，才算是科學的。`, way:`尋找那能駁倒你的檢驗，而非那奉承你的檢驗。`},
+    {name:`創造性破壞`, who:`熊彼得`, year:`1942年`, idea:`創新藉由拆解經濟體已然超越的舊結構，使它煥然一新。`, way:`把顛覆視為更新的機制，而不只是損失。`},
+    {name:`存在的自由`, who:`沙特與齊克果`, year:`1943年`, idea:`存在先於本質；我們「被判處了自由」，並被判去選擇自己的意義。`, way:`把你的選擇認作全然出於己手，不容任何托辭。`},
+    {name:`資訊理論`, who:`夏農`, year:`1948年`, idea:`資訊就是不確定性的減少，可用位元來度量。`, way:`以一則訊息消除了多少意外，來量化它。`},
+    {name:`控制論`, who:`維納`, year:`1948年`, idea:`機器與生物一樣，都藉由把自身的輸出回饋為輸入來操控方向。`, way:`以回饋迴路來思考，而非單向的因果。`},
+    {name:`社會建構`, who:`西蒙·波娃`, year:`1949年`, idea:`「女人不是天生的，而是變成的」——一個社會所謂的「自然」，有許多其實是由歷史、角色與期待所塑造。`, way:`追問哪些「自然」的事實其實是建構出來的——再追問這套說法服務於誰。`},
+    {name:`納許均衡`, who:`約翰·納許`, year:`1950年`, idea:`在策略賽局中，玩家最終停在一處：任何人單獨改變策略都無法獲益。`, way:`去推想他人正如何推想著你。`},
+    {name:`囚徒困境`, who:`弗勒德、德雷舍與塔克`, year:`1950年`, idea:`個別理性的選擇，可能讓所有人在集體上都變得更糟。`, way:`找出私人誘因背叛共同善的所在。`},
+    {name:`語言遊戲`, who:`維根斯坦`, year:`1953年`, idea:`一個詞的意義，不是它所指的某物，而是它在一種生活形式中所扮演的角色——意義即用法。`, way:`別再問一個詞是什麼意思；看它在所進行的遊戲中如何被使用。`},
+    {name:`有限理性`, who:`赫伯特·賽門`, year:`1955年`, idea:`真實的心智並不追求最佳化；它們在時間與資訊的限制之內「求滿意即可」。`, way:`為有限的心智而設計，而非為理想化的心智。`},
+    {name:`典範轉移`, who:`孔恩`, year:`1962年`, idea:`科學的變遷，與其說靠累積，不如說靠那些替換整套框架的革命。`, way:`盯著框架本身，而不只是框架內的那些事實。`},
+    {name:`邪惡的平庸性`, who:`漢娜·鄂蘭`, year:`1963年`, idea:`巨大的邪惡，可以由不過是停止思考的平凡人所施行——是照章辦事的官僚，而非懷抱惡意的怪物。`, way:`絕不讓某個角色代你思考；審視那些命令，彷彿判斷正是你的職責。`},
+    {name:`烏班圖——我因我們而存在`, who:`恩古尼班圖哲學 · 約翰·姆比提`, year:`1969年`, idea:`「Umuntu ngumuntu ngabantu」——人透過他人才成其為人。這一觀念長久流傳於南部非洲的口傳傳統，主張自我並非私有財產，而是一種關係，在群體之中被不斷地造就與重塑。`, way:`在關係之中定位自我：我因我們而存在。`},
+    {name:`無知之幕`, who:`羅爾斯`, year:`1971年`, idea:`選擇社會的規則時，彷彿你並不知道自己將會是哪一個人。`, way:`剝除自利，以找出何謂公平。`},
+    {name:`湧現——多者異也`, who:`菲利普·安德森`, year:`1972年`, idea:`把足夠多的簡單部件組合起來，全新的法則便在更高的層次上出現。`, way:`有趣的行為，往往住在比其部件高一層的地方。`},
+    {name:`認知偏誤`, who:`康納曼與特沃斯基`, year:`1974年`, idea:`直覺靠的是快速的捷思法，而它們會以可預測的方式失準。`, way:`正是在已知偏誤潛伏之處，對那飛快的判斷抱持不信任。`},
+    {name:`迷因學`, who:`道金斯`, year:`1976年`, idea:`基因——以及思想——的行為都像是競相被複製的複製子。`, way:`把思想當作會演化、會傳播的複製子。`},
+    {name:`網路效應`, who:`梅特卡夫`, year:`1980年`, idea:`一個網路的價值，隨著接入其中的人數的平方而增長。`, way:`以事物的連結、而非它們的單位數來衡量其價值。`},
+    {name:`立場認識論`, who:`哈索克與哈丁`, year:`1983年`, idea:`知識總是從某個位置生產出來的。身處一個系統邊緣的人，往往能看見該系統的受益者在結構上錯失的真相。`, way:`把你的立足點當作資料：追問它遮蔽了什麼，以及誰能看見你所看不見的。`},
+    {name:`治理共有財`, who:`歐斯壯`, year:`1990年`, idea:`共有資源未必會在私人的貪婪下崩潰；社群一再打造出屬於自己的、歷久的規則，不靠市場也不靠國家便將它們維繫下去。`, way:`在「把它私有化」與「交給國家經營」之間，還有第三條路：讓使用者自己來治理它。`},
+    {name:`毗鄰可能`, who:`考夫曼`, year:`2000年`, idea:`在每一刻，唯有既存事物相鄰的那些狀態，才可能接續而來。`, way:`一次一個可及的步伐，抵達未來。`},
+    {name:`黑天鵝`, who:`塔雷伯`, year:`2007年`, idea:`罕見、未被預料、衝擊巨大的事件，比尋常之事更能形塑歷史。`, way:`圍繞著尾端、而非平均值來擬定計畫。`},
+    {name:`反脆弱`, who:`塔雷伯`, year:`2012年`, idea:`有些事物不只是在混亂中倖存——它們正因混亂而變得更好。`, way:`尋求那些能從波動中獲益、而非畏懼波動的曝險。`},
+  ],
+  modes:[
+    {name:`第一原理`, body:`把一個問題熬煮到只剩下那些必然為真者，再由此重新往上建構。信賴地基，而非遺產。`},
+    {name:`反轉`, body:`別問怎樣才能贏——問你要如何才能篤定會輸，然後避開它。問題往往倒過來讀更容易。`},
+    {name:`辯證`, body:`讓一項主張與其對立面對峙，任這場碰撞產生更好的第三者。進步是一場自己與自己的爭辯。`},
+    {name:`類比`, body:`把一個已解問題的形狀，搬進一個未解的問題裡。多數新思想，不過是舊思想換了個領域。`},
+    {name:`系統與回饋`, body:`尋找迴路、存量與延遲，而非單一的原因。在一個系統裡，你永遠不可能只做一件事。`},
+    {name:`機率思維`, body:`把信念當作賭注，而非事實。先賦予賠率，再隨證據落定而調整它們。`},
+    {name:`演化思維`, body:`變異、選擇、反覆。只要讓好的猜測比壞的猜測活得更久，設計便能不出於任何設計者。`},
+    {name:`否定之道`, body:`藉由移除來改善。該停止、該避免、該刪去什麼，往往比該添加什麼是更可靠的知識。`},
+    {name:`湧現`, body:`看著簡單的部件產生出它們各自都不含有的行為。有趣的層次，很少是最底下的那一層。`},
+  ],
+  synth:[
+    {name:`貝氏斯多噶主義`, body:`別把「什麼操之在我」當作一條固定的界線，而當作一個隨證據到來而重新估計的機率。依你當前對控制程度的估計，按比例投入心力；讓平靜來自於更新賠率，而非假裝那條界線清晰分明。`},
+    {name:`德性恆溫器`, body:`兩種惡習之間的中道，不是一個死的中點，而是一個由回饋維持的設定值——勇氣一旦漂向魯莽，便被它自身的後果拉回。目標受到的擾動愈猛，系統重新找回它便愈是敏銳，於是那份平衡與那條校正的迴路都在真正發揮作用。`},
+    {name:`可否證的自我`, body:`把你的自我形象當作一套科學理論來運行。用一種可能推翻你為自己所述說的故事的方式生活，並刻意尋求那些最可能駁倒它的經驗。一個無法被否證的身分認同，並非被知曉——而是被防衛著。`},
+    {name:`業力回饋`, body:`你的行為是輸出，會作為輸入重新進入系統——你所示範的規範、你所累積的名聲、你所引發的反應——並繞回來形塑你下一步將置身其中行動的世界。「善惡有報」不是宇宙的記帳，而是一條封閉的回饋迴路：那正是單向的廣播所無法送達的那份回返。`},
+    {name:`邊際最大最小`, body:`把下一個單位的援助，花在你尚不知自己將醒來成為誰時、會希望它被花用的地方——那幾乎總是境況最差之處，因為邊際的一個單位在那裡能換得最多的紓解。「最大的善」就此變得精確：那是你在出生的抽籤之前，會替自己投保的那份善。`},
+    {name:`毗鄰的美好生活`, body:`圓滿不是一個遙遠的理想，而是那個離你僅一個可及步伐之遙、最好版本的你。別再為那完美的人生最佳化；朝著最近的、更好的那一個迭代前進，然後站上去，再眺望一次。`},
+    {name:`逆向製圖`, body:`在信賴一個模型之前，先把它出錯的所有方式繪成地圖。先標定它的盲點——地圖與地形分歧的那些區域——並既依那張誤差之圖、也依模型本身來導航。`},
+    {name:`互補倫理學`, body:`某些道德真理的行為就像波與粒子：正義與慈悲無法在同一時刻被充分地衡量，然而兩者都是真實的。並非每一組張力都渴求一個綜合——有些注定要被當作互補來把握，依情境交替運用。`},
+    {name:`群飛之道`, body:`無為並不是去操控系統——而是去微調那條讓它自我組織的簡單局部規則。你不去驅趕鳥群；你設定那使牠們成群齊飛的間距：在規則的層次上介入最少，在整體的層次上秩序最多。`},
+    {name:`倏忽的死亡之念`, body:`別只是記得你終將死去——記得它可能是一樁尾端事件：突如其來、未經預定、落在模型之外。讓必死的那條肥尾、而非它那令人安心的平均值，來決定你如何度過今日。`},
+    {name:`網路之幕`, body:`設計制度時，彷彿你並不知道自己將占據哪一個節點——是樞紐還是邊緣、是先來還是後到、是四通八達還是孤立無援。公平不僅應對你的身分穩健，也應對你在圖中的位置穩健。`},
+    {name:`遞迴的懷疑`, body:`每個模型都藏有它無法從內部證明的真理。所以要備一個第二模型，它唯一的職責就是找出第一個模型的盲點——再備一個第三模型來對付第二個。把懷疑組織成一個堆疊，而非一種情緒。`},
+    {name:`分層的簡約`, body:`無情地砍去假設——但要在對的層次上砍。對一群飛鳥最簡單而真確的說明，是三條群飛規則，而非十億條羽毛的方程式；再往下化約，解釋並沒有變得更精簡，而是換了個對象。簡約是相對於層次而言的：在行為真正棲身的那個高度上，用最少的假設。`},
+    {name:`立憲的心智`, body:`若判斷會以可預測的方式偏頗，那就別像君主一樣統治自己。把你心智的權力加以分立：讓冷靜狀態下訂立的規則來立法、讓當下的抉擇來執行、讓定期的檢討來審判——各方都能彼此制衡。你無法為那位國王去除偏誤，但你可以否決他的絕對權力。`},
+  ],
+  proofs:[
+    {name:`阿波羅11號`, year:`1969年`, body:`導航員把三個人瞄準了一片空無的太空——那是三天後月亮將抵達之處——全然信賴牛頓的一條定律。導航電腦憑花剌子米的那一手飛行，將難題化約為機械步驟，又靠維納的那一手操控：每一次點火都經測量、回饋、校正。`},
+    {name:`美國憲法`, year:`1787年`, body:`費城的代表們如此頻繁地援引孟德斯鳩，以致麥迪遜稱他為「那位神諭」。其成果，是被編譯成一部運轉機器的政治哲學：一份真正被寫下並簽署的社會契約，權力被加以分割，好讓野心制衡野心。`},
+    {name:`破解恩尼格瑪`, year:`1941年`, body:`布萊切利園並不是在猜測上勝過那套密碼；而是在程序上勝過了它。圖靈的解碼機把搜尋機械化，他的班伯里法以「班」為單位為各種猜測評分——那是在戰時每日執行的貝氏更新，早在這套方法受人敬重的數十年之前。把信念當作賠率來持有，助這場世界大戰縮短了。`},
+    {name:`根除天花`, year:`1980年`, body:`這種在最後一個世紀奪走三億人性命的疾病，並非靠替每個人接種疫苗而終結。它是靠以網路來思考而終結的：追蹤每一次爆發，為其周圍的接觸者環圈接種疫苗，把病毒的網路切割成一座座孤島，直到它再也無處可去。這是人類唯一一種被驅趕至歸零的疾病。`},
+    {name:`全球定位系統`, year:`1978年 →`, body:`衛星上的時鐘每天約快38微秒，恰如愛因斯坦的參考系思維所預言——若不加以校正，你那個藍點每天都會漂移數公里。每一支知道自己身在何處的手機，都在牛頓的軌道上，實地運行著相對論。`},
+    {name:`網際網路`, year:`1969–83年`, body:`夏農證明了任何訊息都能化為位元；封包交換則讓這些位元在無人主宰的情況下，自行尋找路由。從簡單的局部規則——儲存、轉發、重試——湧現出一套行星尺度的神經系統，其價值隨連結而增長，恰如那些網路思想家所預言。`},
+    {name:`綠色革命`, year:`1965年 →`, body:`諾曼·布勞格刻意地運轉達爾文的迴路：讓小麥變異、選出倖存者、反覆進行——在墨西哥的兩種氣候之間往返運送種子，使每年的世代數翻倍。由此培育出的矮稈品種，被認為使多達十億人免於饑荒。`},
+    {name:`維基百科`, year:`2001年 →`, body:`「人人皆可編輯」本該釀成一場共有財的悲劇。然而，志願者們演化出的規則，幾乎恰恰就是歐斯壯在阿爾卑斯山牧場與灌溉村落中所發現的那些——清晰的邊界、逐級遞增的懲罰、廉價的爭端解決——於是史上最龐大的參考著作，在毫無規劃之下湧現而出。`},
+    {name:`真相與和解`, year:`1996年`, body:`南非在幾乎所有人都預期的內戰並未發生的情況下，終結了種族隔離。它的臨時憲法點名了使這一切成為可能的思維方式——「需要的是烏班圖，而非加害於人」——以特赦換取真相，藉此買下一份新的社會契約。`},
+  ],
+},
+  'ja': {
+  label:`日本語`,
+  ui:{
+    docTitle:`思考のオーラリー — 人類の思考の地図帳`,
+    mark:`<b>✦</b> 思考のオーラリー`,
+    navModes:`思考モード`, navAtlas:`地図帳`, navProof:`実証`, navSynth:`統合`, navMap:`全体図 ↗`,
+    heroEyebrow:`人類の思考の地図帳 · 古代 → 現代`,
+    heroTitle:`思考の<br><span class="ital br-accent">オーラリー</span>`,
+    heroThesis:`人類の真の遺産は事実ではない — 事実を見出すために発明した<b>思考の様式</b>こそがそれだ。ここにその偉大なものを集め、時代とレンズで図示し、掛け合わせて新たな思考を鍛える。`,
+    statIdeas:`図示した思考`, statLenses:`レンズ`, statAges:`時代`, statSynth:`新たな統合`, statProofs:`実地の実証`,
+    astroAria:`偉大な思考を配置したアストロラーベ。同心円は時代を表し、中心の古代から外縁の現代へと広がる。各点は一つの思考であり、カテゴリーごとに色分けされている。矢印キーで思考の間を移動し、Enterキーで下の地図帳の項目を開く。線は、その思考が何に基づき、何を育んだかを示す。`,
+    astroCap:`内側の環は古代 · 外側は現代 · ホバー・タップ・矢印キーで操作 · <span style="color:var(--brass)">金 = 基づく</span> · <span style="color:var(--lapis)">青 = 育む</span> · <a href="#" id="open-map-cap" style="color:var(--brass)">全体図 ↗</a>`,
+    mfEyebrow:`前提`,
+    mfBig:`事実は一つの答えである。思考の様式は、答えを生み出す方法である。`,
+    mfBody:`<p>文明は事実を失い、また再発見する。幾世紀にもわたって真に蓄積されるのは、もっと微妙なものだ。物事を理解するために人類が発明した認知の<em>手</em>の総体 — 疑い、抽象し、反転させ、モデル化し、更新し、削ぎ落とす手だ。</p><p>この地図帳は、青銅器時代の宇宙論から情報理論まで、その息の長いものを集め、二つの軸で同時に整理する。それがもたらす<span class="pull">レンズ</span>と、それを生んだ<span class="pull">時代</span>だ。ひと握りのメタパターン — <a href="#modes" style="color:var(--brass)">思考モード</a> — が、そのすべての底に繰り返し現れる。</p><p>ここでは思考はガラスの向こうに飾られてはいない。各カードはその<span class="pull">系譜</span>をたどり — 何に基づき、何を育んだか — そして<a href="#proof" style="color:var(--brass)">実証の場</a>が、偉大な手を書斎から連れ出し、月への飛行、憲法、疫病の根絶へと導く。</p><p>そして地図帳は、ここに集うすべての思考者がしたことを行う。<span class="pull">組み替える</span>のだ。最後の節では、古い思考を掛け合わせて新たな思考を鍛える — それもまた、一つの思考の様式なのだから。</p>`,
+    modesEyebrow:`思考のオペレーティングシステム`,
+    modesH2:`すべての底に繰り返し現れる九つのモード`,
+    modesLede:`偉大な思考から中身を剥ぎ取れば、再利用できる少数の手さばきが残る。下の九つの<em>レンズ</em>が思考を主題ごとに分けるのに対し、この九つの<em>モード</em>はそれらを横断して切り込む。これを身につければ、出力だけでなくエンジンそのものを手にすることになる。`,
+    atlasEyebrow:`{i}の思考 · {c}のカテゴリー · {a}の時代`,
+    atlasH2:`地図帳`,
+    atlasLede:`どの項目も、思考とそれが教える<em>手</em>を対にしている — 自分自身の問題へ持ち運べる、転用可能な思考の様式だ。レンズや時代で絞り込み、あるいは検索できる。各カードの系譜リンクは、それが<span style="color:var(--brass)">何に基づき</span>、<span style="color:var(--lapis)">何を育んだか</span>をたどる。`,
+    lensLabel:`レンズ`, ageLabel:`時代`, allChip:`すべて`,
+    searchPh:`思考・思考者を検索…`, searchAria:`思考と思考者を検索`,
+    countTpl:`<b>{n}</b> / {t} 件を表示`,
+    noMatch:`その条件に合う思考はありません。条件を広げてみてください。`,
+    moveLab:`その手`, drawsOn:`↖ 基づく`, feedsLab:`↘ 育む`,
+    proofEyebrow:`思考が世界と出会う`, proofH2:`実証の場`,
+    proofLede:`思考の様式は、物質を — あるいは歴史を — 動かした日に、自らを実証する。ここに集めたのは、その内に潜む手へとさかのぼった偉大な達成だ。チップをたどれば、それが名指す思考へ行ける。`,
+    movesInside:`内に潜む手 ↘`,
+    synthEyebrow:`古きより組み上げた新たな思考`, synthH2:`統合の実験室`,
+    synthLede:`地図帳のすべてが原材料だ。二つの思考の様式を掛け合わせれば、第三のものが現れる — 有用なこともあれば、奇妙なこともある。ここに残したのは、その選りすぐりだ。`,
+    footCloser:`思考は道具である。思考の様式は、道具を作る<span class="br-accent">工房</span>だ — 自由に借り、しばしば掛け合わせよ。`,
+    footMeta:`思考のオーラリー<br><a href="#atlas">{i}の思考</a> · <a href="#proof">{p}の実証</a> · <a href="#synthesis">{s}の統合</a>より構築<br><span style="color:var(--bone-dim)">忘れるな。地図は領土ではない — この地図もまた。</span>`,
+    mapTitle:`思考のオーラリー — 全体図`,
+    mapSub:`任意のノードにカーソルを合わせ、そのつながりをたどる`,
+    legendMode:`モード → 代表する思考`, legendLineage:`系譜：基づく → 育む`, legendProof:`思考 → 現実世界での実証`,
+    headModes:`九つのモード`, headIdeas:`{n}の思考 · 古代 → 現代`, headProofs:`{n}の実証`,
+  },
+  eras:[`古代`,`古典古代`,`中世`,`近世`,`啓蒙時代`,`近代`,`現代`],
+  cats:{
+    rl:`理性と論理`,
+    ks:`知識と科学`,
+    eth:`倫理と善き生`,
+    mind:`心と自己`,
+    soc:`社会と権力`,
+    econ:`経済と交換`,
+    sys:`システムと複雑性`,
+    real:`実在と宇宙`,
+    lang:`言語と意味`,
+  },
+  ideas:[
+    {name:`陰陽の相補性`, who:`中国の宇宙論`, year:`前900年頃`, idea:`実在は、対をなす対立物 — 明と暗、能動と受動 — が互いを規定し包み合うことで織りなされる。`, way:`対極を対立ではなく協働と見よ。対立物は争うのではなく、互いを生み出す。`},
+    {name:`カルマ（業）`, who:`ヴェーダとウパニシャッドの思想`, year:`前800年頃`, idea:`あらゆる行為は種を蒔き、その果実は時を越えて行為者のもとへ返ってくる。`, way:`一つ一つの行為を、いずれ自らが受け継ぐ原因として扱え。`},
+    {name:`無為自然 — 力まぬ行い`, who:`老子`, year:`前6世紀頃`, idea:`最高の技とは、物事を強いるのではなく、その理に沿って行うことである。`, way:`システムに抗うよりも、その流れに沿って多くを成せ。`},
+    {name:`ロゴス`, who:`ヘラクレイトス`, year:`前500年頃`, idea:`絶え間ない変化の底には、ただ一つの理性的な秩序が流れている。「万物は流転する」。`, way:`流転の底に持続する法則を探せ。`},
+    {name:`正名`, who:`孔子`, year:`前500年頃`, idea:`名が実に合わなければ、言葉は機能せず社会は崩れる。世を正すには、まず言葉を正せ。`, way:`システムを立て直すには、まずその言葉を正直にせよ。`},
+    {name:`仁と恕`, who:`孔子`, year:`前500年頃`, idea:`「己の欲せざる所、人に施すこと勿かれ」 — 仁こそが社会を結ぶ絆である。`, way:`恕（思いやり）を、正しい行いの試金石とせよ。`},
+    {name:`原子論`, who:`デモクリトスとレウキッポス`, year:`前430年頃`, idea:`存在するのは、空虚の中を動く分割不能な原子だけである。`, way:`複雑な全体を、単純な部分の配置によって説明せよ。`},
+    {name:`ゼノンのパラドックス`, who:`エレアのゼノン`, year:`前450年頃`, idea:`決して届かぬ矢、決して走り終えぬ走者は、運動と無限をめぐる我々の観念に潜む亀裂をあらわにする。`, way:`概念をパラドックスまで押し進めて、その強度を試せ。`},
+    {name:`ソクラテス式問答法`, who:`ソクラテス`, year:`前430年頃`, idea:`真理には、知っていると思い込んでいることの矛盾をあらわにする、執拗な問いによって近づく。`, way:`主張を問い詰め、隠れた前提が浮かび上がるまで問え。`},
+    {name:`吟味された生`, who:`ソクラテス`, year:`前430年頃`, idea:`「吟味されざる生に、生きる値打ちはない」 — 自己吟味は贅沢ではなく義務である。`, way:`問いを自らに向けることを、常の習いとせよ。`},
+    {name:`イデア論`, who:`プラトン`, year:`前380年頃`, idea:`不完全な個々のものの背後には、それらが模倣する完全で不変の理念（イデア）が横たわる。`, way:`個々の事例を越えて、それらが共有するパターンを見よ。`},
+    {name:`四原因説`, who:`アリストテレス`, year:`前350年頃`, idea:`何かを説明するには、その質料、形相、作り手、そして目的を問え。`, way:`物事を、いくつもの異なる意味での「なぜ」を同時に問うて説明せよ。`},
+    {name:`アリストテレスの中庸`, who:`アリストテレス`, year:`前350年頃`, idea:`徳は二つの悪徳の間に宿る — 勇気は臆病と無謀の間に。`, way:`相反する過剰の間にある卓越を見出せ。`},
+    {name:`エウダイモニア`, who:`アリストテレス`, year:`前350年頃`, idea:`善き生とは快楽ではなく開花である — よく生きられた生の、その充実した活動である。`, way:`生を、束の間の気分ではなく、その活動と人柄によって判断せよ。`},
+    {name:`縁起`, who:`初期仏教`, year:`前450年頃`, idea:`何ものもそれ自体で存在するのではなく、あらゆるものは条件の網を通じて生起する。`, way:`物事を孤立した本質ではなく、その条件を辿って捉えよ。`},
+    {name:`無常（アニッチャ）`, who:`初期仏教`, year:`前450年頃`, idea:`生起するものはすべて滅する。不変のものへの執着こそ、苦の根である。`, way:`物事を軽く握れ。変化を予期し、受け入れよ。`},
+    {name:`中道`, who:`ブッダ`, year:`前450年頃`, idea:`智慧は放縦と苛烈な禁欲のいずれをも避け、両極の間を歩む。`, way:`渇望か自己処罰かという偽りの二者択一を拒め。`},
+    {name:`ピュロン主義の懐疑`, who:`ピュロンとセクストス`, year:`前300年頃`, idea:`証拠が拮抗するところでは、確たる判断を保留せよ — すると心の平静が訪れる。`, way:`確信を差し控えることを、失敗ではなく修練とせよ。`},
+    {name:`コントロールの二分法`, who:`エピクテトスとストア派`, year:`100年頃`, idea:`我々次第のものもあれば、そうでないものもある。心の平安は、その境界を知ることにある。`, way:`実際に自分の力が及ぶところにのみ、労力を注げ。`},
+    {name:`メメント・モリ（死を想え）`, who:`ローマのストア派`, year:`100年頃`, idea:`死を視野に置けば、瑣末なものは君への支配力を失う。`, way:`死すべき定めを、真に重要なものを選り分けるレンズとせよ。`},
+    {name:`アルゴリズム`, who:`フワーリズミー`, year:`820年頃`, idea:`問題は、決められた機械的手順の連なりによって解ける — かくして代数が生まれる。`, way:`難題を、反復可能な手順へと変えよ。`},
+    {name:`実験光学`, who:`イブン・アル=ハイサム`, year:`1020年頃`, idea:`光についての主張は、権威ではなく、制御された実験によって決せられねばならない。`, way:`何が真かは、書物ではなく、設計された実験に決めさせよ。`},
+    {name:`否定神学`, who:`マイモニデス`, year:`1190年頃`, idea:`無限には、それが何で「ない」かを語ることによってしか近づけない。`, way:`捉えがたきものは、肯定の言葉が尽きたとき、否定によって定義せよ。`},
+    {name:`五つの道`, who:`トマス・アクィナス`, year:`1270年頃`, idea:`我々が観察する運動と秩序は、第一原因へとさかのぼって推論できる。`, way:`世界の構造から、その根拠へと論じ進めよ。`},
+    {name:`オッカムの剃刀`, who:`オッカムのウィリアム`, year:`1320年頃`, idea:`適合する説明のうち、前提の最も少ないものを選べ。`, way:`理論に不要な前提は、ことごとく削ぎ落とせ。`},
+    {name:`アサビーヤ — 社会的結束`, who:`イブン・ハルドゥーン`, year:`1377年`, idea:`集団の連帯は歴史の隠れた原動力である。それは一つの民を権力へと押し上げ、やがて勝ち取った安逸のなかで衰え、より結束した集団に取って代わられる。`, way:`政治的事件の底にある、集団的連帯の興亡を見よ。`},
+    {name:`地動説`, who:`ニコラウス・コペルニクス`, year:`1543年`, idea:`地球は中心ではない。地球も惑星も、太陽の周りを巡っている。`, way:`自らを図の中心から退ける覚悟を持て。`},
+    {name:`権威より観察`, who:`ガリレオ・ガリレイ`, year:`1610年`, idea:`望遠鏡が示すものは、正典が語るものに勝る。`, way:`器具に、受け継がれた書物を覆させよ。`},
+    {name:`帰納法`, who:`フランシス・ベーコン`, year:`1620年`, idea:`知識は、忍耐強く体系的な観察から下から上へと築かれる。`, way:`注意深く集めた個々の事実から、一般法則を組み立てよ。`},
+    {name:`我思う、ゆえに我あり`, who:`ルネ・デカルト`, year:`1637年`, idea:`疑いうるものはすべて疑え。残る唯一のこと — 自分が疑っているということ — が、盤石の礎となる。`, way:`疑いえない基礎から、知識を築き直せ。`},
+    {name:`社会契約`, who:`トマス・ホッブズ`, year:`1651年`, idea:`正統な権力は、万人の万人に対する闘争から逃れるための暗黙の合意のうえに成り立つ。`, way:`制度を、それを生み出すはずの合意によって正当化せよ。`},
+    {name:`タブラ・ラサ（白紙）`, who:`ジョン・ロック`, year:`1689年`, idea:`心は白紙で始まり、経験によって書き込まれていく。`, way:`一つ一つの観念を、それを植えつけた経験へとさかのぼれ。`},
+    {name:`万有引力`, who:`アイザック・ニュートン`, year:`1687年`, idea:`一つの法則が、リンゴの落下と月の軌道を結びつける。`, way:`別々の現象を統べる、ただ一つの法則を探せ。`},
+    {name:`三権分立`, who:`モンテスキュー`, year:`1748年`, idea:`自由は、権力が分割され、各部が互いを牽制するときにのみ存続する。`, way:`各部が設計上、互いを抑制し合うシステムを築け。`},
+    {name:`一般意志`, who:`ジャン=ジャック・ルソー`, year:`1762年`, idea:`正統性は共通善から流れ出る。共通善は、私的な欲求の総和以上のものである。`, way:`共有された利益を、欲求の単なる集計から切り分けよ。`},
+    {name:`ベイズ推論`, who:`トマス・ベイズとラプラス`, year:`1763年`, idea:`信念とは確率であり、新たな証拠に正確に比例して改訂されるべきものである。`, way:`信念を確率として抱き、証拠が届くたびに更新せよ。`},
+    {name:`見えざる手`, who:`アダム・スミス`, year:`1776年`, idea:`私的な利益を追求する個々人が、市場を通じて、誰も意図しなかった秩序を生み出しうる。`, way:`設計者なしに立ち現れる秩序を探せ。`},
+    {name:`サペレ・アウデ（あえて知れ）`, who:`イマヌエル・カント`, year:`1784年`, idea:`「あえて知れ」 — 成熟とは、後見人なしに自らの理性を用いる勇気を持つことである。`, way:`自ら考える権利を — そして義務を — 引き受けよ。`},
+    {name:`定言命法`, who:`イマヌエル・カント`, year:`1785年`, idea:`万人が従うべしと意志しうる規則にのみ従って行為せよ。`, way:`行為を、普遍的法則として想像することで試せ。`},
+    {name:`功利主義`, who:`ベンサムとJ.S.ミル`, year:`1789年`, idea:`正しい行為は、最大多数の最大幸福を生む — 快と苦を、万人ひとしく足し合わせて。`, way:`行為を、その帰結の総和で量れ — 各人を一人として数えて。`},
+    {name:`弁証法`, who:`G・W・F・ヘーゲル`, year:`1807年`, idea:`思想は、自らの対立物を生み出し、より豊かな全体へと止揚されることで前進する。`, way:`主張をその否定と衝突させ、より優れたものへ至れ。`},
+    {name:`比較優位`, who:`デイヴィッド・リカード`, year:`1817年`, idea:`一方がすべてに秀でていても、交易によって双方が利を得る。`, way:`絶対的な能力ではなく、相対的な費用で考えよ。`},
+    {name:`反転せよ、常に反転せよ`, who:`カール・ヤコビ`, year:`1840年`, idea:`正面からの攻めに抗う多くの問題は、逆から近づくと解けてしまう。`, way:`避けたい失敗の側を解き、そこから遠ざかれ。`},
+    {name:`万能機械`, who:`エイダ・ラブレス`, year:`1843年`, idea:`記号に規則を適用する機械は、数にとどまる必要はない — 符号化できるものなら、音楽さえも、原理的には作り出せる。`, way:`入力を符号化し直せば、その仕組みに他に何ができるかを問え。今の用途が狭くとも、その操作は一般的でありうる。`},
+    {name:`史的唯物論`, who:`カール・マルクス`, year:`1848年`, idea:`歴史は、その観念や理想の底にある物質的・経済的な力によって動かされる。`, way:`公言された信条の底にある物質的利害を追え。`},
+    {name:`自然選択`, who:`チャールズ・ダーウィン`, year:`1859年`, idea:`変異に選択が加わり、時をかけて反復されると、設計者なしに設計が生まれる。`, way:`複雑さを、累積した選択の残余として説明せよ。`},
+    {name:`限界主義`, who:`ジェヴォンズ、メンガー、ワルラス`, year:`1871年`, idea:`価値と選択は限界で決まる — 全体ではなく、次の一単位によって。`, way:`平均ではなく、次の一単位で決めよ。`},
+    {name:`永劫回帰`, who:`フリードリヒ・ニーチェ`, year:`1882年`, idea:`この生をそっくりそのまま、果てしなく生き直さねばならぬかのように生きよ。`, way:`思考実験を、いかに生きるかを問う試金石とせよ。`},
+    {name:`力への意志`, who:`フリードリヒ・ニーチェ`, year:`1883年`, idea:`受け継がれた価値は人間の創作である。それが誰の力に仕えているかを問え。`, way:`価値を手渡されたら、誰が作り、誰の得になるかを問え。`},
+    {name:`パレートの法則`, who:`ヴィルフレド・パレート · ジョセフ・ジュラン`, year:`1896年`, idea:`わずかな原因が、結果の大半を生む傾向がある — パレートがその分布を見出し、ジュランがそれを仕事の原則に変えた。`, way:`多くの成果の背後にある、決定的な少数の入力を探し出せ。`},
+    {name:`無意識`, who:`ジークムント・フロイト`, year:`1900年`, idea:`我々を突き動かすものの多くは、意識の表面の下を流れている。`, way:`公言された理由の下に、隠れた理由を探せ。`},
+    {name:`現象学`, who:`エトムント・フッサール`, year:`1900年`, idea:`理論を脇に置き、経験をそれが立ち現れるがままに記述せよ。`, way:`前提を括弧に入れ、与えられたままの事象に注意を向けよ。`},
+    {name:`相対性理論`, who:`アルベルト・アインシュタイン`, year:`1905年`, idea:`空間と時間は絶対ではない。測定は、観測者の運動の座標系に依存する。`, way:`特権的な視点を捨て、常に自らの座標系を明示せよ。`},
+    {name:`プラグマティズム`, who:`パース、ジェームズ、デューイ`, year:`1907年`, idea:`観念の意味と真理は、その実践的な帰結のうちにある。`, way:`信念を、それが実践にもたらす違いによって判断せよ。`},
+    {name:`機会費用`, who:`フリードリヒ・フォン・ヴィーザー`, year:`1914年`, idea:`いかなる選択の真の費用も、その価格ではなく、それを選ぶために手放した最善の代替案の価値である。`, way:`あらゆる選択を、それが消費するものだけでなく、閉ざすもので値付けせよ。`},
+    {name:`記号`, who:`フェルディナン・ド・ソシュール`, year:`1916年`, idea:`記号は、純粋な慣習によって音のイメージを概念に結びつける。意味は、事物そのものからではなく、体系全体の中の差異から生じる。`, way:`意味を、世界に貼られた札ではなく、対比の網の中の位置として読め。`},
+    {name:`対称性と保存則`, who:`エミー・ネーター`, year:`1918年`, idea:`系のあらゆる連続的対称性は、一つの保存量に対応する — 不変性と保存則は、一つの真理の二つの顔である。`, way:`変化のもとで変わらぬものを探し出せ。不変量こそ、法則が隠れている場所だ。`},
+    {name:`元型`, who:`カール・ユング`, year:`1919年`, idea:`共通する象徴のパターンが、神話や夢、そして文化を越えて浮かび上がる。`, way:`繰り返し現れる象徴を、共通の構造への手がかりとして読め。`},
+    {name:`不確定性原理`, who:`ヴェルナー・ハイゼンベルク`, year:`1927年`, idea:`ある種の性質の対は、同時に両方を精確に知ることはできない。`, way:`知りうることには厳然たる限界と、避けがたい二律背反があると認めよ。`},
+    {name:`相補性`, who:`ニールス・ボーア`, year:`1928年`, idea:`光は波であり粒子でもある — 互いを排除しながら、どちらも必要とされるモデルだ。`, way:`それぞれが真理の一部を捉えているとき、両立しないモデルを併せ持て。`},
+    {name:`不完全性`, who:`クルト・ゲーデル`, year:`1931年`, idea:`算術を含むほど豊かな体系はすべて、それ自身では証明できない真理を抱えている。`, way:`いかなる形式体系にも、それが届かぬ彼方があると心得よ。`},
+    {name:`地図は領土ではない`, who:`アルフレッド・コージブスキー`, year:`1933年`, idea:`モデルは有用な抽象であって、それが表す現実そのものでは決してない。`, way:`自らのモデルを、それが描く世界と取り違えるな。`},
+    {name:`反証可能性`, who:`カール・ポパー`, year:`1934年`, idea:`主張が科学的であるのは、原理上、誤りだと証明されうる場合に限られる。`, way:`自らを甘やかす試験ではなく、自らを反証する試験を探せ。`},
+    {name:`創造的破壊`, who:`ヨーゼフ・シュンペーター`, year:`1942年`, idea:`イノベーションは、経済が乗り越えた構造を解体することで、それを刷新する。`, way:`破壊を、単なる喪失ではなく、刷新の仕組みとして見よ。`},
+    {name:`実存的自由`, who:`サルトルとキルケゴール`, year:`1943年`, idea:`実存は本質に先立つ。我々は「自由の刑に処せられ」、自らの意味を選ぶことを強いられている。`, way:`自らの選択を、言い逃れなしに、全面的に自分が書いたものとして引き受けよ。`},
+    {name:`情報理論`, who:`クロード・シャノン`, year:`1948年`, idea:`情報とは不確実性の減少であり、ビットで測ることができる。`, way:`メッセージを、それが取り除く驚きの量で数量化せよ。`},
+    {name:`サイバネティクス`, who:`ノーバート・ウィーナー`, year:`1948年`, idea:`機械も生物も等しく、出力を入力へと送り返すことで舵をとる。`, way:`一方通行の因果ではなく、フィードバックループで考えよ。`},
+    {name:`社会的構築`, who:`シモーヌ・ド・ボーヴォワール`, year:`1949年`, idea:`「人は女に生まれるのではない、女になるのだ」 — 社会が自然と呼ぶものの多くは、実は歴史と役割と期待によって作られている。`, way:`どの「自然な」事実が実は作られたものかを問え — そして、その物語が誰に仕えるかを問え。`},
+    {name:`ナッシュ均衡`, who:`ジョン・ナッシュ`, year:`1950年`, idea:`戦略的ゲームでは、誰も単独で手を変えても得をできない点に、プレイヤーたちは落ち着く。`, way:`自分について考えている他者について、考えよ。`},
+    {name:`囚人のジレンマ`, who:`フラッド、ドレシャー、タッカー`, year:`1950年`, idea:`各人にとって合理的な選択が、全体としては皆をより悪い状態に置くことがある。`, way:`私的な誘因が共有の利益を裏切る箇所を見抜け。`},
+    {name:`言語ゲーム`, who:`ルートヴィヒ・ウィトゲンシュタイン`, year:`1953年`, idea:`語の意味は、それが指し示すものではなく、生活形式のなかで果たす役割である — 意味とは使用である。`, way:`語が何を意味するかを問うのをやめ、いま行われているゲームでそれがどう使われるかを見よ。`},
+    {name:`限定合理性`, who:`ハーバート・サイモン`, year:`1955年`, idea:`現実の心は最適化しない。時間と情報の限りのなかで「満足化」するのだ。`, way:`理想化された心ではなく、限りある心に合わせて設計せよ。`},
+    {name:`パラダイムシフト`, who:`トマス・クーン`, year:`1962年`, idea:`科学は、蓄積によってよりも、枠組みそのものを丸ごと置き換える革命によって変わる。`, way:`枠の中の事実だけでなく、枠そのものを見よ。`},
+    {name:`悪の陳腐さ`, who:`ハンナ・アーレント`, year:`1963年`, idea:`巨大な悪は、ただ考えるのをやめた平凡な人々の手で執り行われうる — 悪意を追う怪物ではなく、手続きに従う出世主義者によって。`, way:`役割に思考を委ねるな。命令を、判断こそが自分の務めであるかのように吟味せよ。`},
+    {name:`ウブントゥ — 我々あるがゆえに我あり`, who:`ングニ・バントゥ哲学 · ジョン・ムビティ`, year:`1969年`, idea:`「ウムントゥ・ングムントゥ・ンガバントゥ」 — 人は他者を通じて人となる。南部アフリカの口承に長く伝えられ、自己とは私有物ではなく関係であり、共同体のなかで作られ作り直されるものだと説く。`, way:`自己をその関係のなかに位置づけよ。我々あるがゆえに、我あり。`},
+    {name:`無知のヴェール`, who:`ジョン・ロールズ`, year:`1971年`, idea:`自分がどの人になるか分からないかのように、社会の規則を選べ。`, way:`私利を剥ぎ取り、何が公正かを見出せ。`},
+    {name:`創発 — 多は異なり`, who:`フィリップ・アンダーソン`, year:`1972年`, idea:`単純な部分を十分に集めれば、より高い次元にまったく新しい法則が現れる。`, way:`興味深い振る舞いは、しばしば部分より一つ上の次元に宿る。`},
+    {name:`認知バイアス`, who:`カーネマンとトヴェルスキー`, year:`1974年`, idea:`直観は、予測できる仕方で誤作動する、素早いヒューリスティクスで動いている。`, way:`バイアスが潜むと知られる、まさにその場所で、素早い判断を疑え。`},
+    {name:`ミーム学`, who:`リチャード・ドーキンス`, year:`1976年`, idea:`遺伝子は — そして観念もまた — 複製されようと競い合う複製子として振る舞う。`, way:`観念を、進化し広がる複製子として扱え。`},
+    {name:`ネットワーク効果`, who:`ロバート・メトカーフ`, year:`1980年`, idea:`ネットワークの価値は、接続する人の数の二乗に比例して高まる。`, way:`物事を、その単位ではなく、つながりによって価値づけよ。`},
+    {name:`立場の認識論`, who:`ナンシー・ハートソックとサンドラ・ハーディング`, year:`1983年`, idea:`知識は、どこかの場所から作られる。システムの周縁にいる者は、その受益者が構造的に見落とす真理を、しばしば見通せる位置にいる。`, way:`自らの視点をデータとして扱え。それが何を隠すか、そして自分に見えぬものを誰が見られるかを問え。`},
+    {name:`コモンズの統治`, who:`エリノア・オストロム`, year:`1990年`, idea:`共有資源は私的な強欲のもとで必ずしも崩壊しない。共同体は、市場にも国家にも頼らず、それを持続させる息の長い規則を、繰り返し自ら編み出してきた。`, way:`「私有化せよ」と「国家に任せよ」の間には、第三の道がある — 利用者自身に統治させよ。`},
+    {name:`隣接可能領域`, who:`スチュアート・カウフマン`, year:`2000年`, idea:`どの瞬間においても、次に来られるのは、いま在るものの隣接する状態だけである。`, way:`未来へは、届く一歩ずつ辿り着け。`},
+    {name:`ブラック・スワン`, who:`ナシーム・タレブ`, year:`2007年`, idea:`稀で、予測されず、影響の大きい出来事こそが、ありふれた出来事以上に歴史を形づくる。`, way:`平均ではなく、裾（テール）を見据えて構えよ。`},
+    {name:`反脆弱性`, who:`ナシーム・タレブ`, year:`2012年`, idea:`あるものは、無秩序をただ生き延びるのではない — それによって、かえって良くなる。`, way:`変動を恐れるのではなく、そこから利を得る立ち位置を求めよ。`},
+  ],
+  modes:[
+    {name:`第一原理`, body:`問題を、真でなければならないことまで煮詰め、そこから積み上げ直せ。継承ではなく、土台を信じよ。`},
+    {name:`反転`, body:`いかに勝つかではなく、いかに確実に負けるかを問い、それを避けよ。問題はしばしば、逆から読む方が易しい。`},
+    {name:`弁証法`, body:`主張をその対立物に対置し、衝突からより優れた第三のものを生ませよ。進歩とは、それ自身との論争である。`},
+    {name:`類推`, body:`解けた問題の形を、未解決の問題へと運べ。新しい観念の多くは、新しい領域に置かれた古い観念である。`},
+    {name:`システムとフィードバック`, body:`単一の原因ではなく、ループ、ストック、遅れを探せ。システムのなかで、たった一つのことだけを為すことは決してできない。`},
+    {name:`確率的思考`, body:`信念を事実ではなく賭けとして抱け。確率を割り当て、証拠が届くたびに動かせ。`},
+    {name:`進化的思考`, body:`変異させ、選択し、繰り返せ。良い推測が悪い推測より長く生き残ることを許せば、設計は設計者なしに生まれうる。`},
+    {name:`ヴィア・ネガティヴァ（消去法）`, body:`取り除くことで良くせよ。何をやめ、避け、削るかは、何を加えるかよりも確かな知であることが多い。`},
+    {name:`創発`, body:`単純な部分が、そのどれもが含まない振る舞いを生むさまを見よ。興味深い次元が最も低い層であることは稀だ。`},
+  ],
+  synth:[
+    {name:`ベイズ的ストア主義`, body:`「何が自分次第か」を、固定された境界としてではなく、証拠が届くたびに見積もり直す確率として扱え。いま見積もる支配度に比例して労力を注ぎ、境界が明確なふりをするのではなく、確率を更新することから平静を得よ。`},
+    {name:`徳のサーモスタット`, body:`二つの悪徳の間の中庸は、死んだ中点ではなく、フィードバックによって保たれる設定値である — 無謀へと漂う勇気は、それ自身の帰結によって引き戻される。標的が激しく乱されるほど、系はより鋭くそれを見つけ直す。かくして、均衡と補正のループの双方が実際に働いている。`},
+    {name:`反証可能な自己`, body:`自己像を、科学理論のように運用せよ。自分について語る物語を反証しうる仕方で生き、それを覆す見込みの最も高い経験を、あえて求めよ。反証しえないアイデンティティは、知られているのではない — ただ守られているだけだ。`},
+    {name:`カルマのフィードバック`, body:`君の行為は、入力として系に再び入り込む出力である — 君が示す規範、積み上げる評判、引き起こす反応 — そしてそれらは、次に君が行為する世界を形づくるべく巡り戻ってくる。「巡り巡って返ってくる」ものは、宇宙の帳簿づけではなく、閉じたフィードバックループである — 単なる発信では届けられない、まさにその見返りだ。`},
+    {name:`限界マクシミン`, body:`次の一単位の援助を、自分がまだ誰の人生に目覚めるか分からないとしたら望むであろう場所に注げ — それはほぼ常に最も恵まれない者だ。限界の一単位が最も大きな救いをもたらすのは、そこだからである。「最大の善」はこうして精確になる — 出生のくじを引く前に、自ら備えておくであろう善へと。`},
+    {name:`隣接する善き生`, body:`開花とは、遠い理想ではなく、届く一歩先にある最良の自分である。完璧な生を最適化しようとするのをやめ、最も近いより良い生へと反復せよ。そこに立ち、もう一度あたりを見渡せ。`},
+    {name:`逆さの地図作り`, body:`モデルを信じる前に、それが誤っているあらゆる仕方を地図にせよ。まずその盲点を — 地図と地形が食い違う領域を — 描き出し、モデルそのものと同じくらい、その誤差の地図を頼りに進め。`},
+    {name:`相補性の倫理`, body:`ある種の道徳的真理は、波と粒子のように振る舞う — 正義と慈悲は同時に完全には測れないが、どちらも実在する。あらゆる緊張が統合を求めるわけではない — あるものは相補的なものとして併せ持ち、文脈に応じて交互に用いるべきものなのだ。`},
+    {name:`群れの一手`, body:`力まぬ行いとは、システムを操ることではない — それが自ら秩序をなすための、単純な局所規則を調律することだ。君は群れを追い立てるのではない。群れを群れたらしめる間隔を定めるのだ — 規則の次元では最小の介入を、全体の次元では最大の秩序を。`},
+    {name:`突然のメメント`, body:`ただ自分が死ぬことを想うだけでなく — それが裾の出来事でありうると想え。突然で、予定になく、モデルの外にある。死すべき定めの快い平均ではなく、その太い裾に、今日の過ごし方を決めさせよ。`},
+    {name:`ネットワークのヴェール`, body:`自分がどのノードを占めるか分からないかのように、制度を設計せよ — ハブか周縁か、早いか遅いか、つながっているか孤立しているか。公正さは、君の素性だけでなく、グラフ上の位置に対しても頑健であるべきだ。`},
+    {name:`再帰的な疑い`, body:`どのモデルも、内側からは証明できない真理を抱えている。ゆえに、第一のモデルの盲点を見つけることだけを務めとする第二のモデルを持て — そして第二のために第三を。疑いを、気分としてではなく、積み重なる階層として構築せよ。`},
+    {name:`階層的な倹約`, body:`前提を容赦なく削ぎ落とせ — ただし正しい次元で。群れについての最も単純で真なる説明は、十億の羽根の方程式ではなく、三つの群れ規則である。それ以上還元すれば、説明は簡潔になるのではなく、別のものについての話になってしまう。倹約は次元に相対的だ — 振る舞いが実際に宿る高度における、最少の前提こそが。`},
+    {name:`立憲的な心`, body:`判断が予測どおりに偏るのなら、自分を君主のように統べるな。心の権力を分割せよ — 冷静なときの規則に立法させ、その場の選択に執行させ、定期的な見直しに司法を委ねる — それぞれが互いを牽制できるように。王のバイアスは取り除けないが、王から絶対の権力を奪うことはできる。`},
+  ],
+  proofs:[
+    {name:`アポロ11号`, year:`1969年`, body:`航法士たちは、三日後に月が来るであろう何もない空間の一点へ、三人の人間を狙い定めた — ニュートンのただ一つの法則を、完全に信じきって。誘導コンピュータはフワーリズミーの一手で飛んだ。難題を機械的手順へと還元して。そしてウィーナーの一手で舵をとった — あらゆる噴射を測り、送り返し、補正して。`},
+    {name:`アメリカ合衆国憲法`, year:`1787年`, body:`フィラデルフィアの代議員たちがあまりにも頻繁にモンテスキューを引いたので、マディソンは彼を「神託」と呼んだ。その成果は、動く機械へとコンパイルされた政治哲学である — 実際に書き記され署名された社会契約であり、野心が野心を牽制するよう権力が分割されている。`},
+    {name:`エニグマ解読`, year:`1941年`, body:`ブレッチリー・パークは暗号を推測で上回ったのではない — 手順で上回ったのだ。チューリングのボンブは探索を機械化し、彼のバンバリズマスは推測を「バン」という単位で採点した — その手法が市民権を得る何十年も前に、戦時下で日々行われたベイズ更新である。確率として抱かれた信念が、世界大戦を短くする一助となった。`},
+    {name:`天然痘の根絶`, year:`1980年`, body:`最後の一世紀だけで三億人を殺したこの病は、全員に接種することで終わらせたのではない。ネットワークで考えることによって終わらせたのだ — 発生のたびに追跡し、その周囲の接触者の輪に接種し、ウイルスのグラフを島々へと切り分け、ついに行き場をなくすまで。人類が根絶した唯一の病である。`},
+    {name:`GPS`, year:`1978年 →`, body:`衛星の時計は一日およそ38マイクロ秒だけ速く進む — アインシュタインの座標系の思考が予言したとおりに。補正しなければ、君の青い点は一日に何キロメートルもずれていく。自らの位置を知るあらゆる電話は、ニュートンの軌道の上で、相対性理論を実運用しているのだ。`},
+    {name:`インターネット`, year:`1969–83年`, body:`シャノンは、いかなるメッセージもビットになりうることを証明した。パケット交換は、そのビットたちに、誰の指揮も受けずに自らの経路を見つけさせた。単純な局所規則 — 蓄え、転送し、再試行する — から、惑星規模の神経系が創発した。その価値は、ネットワークの思考者たちが予言したとおり、つながりとともに増していった。`},
+    {name:`緑の革命`, year:`1965年 →`, body:`ノーマン・ボーローグは、ダーウィンのループを意図的に回した — 小麦を変異させ、生き残ったものを選び、繰り返す。種子をメキシコの二つの気候の間で往復させ、年あたりの世代数を倍にして。こうして生まれた矮性品種は、最大で十億もの人々を飢饉から救ったとされる。`},
+    {name:`ウィキペディア`, year:`2001年 →`, body:`「誰でも編集できる」は、コモンズの悲劇になるはずだった。ところが、ボランティアたちは、オストロムがアルプスの牧草地や灌漑の村々で見出した規則を — 明確な境界、段階的な制裁、安価な紛争解決を — ほぼそっくりに進化させた。そして史上最大の参考文献が、計画なしに創発したのだ。`},
+    {name:`真実和解委員会`, year:`1996年`, body:`南アフリカは、ほとんど誰もが予期した内戦なしにアパルトヘイトを終わらせた。その暫定憲法は、これを可能にした思考の様式を名指した — 「ウブントゥは必要だが、報復は必要ない」 — 恩赦を真実と引き換え、新たな社会契約を購ったのだ。`},
+  ],
+},
+  'fr': {
+  label:`Français`,
+  ui:{
+    docTitle:`Le Planétaire des idées — Un atlas de la pensée humaine`,
+    mark:`<b>✦</b> Le Planétaire des idées`,
+    navModes:`Les Modes`, navAtlas:`L'Atlas`, navProof:`Les Preuves`, navSynth:`La Synthèse`, navMap:`Carte ↗`,
+    heroEyebrow:`Un atlas de la pensée humaine · Antiquité → aujourd'hui`,
+    heroTitle:`Le <span class="ital br-accent">Planétaire</span><br>des idées`,
+    heroThesis:`Le véritable héritage de l'humanité, ce ne sont pas ses faits — ce sont les <b>manières de penser</b> qu'elle a inventées pour les découvrir. Voici les plus grandes, cartographiées par âge et par prisme, puis croisées pour en forger de nouvelles.`,
+    statIdeas:`Idées cartographiées`, statLenses:`Prismes`, statAges:`Âges`, statSynth:`Synthèses nouvelles`, statProofs:`Preuves à l'œuvre`,
+    astroAria:`Un astrolabe cartographiant les grandes idées : les anneaux sont les âges, de l'Antiquité au centre au contemporain sur le bord ; chaque point est une idée, colorée selon sa catégorie. Utilisez les touches fléchées pour passer d'une idée à l'autre et Entrée pour en ouvrir une dans l'Atlas ci-dessous ; les fils montrent ce dont une idée s'inspire et ce qu'elle nourrit.`,
+    astroCap:`Anneaux intérieurs, l'Antiquité · extérieurs, aujourd'hui · survolez, touchez ou fléchez · <span style="color:var(--brass)">or = s'inspire de</span> · <span style="color:var(--lapis)">bleu = nourrit</span> · <a href="#" id="open-map-cap" style="color:var(--brass)">carte complète ↗</a>`,
+    mfEyebrow:`Le Postulat`,
+    mfBig:`Un fait est une réponse. Une manière de penser est une méthode pour engendrer des réponses.`,
+    mfBody:`<p>Les civilisations perdent leurs faits puis les redécouvrent. Ce qui s'accumule vraiment au fil des siècles est plus subtil : l'ensemble des <em>gestes</em> cognitifs que les humains ont inventés pour donner un sens aux choses — douter, abstraire, inverser, modéliser, réviser, retrancher.</p><p>Cet atlas rassemble les plus durables, de la cosmologie de l'âge du bronze à la théorie de l'information, et les classe de deux façons à la fois : par le <span class="pull">prisme</span> qu'ils vous tendent et par l'<span class="pull">âge</span> qui les a produits. Une poignée de méta-motifs — les <a href="#modes" style="color:var(--brass)">Modes</a> — reviennent sous chacun d'eux.</p><p>Ici, les idées ne sont pas gardées sous vitrine. Chaque carte retrace sa <span class="pull">filiation</span> — ce dont elle s'est nourrie, ce qu'elle a nourri — et un <a href="#proof" style="color:var(--brass)">Terrain d'épreuve</a> suit les grands gestes hors de la bibliothèque, jusque dans les projets fous, les constitutions et les éradications.</p><p>Puis l'atlas fait ce que chaque penseur ici a fait : il <span class="pull">recombine</span>. La dernière section forge des idées neuves en croisant les anciennes — car cela aussi est une manière de penser.</p>`,
+    modesEyebrow:`Le Système d'exploitation de la pensée`,
+    modesH2:`Neuf modes qui reviennent sous toute chose`,
+    modesLede:`Dépouillez les grandes idées de leur contenu et il reste un petit jeu de manœuvres réutilisables. Là où les neuf <em>prismes</em> ci-dessous trient les idées par sujet, ces neuf <em>modes</em> les traversent de part en part. Maîtrisez-les et vous possédez les moteurs, non plus seulement leurs produits.`,
+    atlasEyebrow:`{i} idées · {c} catégories · {a} âges`,
+    atlasH2:`L'Atlas`,
+    atlasLede:`Chaque entrée associe l'idée au <em>geste</em> qu'elle enseigne — la manière de penser transposable que vous pouvez porter dans vos propres problèmes. Filtrez par prisme ou par âge, ou cherchez. Les liens de filiation sur chaque carte retracent ce dont elle <span style="color:var(--brass)">s'inspire</span> et ce qu'elle <span style="color:var(--lapis)">nourrit</span>.`,
+    lensLabel:`Prisme`, ageLabel:`Âge`, allChip:`Tous`,
+    searchPh:`chercher des idées, des penseurs…`, searchAria:`Chercher des idées et des penseurs`,
+    countTpl:`Affichage de <b>{n}</b> / {t}`,
+    noMatch:`Aucune idée ne correspond à ce filtre. Essayez de l'élargir.`,
+    moveLab:`Le geste`, drawsOn:`↖ s'inspire de`, feedsLab:`↘ nourrit`,
+    proofEyebrow:`Les idées à l'épreuve du monde`, proofH2:`Le Terrain d'épreuve`,
+    proofLede:`Une manière de penser fait ses preuves le jour où elle meut la matière — ou l'histoire. Voici de grandes réalisations reconduites aux gestes qui les habitent ; suivez une étiquette jusqu'à l'idée qu'elle nomme.`,
+    movesInside:`Les gestes à l'intérieur ↘`,
+    synthEyebrow:`Des idées neuves, combinées à partir d'anciennes`, synthH2:`Le Laboratoire de synthèse`,
+    synthLede:`L'atlas tout entier est matière première. Croisez deux manières de penser et une troisième apparaît — parfois utile, parfois étrange. Voici celles qu'on garde.`,
+    footCloser:`Une idée est un outil. Une manière de penser est l'<span class="br-accent">atelier</span> qui fabrique les outils — empruntez librement, croisez souvent.`,
+    footMeta:`Le Planétaire des idées<br>Construit à partir de <a href="#atlas">{i} idées</a> · <a href="#proof">{p} preuves</a> · <a href="#synthesis">{s} synthèses</a><br><span style="color:var(--bone-dim)">Rappel : la carte n'est pas le territoire — celle-ci comprise.</span>`,
+    mapTitle:`Le Planétaire des idées — La Carte complète`,
+    mapSub:`SURVOLEZ UN NŒUD POUR TRACER SES CONNEXIONS`,
+    legendMode:`mode → idée exemplaire`, legendLineage:`filiation : s'inspire de → nourrit`, legendProof:`idée → preuve dans le monde réel`,
+    headModes:`NEUF MODES`, headIdeas:`{n} IDÉES · ANTIQUITÉ → AUJOURD'HUI`, headProofs:`{n} PREUVES`,
+  },
+  eras:[`Antiquité`,`Âge classique`,`Moyen Âge`,`Première modernité`,`Lumières`,`Modernité`,`Époque contemporaine`],
+  cats:{ rl:`Raison et logique`, ks:`Savoir et science`, eth:`Éthique et vie bonne`, mind:`Esprit et soi`, soc:`Société et pouvoir`, econ:`Économie et échange`, sys:`Systèmes et complexité`, real:`Réalité et cosmos`, lang:`Langage et sens` },
+  ideas:[
+    {name:`Complémentarité du yin et du yang`, who:`Cosmologie chinoise`, year:`~900 av. J.-C.`, idea:`La réalité est tissée de contraires appariés — clair et obscur, actif et réceptif — qui se définissent et se contiennent l'un l'autre.`, way:`Voir la polarité comme une alliance : les contraires ne se font pas la guerre, ils s'engendrent mutuellement.`},
+    {name:`Le Karma`, who:`Pensée védique et upanishadique`, year:`~800 av. J.-C.`, idea:`Chaque action plante une graine dont le fruit revient à celui qui a agi, à travers le temps.`, way:`Traiter chaque acte comme une cause dont on héritera un jour.`},
+    {name:`Wu wei — l'action sans effort`, who:`Lao Tseu`, year:`~VIe s. av. J.-C.`, idea:`Le plus haut savoir-faire consiste à agir dans le sens des choses plutôt qu'à les forcer.`, way:`Accomplir davantage en épousant le flux d'un système qu'en le combattant.`},
+    {name:`Le Logos`, who:`Héraclite`, year:`~500 av. J.-C.`, idea:`Sous le changement incessant court un ordre rationnel unique ; « tout s'écoule ».`, way:`Chercher la loi qui persiste sous le flux.`},
+    {name:`La Rectification des noms`, who:`Confucius`, year:`~500 av. J.-C.`, idea:`Si les noms ne correspondent pas à la réalité, le langage échoue et la société se défait ; corrigez les mots pour corriger le monde.`, way:`Réparer un système en rendant d'abord son langage honnête.`},
+    {name:`Le Ren et la réciprocité`, who:`Confucius`, year:`~500 av. J.-C.`, idea:`« N'impose pas à autrui ce que tu ne souhaites pas pour toi-même » — l'humanité comme lien social.`, way:`Faire de la réciprocité le critère de l'action juste.`},
+    {name:`L'Atomisme`, who:`Démocrite et Leucippe`, year:`~430 av. J.-C.`, idea:`Tout ce qui existe n'est qu'atomes indivisibles se mouvant dans le vide.`, way:`Expliquer les touts complexes par l'agencement de parties simples.`},
+    {name:`Les Paradoxes de Zénon`, who:`Zénon d'Élée`, year:`~450 av. J.-C.`, idea:`Des flèches qui n'arrivent jamais et des coureurs qui ne finissent jamais révèlent des fissures cachées dans nos notions de mouvement et d'infini.`, way:`Éprouver un concept en le poussant jusqu'au paradoxe.`},
+    {name:`La Méthode socratique`, who:`Socrate`, year:`~430 av. J.-C.`, idea:`On approche la vérité par un questionnement acharné qui expose les contradictions de ce que l'on croit savoir.`, way:`Interroger une affirmation jusqu'à faire surgir ses présupposés cachés.`},
+    {name:`La Vie examinée`, who:`Socrate`, year:`~430 av. J.-C.`, idea:`« Une vie sans examen ne vaut pas d'être vécue » — l'examen de soi est un devoir, non un luxe.`, way:`Prendre l'habitude constante de retourner la question contre soi.`},
+    {name:`La Théorie des Formes`, who:`Platon`, year:`~380 av. J.-C.`, idea:`Derrière les particuliers imparfaits se tiennent des idéaux parfaits et immuables qu'ils imitent.`, way:`Regarder au-delà des instances vers le modèle qu'elles partagent.`},
+    {name:`Les Quatre Causes`, who:`Aristote`, year:`~350 av. J.-C.`, idea:`Pour expliquer quoi que ce soit, interrogez sa matière, sa forme, son artisan et sa finalité.`, way:`Expliquer une chose en demandant « pourquoi » en plusieurs sens à la fois.`},
+    {name:`Le Juste Milieu`, who:`Aristote`, year:`~350 av. J.-C.`, idea:`La vertu habite entre deux vices — le courage entre la lâcheté et la témérité.`, way:`Trouver l'excellence qui se tient entre des excès opposés.`},
+    {name:`L'Eudémonie`, who:`Aristote`, year:`~350 av. J.-C.`, idea:`La vie bonne n'est pas le plaisir mais l'épanouissement — la pleine activité d'une vie bien menée.`, way:`Juger une vie à son activité et à son caractère, non à ses humeurs passagères.`},
+    {name:`La Coproduction conditionnée`, who:`Bouddhisme ancien`, year:`~450 av. J.-C.`, idea:`Rien n'existe par soi ; tout surgit d'un réseau de conditions.`, way:`Retracer les conditions d'une chose, non son essence isolée.`},
+    {name:`L'Impermanence (anicca)`, who:`Bouddhisme ancien`, year:`~450 av. J.-C.`, idea:`Tout ce qui naît passe aussi ; s'accrocher au fixe est la racine de la souffrance.`, way:`Tenir les choses d'une main légère ; attendre et accueillir le changement.`},
+    {name:`La Voie du milieu`, who:`Le Bouddha`, year:`~450 av. J.-C.`, idea:`La sagesse évite tant la complaisance que la privation sévère, cheminant entre les extrêmes.`, way:`Refuser le faux choix entre l'avidité et la mortification.`},
+    {name:`Le Scepticisme pyrrhonien`, who:`Pyrrhon et Sextus`, year:`~300 av. J.-C.`, idea:`Là où les preuves s'équilibrent, suspendez tout jugement ferme — et la tranquillité s'ensuit.`, way:`Refuser la certitude par discipline, non par défaite.`},
+    {name:`La Dichotomie du contrôle`, who:`Épictète et les stoïciens`, year:`~100 apr. J.-C.`, idea:`Certaines choses dépendent de nous et d'autres non ; la paix tient à savoir où passe la ligne.`, way:`Ne dépenser son effort que là où l'on a réellement prise.`},
+    {name:`Memento mori`, who:`Stoïciens romains`, year:`~100 apr. J.-C.`, idea:`Gardez la mort en vue et le futile perd son emprise sur vous.`, way:`Se servir de la mortalité comme d'un prisme pour trier ce qui compte vraiment.`},
+    {name:`L'Algorithme`, who:`Al-Khwârizmî`, year:`~820`, idea:`Les problèmes peuvent se résoudre par une suite fixe d'étapes mécaniques — et l'algèbre naît ainsi.`, way:`Transformer un problème difficile en une procédure répétable.`},
+    {name:`L'Optique expérimentale`, who:`Ibn al-Haytham`, year:`~1020`, idea:`Les affirmations sur la lumière doivent être tranchées par l'expérience contrôlée, non par l'autorité.`, way:`Laisser un test conçu, et non un texte, décider de ce qui est vrai.`},
+    {name:`La Théologie négative`, who:`Maïmonide`, year:`~1190`, idea:`On ne peut approcher l'infini qu'en disant ce qu'il n'est pas.`, way:`Définir l'insaisissable par la négation quand les termes positifs font défaut.`},
+    {name:`Les Cinq Voies`, who:`Thomas d'Aquin`, year:`~1270`, idea:`Le mouvement et l'ordre que nous observons peuvent, par le raisonnement, être reconduits à une cause première.`, way:`Raisonner de la structure du monde vers ses fondements.`},
+    {name:`Le Rasoir d'Ockham`, who:`Guillaume d'Ockham`, year:`~1320`, idea:`Parmi les explications qui conviennent, préférez celle qui suppose le moins.`, way:`Retrancher tout présupposé dont une théorie n'a pas besoin.`},
+    {name:`L'Assabiya — la cohésion sociale`, who:`Ibn Khaldoun`, year:`1377`, idea:`La solidarité de groupe est le moteur caché de l'histoire : elle hisse un peuple au pouvoir, puis se corrompt dans le confort qu'elle a conquis jusqu'à ce qu'un groupe plus soudé le supplante.`, way:`Guetter la montée et la chute de la solidarité collective sous les événements politiques.`},
+    {name:`L'Héliocentrisme`, who:`Nicolas Copernic`, year:`1543`, idea:`La Terre n'est pas le centre ; elle et les planètes tournent autour du Soleil.`, way:`Accepter de se retirer soi-même du centre du tableau.`},
+    {name:`L'Observation avant l'autorité`, who:`Galilée`, year:`1610`, idea:`Ce que montre la lunette l'emporte sur ce que dit le canon.`, way:`Laisser l'instrument prévaloir sur le texte hérité.`},
+    {name:`La Méthode inductive`, who:`Francis Bacon`, year:`1620`, idea:`Le savoir se construit de bas en haut, à partir d'observations patientes et systématiques.`, way:`Assembler des lois générales à partir de particuliers soigneusement recueillis.`},
+    {name:`Le Cogito`, who:`René Descartes`, year:`1637`, idea:`Doutez de tout ce que vous pouvez ; la seule chose qui reste — que vous doutez — devient le socle.`, way:`Rebâtir le savoir sur un fondement qui ne peut être mis en doute.`},
+    {name:`Le Contrat social`, who:`Thomas Hobbes`, year:`1651`, idea:`Le pouvoir légitime repose sur un accord tacite pour échapper à la guerre de tous contre tous.`, way:`Justifier une institution par l'accord qui la fonderait.`},
+    {name:`La Tabula rasa`, who:`John Locke`, year:`1689`, idea:`L'esprit débute vierge et se laisse écrire par l'expérience.`, way:`Reconduire chaque idée à l'expérience qui l'a semée.`},
+    {name:`La Gravitation universelle`, who:`Isaac Newton`, year:`1687`, idea:`Une seule loi lie la chute d'une pomme et l'orbite de la Lune.`, way:`Chercher la règle unique qui unifie des phénomènes séparés.`},
+    {name:`La Séparation des pouvoirs`, who:`Montesquieu`, year:`1748`, idea:`La liberté ne survit que lorsque le pouvoir est divisé de sorte que chaque partie contienne les autres.`, way:`Bâtir un système dont les parties se retiennent l'une l'autre par conception.`},
+    {name:`La Volonté générale`, who:`Jean-Jacques Rousseau`, year:`1762`, idea:`La légitimité découle du bien commun, qui est plus que la somme des désirs privés.`, way:`Distinguer l'intérêt partagé du simple décompte des désirs.`},
+    {name:`L'Inférence bayésienne`, who:`Thomas Bayes et Laplace`, year:`1763`, idea:`La croyance est une probabilité, à réviser en proportion exacte des preuves nouvelles.`, way:`Tenir ses croyances comme des cotes et les mettre à jour à mesure que les preuves arrivent.`},
+    {name:`La Main invisible`, who:`Adam Smith`, year:`1776`, idea:`Des individus poursuivant leur gain privé peuvent, par les marchés, produire un ordre que personne n'a voulu.`, way:`Chercher l'ordre qui émerge sans concepteur.`},
+    {name:`Sapere aude`, who:`Emmanuel Kant`, year:`1784`, idea:`« Ose savoir » : la maturité, c'est oser se servir de sa propre raison sans tuteur.`, way:`Revendiquer le droit — et le devoir — de penser par soi-même.`},
+    {name:`L'Impératif catégorique`, who:`Emmanuel Kant`, year:`1785`, idea:`N'agissez que selon une règle dont vous pourriez vouloir qu'elle vaille pour tous.`, way:`Éprouver une action en l'imaginant érigée en loi universelle.`},
+    {name:`L'Utilitarisme`, who:`Bentham et J. S. Mill`, year:`1789`, idea:`L'action juste produit le plus grand bien pour le plus grand nombre — plaisir et peine, sommés sur tous à égalité.`, way:`Peser les actions à la somme de leurs conséquences, chacun comptant pour un.`},
+    {name:`La Dialectique`, who:`G. W. F. Hegel`, year:`1807`, idea:`Les idées progressent en engendrant leurs propres contraires puis en se résolvant en un tout plus riche.`, way:`Laisser une thèse se heurter à sa négation pour en atteindre une meilleure.`},
+    {name:`L'Avantage comparatif`, who:`David Ricardo`, year:`1817`, idea:`Deux parties gagnent toutes deux à l'échange, même quand l'une est meilleure en tout.`, way:`Raisonner en coûts relatifs, non en capacité absolue.`},
+    {name:`Inverser, toujours inverser`, who:`Carl Jacobi`, year:`1840`, idea:`Bien des problèmes qui résistent à l'attaque frontale se dissolvent quand on les prend à rebours.`, way:`Résoudre pour l'échec que l'on veut éviter, puis s'en écarter.`},
+    {name:`La Machine universelle`, who:`Ada Lovelace`, year:`1843`, idea:`Une machine qui applique des règles à des symboles ne s'arrête pas aux nombres — tout ce qui peut être encodé, la musique comprise, elle pourrait en principe le composer.`, way:`Se demander ce qu'un mécanisme pourrait faire d'autre si ses entrées étaient réencodées ; une opération peut être générale même quand son usage actuel est étroit.`},
+    {name:`Le Matérialisme historique`, who:`Karl Marx`, year:`1848`, idea:`L'histoire est mue par des forces matérielles et économiques sous ses idées et ses idéaux.`, way:`Suivre les intérêts matériels sous les croyances affichées.`},
+    {name:`La Sélection naturelle`, who:`Charles Darwin`, year:`1859`, idea:`Variation plus sélection, répétées dans le temps, produisent du dessein sans dessinateur.`, way:`Expliquer la complexité comme le résidu d'une sélection cumulative.`},
+    {name:`Le Marginalisme`, who:`Jevons, Menger et Walras`, year:`1871`, idea:`La valeur et le choix se décident à la marge — par l'unité suivante, non par le tout.`, way:`Décider par l'incrément suivant, non par la moyenne.`},
+    {name:`L'Éternel Retour`, who:`Friedrich Nietzsche`, year:`1882`, idea:`Vis comme si tu devais revivre cette vie exacte, sans fin.`, way:`Se servir d'une expérience de pensée comme d'une épreuve pour savoir comment vivre.`},
+    {name:`La Volonté de puissance`, who:`Friedrich Nietzsche`, year:`1883`, idea:`Les valeurs héritées sont des créations humaines ; demande quelle force elles servent.`, way:`Devant une valeur qu'on vous tend, demander qui l'a faite et à qui elle profite.`},
+    {name:`Le Principe de Pareto`, who:`Vilfredo Pareto · Joseph Juran`, year:`1896`, idea:`Une petite part des causes tend à produire l'essentiel des effets — Pareto a trouvé la distribution ; Juran en a fait une règle de travail.`, way:`Traquer le petit nombre vital d'entrées derrière la multitude des sorties.`},
+    {name:`L'Inconscient`, who:`Sigmund Freud`, year:`1900`, idea:`Une grande part de ce qui nous meut court sous la surface de la conscience.`, way:`Chercher sous les raisons affichées celles qui restent cachées.`},
+    {name:`La Phénoménologie`, who:`Edmund Husserl`, year:`1900`, idea:`Mettez les théories de côté et décrivez l'expérience exactement telle qu'elle se présente.`, way:`Mettre entre parenthèses ses présupposés et s'attacher à la chose telle qu'elle est donnée.`},
+    {name:`La Relativité`, who:`Albert Einstein`, year:`1905`, idea:`L'espace et le temps ne sont pas absolus ; les mesures dépendent du référentiel de mouvement de l'observateur.`, way:`Abandonner le point de vue privilégié ; toujours préciser son référentiel.`},
+    {name:`Le Pragmatisme`, who:`Peirce, James et Dewey`, year:`1907`, idea:`Le sens et la vérité d'une idée résident dans ses conséquences pratiques.`, way:`Juger une croyance à la différence qu'elle fait dans la pratique.`},
+    {name:`Le Coût d'opportunité`, who:`Friedrich von Wieser`, year:`1914`, idea:`Le coût réel d'un choix n'est pas son prix mais la valeur de la meilleure option à laquelle vous avez renoncé pour le faire.`, way:`Chiffrer chaque choix à ce qu'il exclut, non seulement à ce qu'il consomme.`},
+    {name:`Le Signe`, who:`Ferdinand de Saussure`, year:`1916`, idea:`Un signe lie une image acoustique à un concept par pure convention ; le sens naît des différences au sein du système entier, non des choses elles-mêmes.`, way:`Lire le sens comme une position dans un réseau de contrastes, non comme une étiquette sur le monde.`},
+    {name:`Symétrie et conservation`, who:`Emmy Noether`, year:`1918`, idea:`À toute symétrie continue d'un système correspond une grandeur conservée — invariance et loi de conservation sont deux faces d'une même vérité.`, way:`Traquer ce qui reste fixe sous le changement ; l'invariant est là où se cache la loi.`},
+    {name:`Les Archétypes`, who:`Carl Jung`, year:`1919`, idea:`Des motifs symboliques partagés affleurent à travers les mythes, les rêves et les cultures.`, way:`Lire les symboles récurrents comme les indices d'une structure commune.`},
+    {name:`Le Principe d'incertitude`, who:`Werner Heisenberg`, year:`1927`, idea:`Certaines paires de propriétés ne peuvent être connues précisément toutes deux à la fois.`, way:`Accepter des limites et des arbitrages stricts dans ce qui peut être connu.`},
+    {name:`La Complémentarité`, who:`Niels Bohr`, year:`1928`, idea:`La lumière est onde et particule — des modèles qui s'excluent et qu'il faut pourtant tous deux.`, way:`Tenir ensemble des modèles incompatibles quand chacun saisit une part de la vérité.`},
+    {name:`L'Incomplétude`, who:`Kurt Gödel`, year:`1931`, idea:`Tout système assez riche pour l'arithmétique renferme des vérités qu'il ne peut prouver.`, way:`S'attendre à ce que tout système formel ait un au-delà qu'il ne peut atteindre.`},
+    {name:`La Carte n'est pas le territoire`, who:`Alfred Korzybski`, year:`1933`, idea:`Un modèle est une abstraction utile, jamais la réalité qu'il représente.`, way:`Ne jamais confondre son modèle avec le monde qu'il décrit.`},
+    {name:`La Falsifiabilité`, who:`Karl Popper`, year:`1934`, idea:`Une affirmation n'est scientifique que si elle pourrait, en principe, être démentie.`, way:`Chercher le test qui vous réfuterait, non celui qui vous flatte.`},
+    {name:`La Destruction créatrice`, who:`Joseph Schumpeter`, year:`1942`, idea:`L'innovation renouvelle une économie en démantelant les structures qu'elle a dépassées.`, way:`Voir la disruption comme le mécanisme du renouvellement, non comme une simple perte.`},
+    {name:`La Liberté existentielle`, who:`Sartre et Kierkegaard`, year:`1943`, idea:`L'existence précède l'essence ; nous sommes « condamnés à être libres » et à choisir notre sens.`, way:`Assumer ses choix comme pleinement les siens, sans alibi.`},
+    {name:`La Théorie de l'information`, who:`Claude Shannon`, year:`1948`, idea:`L'information est la réduction de l'incertitude, mesurable en bits.`, way:`Quantifier un message par la quantité de surprise qu'il dissipe.`},
+    {name:`La Cybernétique`, who:`Norbert Wiener`, year:`1948`, idea:`Machines et organismes se pilotent pareillement en réinjectant leur sortie comme entrée.`, way:`Penser en boucles de rétroaction, non en causes à sens unique.`},
+    {name:`La Construction sociale`, who:`Simone de Beauvoir`, year:`1949`, idea:`« On ne naît pas femme, on le devient » — une grande part de ce qu'une société dit naturel est en fait façonné par l'histoire, le rôle et l'attente.`, way:`Demander quels faits « naturels » sont en réalité construits — puis demander qui l'histoire sert.`},
+    {name:`L'Équilibre de Nash`, who:`John Nash`, year:`1950`, idea:`Dans les jeux stratégiques, les joueurs se fixent là où nul ne peut gagner en changeant seul.`, way:`Raisonner sur les autres en train de raisonner sur vous.`},
+    {name:`Le Dilemme du prisonnier`, who:`Flood, Dresher et Tucker`, year:`1950`, idea:`Des choix individuellement rationnels peuvent laisser tout le monde collectivement plus mal loti.`, way:`Repérer où les incitations privées trahissent le bien commun.`},
+    {name:`Les Jeux de langage`, who:`Ludwig Wittgenstein`, year:`1953`, idea:`Le sens d'un mot n'est pas une chose qu'il désigne mais le rôle qu'il joue dans une forme de vie — le sens, c'est l'usage.`, way:`Cesser de demander ce qu'un mot signifie ; observer comment il s'emploie dans le jeu qui se joue.`},
+    {name:`La Rationalité limitée`, who:`Herbert Simon`, year:`1955`, idea:`Les esprits réels n'optimisent pas ; ils « satisfont » dans les limites du temps et de l'information.`, way:`Concevoir pour des esprits limités, non pour des esprits idéalisés.`},
+    {name:`Les Changements de paradigme`, who:`Thomas Kuhn`, year:`1962`, idea:`La science change moins par accumulation que par des révolutions qui remplacent des cadres entiers.`, way:`Surveiller le cadre, non seulement les faits qu'il contient.`},
+    {name:`La Banalité du mal`, who:`Hannah Arendt`, year:`1963`, idea:`Le grand mal peut être administré par des gens ordinaires qui cessent simplement de penser — des carriéristes suivant la procédure, non des monstres poursuivant la malveillance.`, way:`Ne jamais laisser un rôle penser à votre place ; juger les ordres comme si juger était votre métier.`},
+    {name:`Ubuntu — je suis parce que nous sommes`, who:`Philosophie bantoue nguni · John Mbiti`, year:`1969`, idea:`« Umuntu ngumuntu ngabantu » — une personne est une personne à travers d'autres personnes. Longtemps portée par la tradition orale d'Afrique australe, l'idée tient que le soi n'est pas une propriété privée mais une relation, faite et refaite dans la communauté.`, way:`Situer le soi dans ses relations : je suis parce que nous sommes.`},
+    {name:`Le Voile d'ignorance`, who:`John Rawls`, year:`1971`, idea:`Choisissez les règles de la société comme si vous ignoriez quelle personne vous seriez.`, way:`Écarter l'intérêt personnel pour trouver ce qui est juste.`},
+    {name:`L'Émergence — plus, c'est autre chose`, who:`Philip Anderson`, year:`1972`, idea:`Assemblez assez de parties simples et des lois entièrement nouvelles apparaissent au niveau supérieur.`, way:`Le comportement intéressant loge souvent un niveau au-dessus de ses parties.`},
+    {name:`Les Biais cognitifs`, who:`Kahneman et Tversky`, year:`1974`, idea:`L'intuition fonctionne sur des heuristiques rapides qui déraillent de façons prévisibles.`, way:`Se méfier du jugement rapide précisément là où l'on sait que le biais se tapit.`},
+    {name:`La Mémétique`, who:`Richard Dawkins`, year:`1976`, idea:`Les gènes — et les idées — se comportent comme des réplicateurs en concurrence pour être copiés.`, way:`Traiter les idées comme des réplicateurs qui évoluent et se propagent.`},
+    {name:`Les Effets de réseau`, who:`Robert Metcalfe`, year:`1980`, idea:`La valeur d'un réseau croît comme le carré du nombre de personnes qui y sont reliées.`, way:`Estimer les choses par leurs connexions, non par leurs unités.`},
+    {name:`L'Épistémologie du point de vue`, who:`Nancy Hartsock et Sandra Harding`, year:`1983`, idea:`Le savoir se fait depuis quelque part. Ceux qui sont aux marges d'un système sont souvent placés pour en voir des vérités que ses bénéficiaires manquent structurellement.`, way:`Traiter votre point de vue comme une donnée : demandez ce qu'il cache, et qui voit ce que vous ne voyez pas.`},
+    {name:`Gouverner les communs`, who:`Elinor Ostrom`, year:`1990`, idea:`Les ressources partagées ne s'effondrent pas fatalement sous l'avidité privée ; des communautés forgent maintes fois leurs propres règles durables pour les entretenir, sans marché ni État.`, way:`Entre « privatisons-le » et « laissons l'État le gérer » se tient une troisième voie : que les usagers le gouvernent.`},
+    {name:`Le Possible adjacent`, who:`Stuart Kauffman`, year:`2000`, idea:`À chaque instant, seuls les états voisins de ce qui existe peuvent advenir ensuite.`, way:`Atteindre l'avenir un pas accessible à la fois.`},
+    {name:`Le Cygne noir`, who:`Nassim Taleb`, year:`2007`, idea:`Des événements rares, imprévus et à fort impact façonnent l'histoire plus que l'ordinaire.`, way:`Planifier autour des extrêmes, non de la moyenne.`},
+    {name:`L'Antifragilité`, who:`Nassim Taleb`, year:`2012`, idea:`Certaines choses ne se contentent pas de survivre au désordre — elles s'améliorent grâce à lui.`, way:`Rechercher les expositions qui gagnent à la volatilité plutôt que de la craindre.`},
+  ],
+  modes:[
+    {name:`Les Premiers Principes`, body:`Ramenez un problème à ce qui doit être vrai, puis reconstruisez à partir de là. Fiez-vous au fondement, non à l'héritage.`},
+    {name:`L'Inversion`, body:`Ne demandez pas comment gagner — demandez comment vous vous garantiriez une défaite, puis évitez-la. Les problèmes se lisent souvent plus aisément à rebours.`},
+    {name:`La Dialectique`, body:`Opposez une thèse à son contraire et laissez la collision livrer un meilleur tiers. Le progrès est une dispute avec soi-même.`},
+    {name:`L'Analogie`, body:`Transportez la forme d'un problème résolu dans un problème qui ne l'est pas. La plupart des idées neuves sont d'anciennes idées dans un domaine nouveau.`},
+    {name:`Systèmes et rétroaction`, body:`Cherchez les boucles, les stocks et les délais, non les causes uniques. Dans un système, on ne peut jamais faire une seule chose à la fois.`},
+    {name:`Le Probabiliste`, body:`Tenez vos croyances pour des paris, non pour des faits. Attribuez des cotes, puis déplacez-les à mesure que les preuves tombent.`},
+    {name:`L'Évolutionnaire`, body:`Varier, sélectionner, répéter. Le dessein peut naître sans dessinateur si l'on autorise les bonnes intuitions à survivre aux mauvaises.`},
+    {name:`La Voie négative`, body:`S'améliorer par le retrait. Ce qu'il faut cesser, éviter et supprimer est souvent un savoir plus sûr que ce qu'il faut ajouter.`},
+    {name:`L'Émergence`, body:`Observez des parties simples produire un comportement qu'aucune ne contient. Le niveau intéressant est rarement le plus bas.`},
+  ],
+  synth:[
+    {name:`Le Stoïcisme bayésien`, body:`Traitez « ce qui dépend de moi » non comme une ligne fixe mais comme une probabilité que vous ré-estimez à mesure que les preuves arrivent. Investissez votre effort en proportion de votre estimation actuelle de contrôle, et que le calme vienne de la révision des cotes plutôt que de la prétention à une frontière nette.`},
+    {name:`Le Thermostat de la vertu`, body:`Le milieu entre deux vices n'est pas un point mort médian mais une consigne maintenue par rétroaction — le courage qui dérive vers la témérité est ramené par ses propres conséquences. Plus fortement la cible est perturbée, plus vivement le système la retrouve, si bien que l'équilibre et la boucle correctrice font tous deux un travail réel.`},
+    {name:`Le Soi falsifiable`, body:`Menez votre image de vous-même comme une théorie scientifique. Vivez de manière à pouvoir démentir le récit que vous faites de vous, et cherchez délibérément les expériences les plus susceptibles de le réfuter. Une identité qu'on ne peut falsifier n'est pas connue — elle est défendue.`},
+    {name:`La Rétroaction karmique`, body:`Vos actions sont des sorties qui rentrent dans le système comme entrées — les normes que vous incarnez, les réputations que vous accumulez, les réactions que vous provoquez — et bouclent en retour pour façonner le monde où vous agirez ensuite. Le « retour des choses » n'est pas une comptabilité cosmique mais une boucle de rétroaction fermée : ce retour même que la simple diffusion ne peut livrer.`},
+    {name:`Le Maximin marginal`, body:`Dépensez chaque unité d'aide supplémentaire là où vous la voudriez si vous ne saviez pas encore dans quelle vie vous vous réveilleriez — c'est-à-dire presque toujours chez les plus démunis, car c'est là qu'une unité marginale achète le plus de soulagement. Le « plus grand bien » se précise : le bien pour lequel vous vous assureriez vous-même avant la loterie de la naissance.`},
+    {name:`La Vie bonne adjacente`, body:`L'épanouissement n'est pas un idéal lointain mais la meilleure version de vous-même qui se tient à un pas accessible. Cessez d'optimiser pour la vie parfaite ; itérez vers la meilleure la plus proche, puis tenez-vous-y et regardez de nouveau.`},
+    {name:`La Cartographie inverse`, body:`Avant de vous fier à un modèle, cartographiez toutes les façons dont il a tort. Tracez d'abord ses angles morts — les régions où la carte et le terrain divergent — et naviguez à cette carte des erreurs autant qu'au modèle lui-même.`},
+    {name:`L'Éthique de la complémentarité`, body:`Certaines vérités morales se comportent comme l'onde et la particule : la justice et la miséricorde ne peuvent être pleinement mesurées en même temps, et pourtant toutes deux sont réelles. Toute tension n'appelle pas une synthèse — certaines sont faites pour être tenues comme complémentaires, alternées selon le contexte.`},
+    {name:`Le Geste de la nuée`, body:`L'action sans effort ne consiste pas à piloter le système — mais à régler la simple règle locale qui lui permet de s'organiser lui-même. On ne mène pas la nuée à la baguette ; on fixe l'espacement qui la fait s'assembler en nuée : le moins d'intervention au niveau de la règle, le plus d'ordre au niveau du tout.`},
+    {name:`Le Memento soudain`, body:`Ne vous souvenez pas seulement que vous mourrez — souvenez-vous que ce pourrait être un événement de queue : soudain, non programmé, hors du modèle. Que la queue épaisse de la mortalité, et non sa moyenne confortable, décide de ce que vous faites d'aujourd'hui.`},
+    {name:`Le Voile du réseau`, body:`Concevez les institutions comme si vous ne saviez pas quel nœud vous occuperiez — moyeu ou périphérie, tôt ou tard, connecté ou isolé. L'équité devrait être robuste à votre position dans le graphe, et non à votre seule identité.`},
+    {name:`Le Doute récursif`, body:`Tout modèle renferme des vérités qu'il ne peut prouver de l'intérieur. Gardez donc un deuxième modèle dont le seul rôle est de trouver les angles morts du premier — et un troisième pour le deuxième. Le doute, structuré en pile plutôt qu'en humeur.`},
+    {name:`La Parcimonie par niveaux`, body:`Retranchez les hypothèses sans pitié — mais au bon niveau. Le compte rendu vrai le plus simple d'une nuée, ce sont trois règles de vol groupé, non un milliard d'équations de plumes ; réduit davantage, l'explication n'est pas plus légère, elle porte sur autre chose. La parcimonie est relative au niveau : le moins d'hypothèses possible à l'altitude où le comportement se joue réellement.`},
+    {name:`L'Esprit constitutionnel`, body:`Si le jugement est biaisé de façon prévisible, ne vous gouvernez pas en monarque. Divisez les pouvoirs de votre esprit : que des règles posées à froid légifèrent, que les choix de l'instant exécutent, et que des revues programmées jugent — chacun pouvant contrôler les autres. On ne peut débiaiser le roi, mais on peut lui refuser le pouvoir absolu.`},
+  ],
+  proofs:[
+    {name:`Apollo 11`, year:`1969`, body:`Les navigateurs ont visé trois personnes vers un coin d'espace vide où la Lune se trouverait trois jours plus tard — se fiant entièrement à une seule loi de Newton. L'ordinateur de guidage volait selon le geste d'al-Khwârizmî, les problèmes difficiles réduits à des étapes mécaniques, et pilotait selon celui de Wiener : chaque poussée mesurée, réinjectée, corrigée.`},
+    {name:`La Constitution des États-Unis`, year:`1787`, body:`Les délégués réunis à Philadelphie citaient Montesquieu si souvent que Madison l'appelait « l'oracle ». Le résultat est de la philosophie politique compilée en machinerie fonctionnelle : un contrat social réellement écrit et signé, avec le pouvoir divisé de sorte que l'ambition contienne l'ambition.`},
+    {name:`Le Décryptage d'Enigma`, year:`1941`, body:`Bletchley Park n'a pas mieux deviné le chiffre ; il l'a mieux procéduré. Les bombes de Turing ont mécanisé la recherche, et son Banburismus notait les hypothèses en « bans » — de la mise à jour bayésienne pratiquée quotidiennement en temps de guerre, des décennies avant que la méthode ne devienne respectable. La croyance tenue comme des cotes a aidé à écourter une guerre mondiale.`},
+    {name:`L'Éradication de la variole`, year:`1980`, body:`La maladie qui a tué 300 millions de personnes durant son dernier siècle n'a pas été vaincue en vaccinant tout le monde. Elle l'a été en pensant en réseaux : retracer chaque foyer, vacciner l'anneau de contacts autour de lui, et découper le graphe du virus en îlots jusqu'à ce qu'il n'ait plus nulle part où aller. La seule maladie humaine jamais ramenée à zéro.`},
+    {name:`Le GPS`, year:`1978 →`, body:`Les horloges des satellites avancent d'environ 38 microsecondes par jour, exactement comme le prédit la pensée des référentiels d'Einstein — et, sans correction, votre point bleu dériverait de plusieurs kilomètres par jour. Chaque téléphone qui sait où il se trouve fait tourner la relativité en production, sur les orbites de Newton.`},
+    {name:`Internet`, year:`1969–83`, body:`Shannon a prouvé que tout message pouvait devenir des bits ; la commutation de paquets a laissé ces bits trouver eux-mêmes leur route, sans personne aux commandes. De simples règles locales — stocker, transmettre, réessayer — a émergé un système nerveux à l'échelle de la planète, dont la valeur croissait avec ses connexions, exactement comme l'avaient prédit les penseurs du réseau.`},
+    {name:`La Révolution verte`, year:`1965 →`, body:`Norman Borlaug a fait tourner la boucle de Darwin à dessein : varier le blé, sélectionner les survivants, répéter — faisant la navette de semences entre deux climats mexicains pour doubler le nombre de générations par an. On attribue aux variétés naines qui en sont issues d'avoir épargné à près d'un milliard de personnes la famine.`},
+    {name:`Wikipédia`, year:`2001 →`, body:`« N'importe qui peut modifier » aurait dû tourner à la tragédie des communs. Au lieu de quoi, les bénévoles ont fait évoluer presque exactement les règles qu'Ostrom a trouvées dans les alpages et les villages d'irrigation — des limites claires, des sanctions graduées, une résolution des litiges peu coûteuse — et le plus vaste ouvrage de référence de l'histoire a émergé sans plan.`},
+    {name:`Vérité et réconciliation`, year:`1996`, body:`L'Afrique du Sud a mis fin à l'apartheid sans la guerre civile que presque tout le monde attendait. Sa constitution intérimaire a nommé la manière de penser qui l'a rendu possible — « un besoin d'ubuntu et non de représailles » — échangeant l'amnistie contre la vérité pour acheter un nouveau contrat social.`},
+  ],
+},
+  'de': {
+  label:`Deutsch`,
+  ui:{
+    docTitle:`Das Planetarium der Ideen — Ein Atlas des menschlichen Denkens`,
+    mark:`<b>✦</b> Das Planetarium der Ideen`,
+    navModes:`Denkmodi`, navAtlas:`Der Atlas`, navProof:`Bewährung`, navSynth:`Synthese`, navMap:`Karte ↗`,
+    heroEyebrow:`Ein Atlas des menschlichen Denkens · Antike → Heute`,
+    heroTitle:`Das <span class="ital br-accent">Planetarium</span><br>der Ideen`,
+    heroThesis:`Das wahre Erbe der Menschheit sind nicht ihre Fakten — es sind die <b>Denkweisen</b>, die sie erfand, um sie zu finden. Hier sind die großen, nach Zeitalter und Blickwinkel kartiert und dann gekreuzt, um neue zu schmieden.`,
+    statIdeas:`Kartierte Ideen`, statLenses:`Blickwinkel`, statAges:`Zeitalter`, statSynth:`Neue Synthesen`, statProofs:`Praxisbeweise`,
+    astroAria:`Ein Astrolabium, das die großen Ideen kartiert: Die Ringe sind Zeitalter, von der Antike im Zentrum bis zur Gegenwart am Rand; jeder Punkt ist eine Idee, eingefärbt nach ihrer Kategorie. Mit den Pfeiltasten wechseln Sie zwischen den Ideen, mit der Eingabetaste öffnen Sie eine im Atlas darunter; die Fäden zeigen, worauf eine Idee aufbaut und was sie nährt.`,
+    astroCap:`Innere Ringe Antike · äußere Gegenwart · schweben, tippen oder Pfeiltaste · <span style="color:var(--brass)">Gold = baut auf</span> · <span style="color:var(--lapis)">Blau = nährt</span> · <a href="#" id="open-map-cap" style="color:var(--brass)">ganze Karte ↗</a>`,
+    mfEyebrow:`Die Prämisse`,
+    mfBig:`Ein Fakt ist eine Antwort. Eine Denkweise ist eine Methode, um Antworten hervorzubringen.`,
+    mfBody:`<p>Zivilisationen verlieren ihre Fakten und entdecken sie neu. Was sich über die Jahrhunderte wirklich anhäuft, ist etwas Feineres: das Repertoire kognitiver <em>Denkzüge</em>, die der Mensch erfand, um sich die Dinge zu erschließen — zu zweifeln, zu abstrahieren, umzukehren, zu modellieren, zu aktualisieren, wegzulassen.</p><p>Dieser Atlas versammelt die beständigen, von der bronzezeitlichen Kosmologie bis zur Informationstheorie, und ordnet sie auf zweierlei Weise zugleich: nach dem <span class="pull">Blickwinkel</span>, den sie einem reichen, und nach dem <span class="pull">Zeitalter</span>, das sie hervorbrachte. Eine Handvoll Metamuster — die <a href="#modes" style="color:var(--brass)">Denkmodi</a> — kehren unter ihnen allen wieder.</p><p>Die Ideen stehen hier nicht hinter Glas. Jede Karte zeichnet ihre <span class="pull">Abstammung</span> nach — worauf sie aufbaute, was sie nährte — und eine <a href="#proof" style="color:var(--brass)">Bewährungsprobe</a> verfolgt die großen Denkzüge aus der Bibliothek hinaus in Mondlandungen, Verfassungen und Ausrottungen.</p><p>Dann tut der Atlas, was jeder Denker hier tat: Er <span class="pull">rekombiniert</span>. Der letzte Abschnitt schmiedet neue Ideen, indem er alte kreuzt — denn auch das ist eine Denkweise.</p>`,
+    modesEyebrow:`Das Betriebssystem des Denkens`,
+    modesH2:`Neun Modi, die unter allem wiederkehren`,
+    modesLede:`Nimmt man den großen Ideen ihren Inhalt, bleibt ein kleiner Satz wiederverwendbarer Manöver übrig. Wo die neun <em>Blickwinkel</em> weiter unten die Ideen nach Gegenstand ordnen, schneiden diese neun <em>Modi</em> quer durch sie hindurch. Wer sie beherrscht, besitzt die Maschinen, nicht nur ihre Erzeugnisse.`,
+    atlasEyebrow:`{i} Ideen · {c} Kategorien · {a} Zeitalter`,
+    atlasH2:`Der Atlas`,
+    atlasLede:`Jeder Eintrag verbindet die Idee mit <em>dem Denkzug</em>, den sie lehrt — der übertragbaren Denkweise, die Sie in Ihre eigenen Probleme mitnehmen können. Filtern Sie nach Blickwinkel oder Zeitalter, oder suchen Sie. Die Abstammungslinks auf jeder Karte zeigen, worauf sie <span style="color:var(--brass)">aufbaut</span> und was sie <span style="color:var(--lapis)">nährt</span>.`,
+    lensLabel:`Blickwinkel`, ageLabel:`Zeitalter`, allChip:`Alle`,
+    searchPh:`Ideen, Denker suchen…`, searchAria:`Ideen und Denker durchsuchen`,
+    countTpl:`Zeige <b>{n}</b> / {t}`,
+    noMatch:`Keine Idee entspricht diesem Filter. Versuchen Sie, ihn weiter zu fassen.`,
+    moveLab:`Der Denkzug`, drawsOn:`↖ baut auf`, feedsLab:`↘ nährt`,
+    proofEyebrow:`Ideen treffen auf die Welt`, proofH2:`Die Bewährungsprobe`,
+    proofLede:`Eine Denkweise bewährt sich an dem Tag, an dem sie Materie bewegt — oder Geschichte. Hier sind große Errungenschaften, zurückverfolgt auf die Denkzüge in ihrem Inneren; folgen Sie einem Chip zu der Idee, die er benennt.`,
+    movesInside:`Die Denkzüge darin ↘`,
+    synthEyebrow:`Neue Ideen, aus alten kombiniert`, synthH2:`Das Synthese-Labor`,
+    synthLede:`Der ganze Atlas ist Rohstoff. Kreuzen Sie zwei Denkweisen, und eine dritte erscheint — mal nützlich, mal seltsam. Dies sind die, die bleiben.`,
+    footCloser:`Eine Idee ist ein Werkzeug. Eine Denkweise ist die <span class="br-accent">Werkstatt</span>, die Werkzeuge fertigt — leihen Sie freimütig, kreuzen Sie oft.`,
+    footMeta:`Das Planetarium der Ideen<br>Erbaut aus <a href="#atlas">{i} Ideen</a> · <a href="#proof">{p} Beweisen</a> · <a href="#synthesis">{s} Synthesen</a><br><span style="color:var(--bone-dim)">Denken Sie daran: Die Karte ist nicht das Gebiet — auch diese hier nicht.</span>`,
+    mapTitle:`Das Planetarium der Ideen — Die ganze Karte`,
+    mapSub:`ÜBER EINEN KNOTEN SCHWEBEN, UM SEINE VERBINDUNGEN ZU VERFOLGEN`,
+    legendMode:`Modus → beispielhafte Idee`, legendLineage:`Abstammung: baut auf → nährt`, legendProof:`Idee → Praxisbeweis`,
+    headModes:`NEUN MODI`, headIdeas:`{n} IDEEN · ANTIKE → HEUTE`, headProofs:`{n} BEWEISE`,
+  },
+  eras:[`Altertum`,`Antike`,`Mittelalter`,`Frühe Neuzeit`,`Aufklärung`,`Moderne`,`Gegenwart`],
+  cats:{
+    rl:`Vernunft & Logik`,
+    ks:`Wissen & Wissenschaft`,
+    eth:`Ethik & gutes Leben`,
+    mind:`Geist & Selbst`,
+    soc:`Gesellschaft & Macht`,
+    econ:`Wirtschaft & Tausch`,
+    sys:`Systeme & Komplexität`,
+    real:`Wirklichkeit & Kosmos`,
+    lang:`Sprache & Bedeutung`,
+  },
+  ideas:[
+    {name:`Yin–Yang-Komplementarität`, who:`Chinesische Kosmologie`, year:`~900 v. Chr.`, idea:`Die Wirklichkeit ist aus paarigen Gegensätzen gewoben — hell und dunkel, aktiv und empfangend —, die einander bestimmen und enthalten.`, way:`Polarität als Partnerschaft begreifen: Gegensätze bekriegen sich nicht, sie erzeugen einander.`},
+    {name:`Karma`, who:`Vedisches & upanishadisches Denken`, year:`~800 v. Chr.`, idea:`Jede Handlung pflanzt einen Samen, dessen Frucht mit der Zeit zum Handelnden zurückkehrt.`, way:`Jede Tat als Ursache behandeln, die man dereinst selbst erbt.`},
+    {name:`Wu Wei — Müheloses Handeln`, who:`Laotse`, year:`~6. Jh. v. Chr.`, idea:`Die höchste Kunst ist, mit der Maserung der Dinge zu handeln, statt sie zu erzwingen.`, way:`Mehr erreichen, indem man sich dem Fluss eines Systems anschmiegt, statt ihn zu bekämpfen.`},
+    {name:`Der Logos`, who:`Heraklit`, year:`~500 v. Chr.`, idea:`Unter dem unaufhörlichen Wandel läuft eine einzige vernünftige Ordnung; „alles fließt“.`, way:`Nach dem Gesetz suchen, das unter dem Fluss fortbesteht.`},
+    {name:`Die Richtigstellung der Namen`, who:`Konfuzius`, year:`~500 v. Chr.`, idea:`Passen die Namen nicht zur Wirklichkeit, versagt die Sprache und die Gesellschaft löst sich auf; ordne die Worte, um die Welt zu ordnen.`, way:`Ein System reparieren, indem man zuerst seine Sprache ehrlich macht.`},
+    {name:`Ren & Gegenseitigkeit`, who:`Konfuzius`, year:`~500 v. Chr.`, idea:`„Was du dir selbst nicht wünschst, das füge auch anderen nicht zu“ — Menschlichkeit als soziales Band.`, way:`Gegenseitigkeit zum Prüfstein des rechten Handelns machen.`},
+    {name:`Atomismus`, who:`Demokrit & Leukipp`, year:`~430 v. Chr.`, idea:`Alles, was existiert, sind unteilbare Atome, die sich im leeren Raum bewegen.`, way:`Komplexe Ganze aus der Anordnung einfacher Teile erklären.`},
+    {name:`Zenons Paradoxien`, who:`Zenon von Elea`, year:`~450 v. Chr.`, idea:`Pfeile, die nie ankommen, und Läufer, die nie ans Ziel gelangen, legen verborgene Risse in unseren Begriffen von Bewegung und Unendlichkeit bloß.`, way:`Einen Begriff auf die Probe stellen, indem man ihn bis zum Paradox treibt.`},
+    {name:`Die sokratische Methode`, who:`Sokrates`, year:`~430 v. Chr.`, idea:`Der Wahrheit nähert man sich durch unerbittliches Fragen, das die Widersprüche in unserem vermeintlichen Wissen aufdeckt.`, way:`Eine Behauptung befragen, bis ihre verborgenen Annahmen zutage treten.`},
+    {name:`Das geprüfte Leben`, who:`Sokrates`, year:`~430 v. Chr.`, idea:`„Das ungeprüfte Leben ist nicht lebenswert“ — Selbstprüfung ist Pflicht, nicht Luxus.`, way:`Die Frage auf sich selbst zu richten, zur stehenden Gewohnheit machen.`},
+    {name:`Ideenlehre`, who:`Platon`, year:`~380 v. Chr.`, idea:`Hinter den unvollkommenen Einzeldingen liegen vollkommene, unwandelbare Urbilder, die sie nachahmen.`, way:`Über die Einzelfälle hinweg auf das Muster blicken, das sie teilen.`},
+    {name:`Die vier Ursachen`, who:`Aristoteles`, year:`~350 v. Chr.`, idea:`Um irgendetwas zu erklären, frage nach seinem Stoff, seiner Form, seinem Urheber und seinem Zweck.`, way:`Eine Sache erklären, indem man das „Warum“ in mehreren Bedeutungen zugleich stellt.`},
+    {name:`Die goldene Mitte`, who:`Aristoteles`, year:`~350 v. Chr.`, idea:`Die Tugend wohnt zwischen zwei Lastern — Mut zwischen Feigheit und Tollkühnheit.`, way:`Die Vortrefflichkeit finden, die zwischen entgegengesetzten Übermaßen liegt.`},
+    {name:`Eudaimonia`, who:`Aristoteles`, year:`~350 v. Chr.`, idea:`Das gute Leben ist nicht Lust, sondern Gedeihen — die volle Tätigkeit eines gut gelebten Lebens.`, way:`Ein Leben an seiner Tätigkeit und seinem Charakter messen, nicht an seinen flüchtigen Stimmungen.`},
+    {name:`Bedingtes Entstehen`, who:`Früher Buddhismus`, year:`~450 v. Chr.`, idea:`Nichts existiert aus sich selbst; alles entsteht durch ein Geflecht von Bedingungen.`, way:`Die Bedingungen einer Sache verfolgen, nicht ihr Wesen für sich allein.`},
+    {name:`Vergänglichkeit (Anicca)`, who:`Früher Buddhismus`, year:`~450 v. Chr.`, idea:`Alles, was entsteht, vergeht auch; das Festhalten am Festen ist die Wurzel des Leidens.`, way:`Die Dinge locker halten; Wandel erwarten und zulassen.`},
+    {name:`Der mittlere Weg`, who:`Der Buddha`, year:`~450 v. Chr.`, idea:`Weisheit meidet sowohl den Genuss als auch die harte Entsagung und wandelt zwischen den Extremen.`, way:`Die falsche Wahl zwischen Begierde und Selbstkasteiung zurückweisen.`},
+    {name:`Pyrrhonische Skepsis`, who:`Pyrrhon & Sextus`, year:`~300 v. Chr.`, idea:`Wo die Belege sich die Waage halten, halte das feste Urteil zurück — und Gelassenheit folgt.`, way:`Gewissheit als Disziplin zurückhalten, nicht als Versagen.`},
+    {name:`Die Dichotomie der Kontrolle`, who:`Epiktet & die Stoiker`, year:`~100 n. Chr.`, idea:`Manches liegt in unserer Macht und manches nicht; der Friede liegt darin, die Grenze zu kennen.`, way:`Mühe nur dort aufwenden, wo man tatsächlich Einfluss hat.`},
+    {name:`Memento mori`, who:`Römische Stoiker`, year:`~100 n. Chr.`, idea:`Behalte den Tod im Blick, und das Belanglose verliert seinen Griff auf dich.`, way:`Die Sterblichkeit als Linse nutzen, um zu ordnen, was wirklich zählt.`},
+    {name:`Der Algorithmus`, who:`al-Chwarizmi`, year:`~820`, idea:`Probleme lassen sich durch eine feste Folge mechanischer Schritte lösen — und so wird die Algebra geboren.`, way:`Ein schweres Problem in ein wiederholbares Verfahren verwandeln.`},
+    {name:`Experimentelle Optik`, who:`Ibn al-Haitham`, year:`~1020`, idea:`Behauptungen über das Licht müssen durch kontrollierte Experimente entschieden werden, nicht durch Autorität.`, way:`Einen gezielten Versuch, nicht einen Text, darüber entscheiden lassen, was wahr ist.`},
+    {name:`Negative Theologie`, who:`Maimonides`, year:`~1190`, idea:`Dem Unendlichen kann man sich nur nähern, indem man sagt, was es nicht ist.`, way:`Das Ungreifbare durch Verneinung bestimmen, wo positive Begriffe versagen.`},
+    {name:`Die fünf Wege`, who:`Thomas von Aquin`, year:`~1270`, idea:`Von der Bewegung und Ordnung, die wir beobachten, lässt sich auf eine erste Ursache zurückschließen.`, way:`Von der Struktur der Welt auf ihre Gründe schließen.`},
+    {name:`Ockhams Rasiermesser`, who:`Wilhelm von Ockham`, year:`~1320`, idea:`Unter den Erklärungen, die passen, ziehe jene vor, die am wenigsten voraussetzt.`, way:`Jede Annahme streichen, die eine Theorie nicht braucht.`},
+    {name:`Asabiyya — Gesellschaftlicher Zusammenhalt`, who:`Ibn Chaldun`, year:`1377`, idea:`Gruppensolidarität ist der verborgene Motor der Geschichte: Sie hebt ein Volk zur Macht empor, zerfällt dann im Wohlstand, den sie erringt, bis eine geschlossenere Gruppe es verdrängt.`, way:`Aufstieg und Fall des kollektiven Zusammenhalts unter den politischen Ereignissen beobachten.`},
+    {name:`Heliozentrismus`, who:`Nikolaus Kopernikus`, year:`1543`, idea:`Die Erde ist nicht der Mittelpunkt; sie und die Planeten kreisen um die Sonne.`, way:`Bereit sein, sich selbst aus dem Mittelpunkt des Bildes zu nehmen.`},
+    {name:`Beobachtung vor Autorität`, who:`Galileo Galilei`, year:`1610`, idea:`Was das Fernrohr zeigt, steht über dem, was der Kanon sagt.`, way:`Das Instrument über den überlieferten Text entscheiden lassen.`},
+    {name:`Die induktive Methode`, who:`Francis Bacon`, year:`1620`, idea:`Wissen wird von unten aufgebaut, aus geduldiger, systematischer Beobachtung.`, way:`Allgemeine Gesetze aus sorgsam gesammelten Einzelheiten zusammenfügen.`},
+    {name:`Cogito, ergo sum`, who:`René Descartes`, year:`1637`, idea:`Bezweifle alles, was du kannst; das Einzige, was bleibt — dass du zweifelst — wird zum Fundament.`, way:`Das Wissen von einem Fundament aus wiederaufbauen, das sich nicht bezweifeln lässt.`},
+    {name:`Der Gesellschaftsvertrag`, who:`Thomas Hobbes`, year:`1651`, idea:`Legitime Macht beruht auf einer stillschweigenden Übereinkunft, dem Krieg aller gegen alle zu entkommen.`, way:`Eine Institution durch die Übereinkunft rechtfertigen, die sie hervorbringen würde.`},
+    {name:`Tabula rasa`, who:`John Locke`, year:`1689`, idea:`Der Geist beginnt als unbeschriebenes Blatt und wird von der Erfahrung beschrieben.`, way:`Jede Vorstellung auf die Erfahrung zurückführen, die sie gepflanzt hat.`},
+    {name:`Die allgemeine Gravitation`, who:`Isaac Newton`, year:`1687`, idea:`Ein Gesetz verbindet den Fall eines Apfels und die Umlaufbahn des Mondes.`, way:`Die eine Regel suchen, die getrennte Phänomene vereint.`},
+    {name:`Die Gewaltenteilung`, who:`Montesquieu`, year:`1748`, idea:`Die Freiheit überlebt nur, wenn die Macht so geteilt ist, dass jeder Teil die anderen im Zaum hält.`, way:`Ein System bauen, dessen Teile einander von vornherein zügeln.`},
+    {name:`Der Gemeinwille`, who:`Jean-Jacques Rousseau`, year:`1762`, idea:`Legitimität fließt aus dem Gemeinwohl, das mehr ist als die Summe der privaten Wünsche.`, way:`Das gemeinsame Interesse von der bloßen Summe der Wünsche trennen.`},
+    {name:`Bayessche Inferenz`, who:`Thomas Bayes & Laplace`, year:`1763`, idea:`Der Glaube ist eine Wahrscheinlichkeit, genau im Verhältnis zu neuen Belegen zu revidieren.`, way:`Überzeugungen als Wettquoten halten und sie anpassen, sobald Belege eintreffen.`},
+    {name:`Die unsichtbare Hand`, who:`Adam Smith`, year:`1776`, idea:`Einzelne, die ihren privaten Vorteil verfolgen, können über Märkte eine Ordnung hervorbringen, die niemand beabsichtigt hat.`, way:`Nach Ordnung Ausschau halten, die ohne Planer entsteht.`},
+    {name:`Sapere aude`, who:`Immanuel Kant`, year:`1784`, idea:`„Wage zu wissen“: Mündigkeit ist der Mut, den eigenen Verstand ohne Vormund zu gebrauchen.`, way:`Das Recht — und die Pflicht — beanspruchen, selbst zu denken.`},
+    {name:`Der kategorische Imperativ`, who:`Immanuel Kant`, year:`1785`, idea:`Handle nur nach einer Regel, von der du wollen könntest, dass jeder ihr folgt.`, way:`Eine Handlung prüfen, indem man sie sich als allgemeines Gesetz vorstellt.`},
+    {name:`Utilitarismus`, who:`Bentham & J. S. Mill`, year:`1789`, idea:`Die richtige Tat bringt das größte Glück der größten Zahl — Lust und Leid, über alle gleichermaßen aufsummiert.`, way:`Handlungen an der Summe ihrer Folgen abwägen, wobei jede Person einfach zählt.`},
+    {name:`Die Dialektik`, who:`G. W. F. Hegel`, year:`1807`, idea:`Ideen kommen voran, indem sie ihre eigenen Gegensätze erzeugen und sich zu einem reicheren Ganzen auflösen.`, way:`Eine Behauptung mit ihrer Verneinung zusammenstoßen lassen, um zu einer besseren zu gelangen.`},
+    {name:`Komparativer Vorteil`, who:`David Ricardo`, year:`1817`, idea:`Zwei Parteien gewinnen beide durch Handel, selbst wenn eine in allem besser ist.`, way:`In relativen Kosten denken, nicht in absolutem Können.`},
+    {name:`Umkehren, immer umkehren`, who:`Carl Jacobi`, year:`1840`, idea:`Viele Probleme, die sich einem Angriff von vorn widersetzen, lösen sich auf, wenn man sie von hinten angeht.`, way:`Das Scheitern bestimmen, das man vermeiden will, und ihm dann ausweichen.`},
+    {name:`Die universelle Maschine`, who:`Ada Lovelace`, year:`1843`, idea:`Eine Maschine, die Regeln auf Symbole anwendet, muss nicht bei Zahlen haltmachen — alles, was sich codieren lässt, Musik eingeschlossen, könnte sie im Prinzip komponieren.`, way:`Fragen, was ein Mechanismus sonst noch könnte, würde man seine Eingaben umcodieren; eine Operation kann allgemein sein, auch wenn ihr heutiger Gebrauch eng ist.`},
+    {name:`Historischer Materialismus`, who:`Karl Marx`, year:`1848`, idea:`Die Geschichte wird von materiellen und wirtschaftlichen Kräften unter ihren Ideen und Idealen getrieben.`, way:`Den materiellen Interessen unter den erklärten Überzeugungen nachgehen.`},
+    {name:`Natürliche Selektion`, who:`Charles Darwin`, year:`1859`, idea:`Variation plus Selektion, über die Zeit wiederholt, bringt Gestaltung ohne Gestalter hervor.`, way:`Komplexität als Niederschlag kumulativer Selektion erklären.`},
+    {name:`Marginalismus`, who:`Jevons, Menger & Walras`, year:`1871`, idea:`Wert und Wahl entscheiden sich am Rand — an der nächsten Einheit, nicht am Ganzen.`, way:`Nach dem nächsten Zuwachs entscheiden, nicht nach dem Durchschnitt.`},
+    {name:`Ewige Wiederkunft`, who:`Friedrich Nietzsche`, year:`1882`, idea:`Lebe, als müsstest du genau dieses Leben endlos wiederdurchleben.`, way:`Ein Gedankenexperiment als Prüfstein dafür nutzen, wie man leben soll.`},
+    {name:`Der Wille zur Macht`, who:`Friedrich Nietzsche`, year:`1883`, idea:`Ererbte Werte sind menschliche Schöpfungen; frage, wessen Stärke sie dienen.`, way:`Bei einem übergebenen Wert fragen, wer ihn schuf und wem er nützt.`},
+    {name:`Das Pareto-Prinzip`, who:`Vilfredo Pareto · Joseph Juran`, year:`1896`, idea:`Ein kleiner Anteil der Ursachen bringt meist den Großteil der Wirkungen hervor — Pareto fand die Verteilung; Juran machte daraus eine Arbeitsregel.`, way:`Nach den wenigen entscheidenden Eingaben hinter den vielen Ergebnissen jagen.`},
+    {name:`Das Unbewusste`, who:`Sigmund Freud`, year:`1900`, idea:`Vieles von dem, was uns treibt, verläuft unter der Schwelle des Bewusstseins.`, way:`Unter den erklärten Gründen nach den verborgenen suchen.`},
+    {name:`Phänomenologie`, who:`Edmund Husserl`, year:`1900`, idea:`Lege die Theorien beiseite und beschreibe die Erfahrung genau so, wie sie sich zeigt.`, way:`Die eigenen Annahmen einklammern und sich der Sache zuwenden, wie sie gegeben ist.`},
+    {name:`Relativität`, who:`Albert Einstein`, year:`1905`, idea:`Raum und Zeit sind nicht absolut; Messungen hängen vom Bewegungsbezugssystem des Beobachters ab.`, way:`Den bevorzugten Standpunkt aufgeben; stets sein Bezugssystem angeben.`},
+    {name:`Pragmatismus`, who:`Peirce, James & Dewey`, year:`1907`, idea:`Bedeutung und Wahrheit einer Idee liegen in ihren praktischen Folgen.`, way:`Eine Überzeugung danach beurteilen, welchen Unterschied sie in der Praxis macht.`},
+    {name:`Opportunitätskosten`, who:`Friedrich von Wieser`, year:`1914`, idea:`Die wahren Kosten jeder Wahl sind nicht ihr Preis, sondern der Wert der besten Alternative, die man für sie aufgegeben hat.`, way:`Jede Wahl nach dem bemessen, was sie verbaut, nicht nur nach dem, was sie verbraucht.`},
+    {name:`Das Zeichen`, who:`Ferdinand de Saussure`, year:`1916`, idea:`Ein Zeichen bindet ein Lautbild durch reine Konvention an einen Begriff; Bedeutung entsteht aus den Unterschieden innerhalb des ganzen Systems, nicht aus den Dingen selbst.`, way:`Bedeutung als Position in einem Netz von Gegensätzen lesen, nicht als Etikett auf der Welt.`},
+    {name:`Symmetrie & Erhaltung`, who:`Emmy Noether`, year:`1918`, idea:`Jede kontinuierliche Symmetrie eines Systems entspricht einer Erhaltungsgröße — Invarianz und Erhaltungssatz sind zwei Seiten einer Wahrheit.`, way:`Nach dem jagen, was unter Wandel fest bleibt; im Invarianten verbirgt sich das Gesetz.`},
+    {name:`Archetypen`, who:`Carl Jung`, year:`1919`, idea:`Gemeinsame symbolische Muster tauchen quer durch Mythen, Träume und Kulturen auf.`, way:`Wiederkehrende Symbole als Hinweise auf eine gemeinsame Struktur lesen.`},
+    {name:`Die Unschärferelation`, who:`Werner Heisenberg`, year:`1927`, idea:`Manche Paare von Eigenschaften lassen sich nicht beide zugleich genau kennen.`, way:`Harte Grenzen und Abwägungen im Wissbaren anerkennen.`},
+    {name:`Komplementarität`, who:`Niels Bohr`, year:`1928`, idea:`Licht ist Welle und Teilchen — Modelle, die einander ausschließen und doch beide gebraucht werden.`, way:`Unvereinbare Modelle zusammenhalten, wenn jedes einen Teil der Wahrheit erfasst.`},
+    {name:`Unvollständigkeit`, who:`Kurt Gödel`, year:`1931`, idea:`Jedes System, das reich genug für die Arithmetik ist, enthält Wahrheiten, die es nicht beweisen kann.`, way:`Von jedem formalen System ein Jenseits erwarten, das es nicht erreicht.`},
+    {name:`Die Karte ist nicht das Gebiet`, who:`Alfred Korzybski`, year:`1933`, idea:`Ein Modell ist eine nützliche Abstraktion, niemals die Wirklichkeit, für die es steht.`, way:`Niemals das eigene Modell für die Welt halten, die es beschreibt.`},
+    {name:`Falsifizierbarkeit`, who:`Karl Popper`, year:`1934`, idea:`Eine Behauptung ist nur dann wissenschaftlich, wenn sie sich im Prinzip widerlegen ließe.`, way:`Den Test suchen, der einen widerlegen würde, nicht den, der einem schmeichelt.`},
+    {name:`Schöpferische Zerstörung`, who:`Joseph Schumpeter`, year:`1942`, idea:`Innovation erneuert eine Wirtschaft, indem sie die Strukturen abbaut, denen sie entwächst.`, way:`Den Umbruch als Mechanismus der Erneuerung sehen, nicht nur als Verlust.`},
+    {name:`Existentielle Freiheit`, who:`Sartre & Kierkegaard`, year:`1943`, idea:`Die Existenz geht dem Wesen voraus; wir sind „zur Freiheit verurteilt“ und dazu, unseren Sinn zu wählen.`, way:`Zu den eigenen Entscheidungen als voll verantwortet stehen, ohne Ausrede.`},
+    {name:`Informationstheorie`, who:`Claude Shannon`, year:`1948`, idea:`Information ist die Verringerung von Ungewissheit, messbar in Bit.`, way:`Eine Nachricht danach bemessen, wie viel Überraschung sie beseitigt.`},
+    {name:`Kybernetik`, who:`Norbert Wiener`, year:`1948`, idea:`Maschinen wie Organismen steuern, indem sie ihre Ausgabe als Eingabe zurückführen.`, way:`In Rückkopplungsschleifen denken, nicht in einseitigen Ursachen.`},
+    {name:`Soziale Konstruktion`, who:`Simone de Beauvoir`, year:`1949`, idea:`„Man kommt nicht als Frau zur Welt, man wird es“ — vieles, was eine Gesellschaft natürlich nennt, ist in Wahrheit von Geschichte, Rolle und Erwartung gemacht.`, way:`Fragen, welche „natürlichen“ Tatsachen in Wahrheit gebaut sind — und dann, wem die Erzählung dient.`},
+    {name:`Das Nash-Gleichgewicht`, who:`John Nash`, year:`1950`, idea:`In strategischen Spielen kommen die Spieler dort zur Ruhe, wo keiner durch alleiniges Abweichen gewinnen kann.`, way:`Darüber nachdenken, wie andere über einen selbst nachdenken.`},
+    {name:`Das Gefangenendilemma`, who:`Flood, Dresher & Tucker`, year:`1950`, idea:`Individuell rationale Entscheidungen können alle gemeinsam schlechter stellen.`, way:`Erkennen, wo private Anreize das gemeinsame Gut verraten.`},
+    {name:`Sprachspiele`, who:`Ludwig Wittgenstein`, year:`1953`, idea:`Die Bedeutung eines Wortes ist nicht ein Ding, auf das es zeigt, sondern die Rolle, die es in einer Lebensform spielt — Bedeutung ist Gebrauch.`, way:`Nicht mehr fragen, was ein Wort bedeutet; beobachten, wie es im gespielten Spiel gebraucht wird.`},
+    {name:`Begrenzte Rationalität`, who:`Herbert Simon`, year:`1955`, idea:`Wirkliche Köpfe optimieren nicht; sie „begnügen sich“ innerhalb der Grenzen von Zeit und Information.`, way:`Für begrenzte Köpfe entwerfen, nicht für idealisierte.`},
+    {name:`Paradigmenwechsel`, who:`Thomas Kuhn`, year:`1962`, idea:`Die Wissenschaft wandelt sich weniger durch Anhäufung als durch Revolutionen, die ganze Bezugsrahmen ersetzen.`, way:`Auf den Rahmen achten, nicht nur auf die Fakten darin.`},
+    {name:`Die Banalität des Bösen`, who:`Hannah Arendt`, year:`1963`, idea:`Großes Übel kann von unauffälligen Menschen verwaltet werden, die einfach zu denken aufhören — Karrieristen, die Vorschriften folgen, nicht Ungeheuer, die Bosheit verfolgen.`, way:`Niemals eine Rolle für sich denken lassen; die Befehle beurteilen, als wäre das Urteilen die eigene Aufgabe.`},
+    {name:`Ubuntu — Ich bin, weil wir sind`, who:`Nguni-Bantu-Philosophie · John Mbiti`, year:`1969`, idea:`„Umuntu ngumuntu ngabantu“ — ein Mensch ist Mensch durch andere Menschen. Lange in der mündlichen Überlieferung des südlichen Afrika getragen, besagt es, dass das Selbstsein kein Privateigentum ist, sondern eine Beziehung, in der Gemeinschaft geschaffen und immer neu geschaffen.`, way:`Das Selbst in seinen Beziehungen verorten: Ich bin, weil wir sind.`},
+    {name:`Der Schleier des Nichtwissens`, who:`John Rawls`, year:`1971`, idea:`Wähle die Regeln der Gesellschaft, als wüsstest du nicht, welche Person du sein wirst.`, way:`Das Eigeninteresse abstreifen, um zu finden, was gerecht ist.`},
+    {name:`Emergenz — Mehr ist anders`, who:`Philip Anderson`, year:`1972`, idea:`Füge genug einfache Teile zusammen, und auf der höheren Ebene erscheinen ganz neue Gesetze.`, way:`Das interessante Verhalten wohnt oft eine Ebene über seinen Teilen.`},
+    {name:`Kognitive Verzerrungen`, who:`Kahneman & Tversky`, year:`1974`, idea:`Die Intuition läuft auf schnellen Heuristiken, die auf vorhersehbare Weise fehlzünden.`, way:`Dem schnellen Urteil genau dort misstrauen, wo bekanntlich eine Verzerrung lauert.`},
+    {name:`Memetik`, who:`Richard Dawkins`, year:`1976`, idea:`Gene — und Ideen — verhalten sich wie Replikatoren, die um ihre Vervielfältigung wetteifern.`, way:`Ideen als Replikatoren behandeln, die sich entwickeln und ausbreiten.`},
+    {name:`Netzwerkeffekte`, who:`Robert Metcalfe`, year:`1980`, idea:`Der Wert eines Netzwerks steigt mit dem Quadrat der daran angeschlossenen Menschen.`, way:`Dinge nach ihren Verbindungen bewerten, nicht nach ihren Einheiten.`},
+    {name:`Standpunkt-Epistemologie`, who:`Nancy Hartsock & Sandra Harding`, year:`1983`, idea:`Wissen wird von irgendwo aus gemacht. Wer an den Rändern eines Systems steht, ist oft so gestellt, Wahrheiten darüber zu sehen, die seine Nutznießer strukturell verfehlen.`, way:`Den eigenen Blickpunkt als Datum behandeln: fragen, was er verbirgt und wer sieht, was man selbst nicht sieht.`},
+    {name:`Die Verwaltung der Allmende`, who:`Elinor Ostrom`, year:`1990`, idea:`Gemeinsame Ressourcen müssen nicht unter privater Gier zusammenbrechen; Gemeinschaften erarbeiten immer wieder ihre eigenen dauerhaften Regeln, um sie ohne Markt oder Staat zu erhalten.`, way:`Zwischen „privatisiert es“ und „lasst es den Staat führen“ liegt ein dritter Weg: lasst die Nutzer es verwalten.`},
+    {name:`Das angrenzend Mögliche`, who:`Stuart Kauffman`, year:`2000`, idea:`In jedem Augenblick können als Nächstes nur die Nachbarzustände des Bestehenden kommen.`, way:`Die Zukunft in je einem erreichbaren Schritt erreichen.`},
+    {name:`Der schwarze Schwan`, who:`Nassim Taleb`, year:`2007`, idea:`Seltene, unvorhergesagte Ereignisse von großer Wirkung prägen die Geschichte stärker als das Gewöhnliche.`, way:`Um die Ränder herum planen, nicht um den Durchschnitt.`},
+    {name:`Antifragilität`, who:`Nassim Taleb`, year:`2012`, idea:`Manche Dinge überleben die Unordnung nicht bloß — sie werden durch sie besser.`, way:`Engagements suchen, die von Schwankung gewinnen, statt sie zu fürchten.`},
+  ],
+  modes:[
+    {name:`Erste Prinzipien`, body:`Ein Problem auf das eindampfen, was wahr sein muss, und dann wieder aufbauen. Dem Fundament vertrauen, nicht dem Erbe.`},
+    {name:`Umkehrung`, body:`Frage nicht, wie du gewinnst — frage, wie du eine Niederlage garantierst, und meide sie dann. Rückwärts lesen sich Probleme oft leichter.`},
+    {name:`Dialektik`, body:`Stelle eine Behauptung gegen ihr Gegenteil und lass den Zusammenstoß ein besseres Drittes hervorbringen. Fortschritt ist ein Streit mit sich selbst.`},
+    {name:`Analogie`, body:`Trage die Form eines gelösten Problems in ein ungelöstes hinüber. Die meisten neuen Ideen sind alte Ideen in einem neuen Feld.`},
+    {name:`Systeme & Rückkopplung`, body:`Achte auf Schleifen, Bestände und Verzögerungen, nicht auf einzelne Ursachen. In einem System kann man nie nur eine Sache tun.`},
+    {name:`Wahrscheinlichkeitsdenken`, body:`Halte Überzeugungen als Wetten, nicht als Fakten. Vergib Quoten und verschiebe sie, sobald die Belege eintreffen.`},
+    {name:`Evolutionäres Denken`, body:`Variieren, auswählen, wiederholen. Gestaltung kann ohne Gestalter entstehen, wenn gute Vermutungen die schlechten überleben dürfen.`},
+    {name:`Via negativa`, body:`Verbessern durch Entfernen. Was man sein lassen, meiden und streichen soll, ist oft sichereres Wissen als das, was man hinzufügen soll.`},
+    {name:`Emergenz`, body:`Beobachte, wie einfache Teile ein Verhalten hervorbringen, das keines von ihnen enthält. Die interessante Ebene ist selten die unterste.`},
+  ],
+  synth:[
+    {name:`Bayesscher Stoizismus`, body:`Behandle „was in meiner Macht liegt“ nicht als feste Grenze, sondern als Wahrscheinlichkeit, die du neu schätzt, sobald Belege eintreffen. Setze Mühe im Verhältnis zu deiner aktuellen Kontrollschätzung ein und lass die Ruhe aus dem Anpassen der Quoten kommen, statt so zu tun, als wäre die Grenze scharf.`},
+    {name:`Der Tugend-Thermostat`, body:`Die Mitte zwischen zwei Lastern ist kein toter Mittelpunkt, sondern ein durch Rückkopplung gehaltener Sollwert — Mut, der zur Tollkühnheit abdriftet, wird von seinen eigenen Folgen zurückgezogen. Je stärker das Ziel gestört wird, desto schärfer findet das System es wieder, sodass sowohl das Gleichgewicht als auch die korrigierende Schleife echte Arbeit leisten.`},
+    {name:`Das falsifizierbare Selbst`, body:`Führe dein Selbstbild wie eine wissenschaftliche Theorie. Lebe auf eine Weise, die die Geschichte widerlegen könnte, die du über dich erzählst, und suche gezielt die Erfahrungen, die sie am ehesten widerlegen. Eine Identität, die sich nicht falsifizieren lässt, ist nicht gewusst — sie wird verteidigt.`},
+    {name:`Karmische Rückkopplung`, body:`Deine Handlungen sind Ausgaben, die als Eingaben wieder ins System eintreten — die Normen, die du vorlebst, die Rufe, die du ansammelst, die Reaktionen, die du auslöst — und die zurückschlingen, um die Welt zu formen, in die hinein du als Nächstes handelst. „Was man aussät“ ist keine kosmische Buchführung, sondern eine geschlossene Rückkopplungsschleife: eben jene Rückkehr, die bloßes Senden nicht liefern kann.`},
+    {name:`Marginales Maximin`, body:`Setze jede nächste Einheit der Hilfe dort ein, wo du sie haben wolltest, wenn du noch nicht wüsstest, in wessen Leben du erwachst — und das sind fast immer die am schlechtesten Gestellten, denn dort erkauft eine marginale Einheit die größte Erleichterung. „Das größte Glück“ wird präzise: das Gut, für das du dich vor der Lotterie der Geburt versichern würdest.`},
+    {name:`Das angrenzende gute Leben`, body:`Gedeihen ist kein fernes Ideal, sondern die beste Version deiner selbst, die einen erreichbaren Schritt entfernt ist. Hör auf, das perfekte Leben zu optimieren; nähere dich schrittweise dem nächstbesseren, stell dich dann darauf und schau erneut.`},
+    {name:`Umgekehrte Kartografie`, body:`Bevor du einem Modell vertraust, kartiere alle Weisen, auf die es falsch ist. Trage zuerst seine blinden Flecken ein — die Gegenden, in denen Karte und Gelände auseinanderlaufen — und navigiere nach dieser Fehlerkarte ebenso wie nach dem Modell selbst.`},
+    {name:`Komplementaritätsethik`, body:`Manche moralischen Wahrheiten verhalten sich wie Welle und Teilchen: Gerechtigkeit und Gnade lassen sich nicht zugleich vollständig messen, und doch sind beide wirklich. Nicht jede Spannung will eine Synthese — manche sind dazu bestimmt, als komplementär gehalten und je nach Kontext abgewechselt zu werden.`},
+    {name:`Der Schwarm-Zug`, body:`Müheloses Handeln bedeutet nicht, das System zu lenken — es bedeutet, die einfache lokale Regel abzustimmen, die es sich selbst organisieren lässt. Du treibst den Schwarm nicht; du setzt den Abstand, der ihn schwärmen lässt: geringster Eingriff auf der Ebene der Regel, größte Ordnung auf der Ebene des Ganzen.`},
+    {name:`Das jähe Memento`, body:`Erinnere dich nicht nur daran, dass du sterben wirst — erinnere dich, dass es ein Randereignis sein könnte: jäh, ungeplant, außerhalb des Modells. Lass den dicken Rand der Sterblichkeit, nicht ihren bequemen Durchschnitt, bestimmen, was du mit dem heutigen Tag tust.`},
+    {name:`Der Schleier des Netzwerks`, body:`Entwirf Institutionen, als wüsstest du nicht, welchen Knoten du besetzt — Nabe oder Rand, früh oder spät, verbunden oder isoliert. Gerechtigkeit sollte gegenüber deiner Position im Graphen robust sein, nicht nur gegenüber deiner Identität.`},
+    {name:`Rekursiver Zweifel`, body:`Jedes Modell enthält Wahrheiten, die es von innen nicht beweisen kann. Halte darum ein zweites Modell, dessen einzige Aufgabe es ist, die blinden Flecken des ersten zu finden — und ein drittes für das zweite. Zweifel, als Stapel gebaut statt als Stimmung.`},
+    {name:`Geschichtete Sparsamkeit`, body:`Streiche Annahmen erbarmungslos — aber auf der richtigen Ebene. Die einfachste wahre Beschreibung eines Schwarms sind drei Schwarmregeln, nicht eine Milliarde Federgleichungen; weiter reduziert, wird die Erklärung nicht schlanker, sondern handelt von etwas anderem. Sparsamkeit ist ebenenrelativ: die wenigsten Annahmen auf jener Höhe, wo das Verhalten tatsächlich wohnt.`},
+    {name:`Der verfassungsmäßige Geist`, body:`Wenn das Urteil vorhersehbar verzerrt ist, regiere dich nicht als Monarch. Teile die Gewalten deines Geistes: Lass die Regeln des kühlen Zustands Gesetze geben, die Entscheidungen des Augenblicks sie ausführen und geplante Rückschauen richten — jede fähig, die anderen zu kontrollieren. Den König kannst du nicht entzerren, aber du kannst ihm die absolute Macht verweigern.`},
+  ],
+  proofs:[
+    {name:`Apollo 11`, year:`1969`, body:`Navigatoren zielten mit drei Menschen auf einen Flecken leeren Raums, wo der Mond drei Tage später sein würde — im vollen Vertrauen auf ein einziges Gesetz Newtons. Der Bordrechner flog nach al-Chwarizmis Zug, schwere Probleme auf mechanische Schritte reduziert, und steuerte nach Wieners: jeder Bremsstoß gemessen, zurückgemeldet, korrigiert.`},
+    {name:`Die Verfassung der Vereinigten Staaten`, year:`1787`, body:`Die Delegierten in Philadelphia zitierten Montesquieu so oft, dass Madison ihn „das Orakel“ nannte. Das Ergebnis ist zu funktionierendem Räderwerk kompilierte politische Philosophie: ein Gesellschaftsvertrag, tatsächlich niedergeschrieben und unterzeichnet, mit einer Macht, so geteilt, dass Ehrgeiz den Ehrgeiz im Zaum hält.`},
+    {name:`Der Bruch der Enigma`, year:`1941`, body:`Bletchley Park schlug die Chiffre nicht im Raten, sondern im Verfahren. Turings Bomben mechanisierten die Suche, und sein Banburismus bewertete Vermutungen in „Ban“ — bayessche Anpassung, täglich im Krieg betrieben, Jahrzehnte bevor die Methode ehrbar war. Als Quoten gehaltener Glaube half, einen Weltkrieg zu verkürzen.`},
+    {name:`Die Ausrottung der Pocken`, year:`1980`, body:`Die Krankheit, die in ihrem letzten Jahrhundert 300 Millionen Menschen tötete, wurde nicht dadurch beendet, dass man alle impfte. Sie wurde durch das Denken in Netzwerken beendet: jeden Ausbruch verfolgen, den Ring der Kontakte darum impfen und den Graphen des Virus in Inseln zerschneiden, bis es nirgends mehr hinkonnte. Die einzige menschliche Krankheit, die je auf null gebracht wurde.`},
+    {name:`GPS`, year:`1978 →`, body:`Satellitenuhren gehen etwa 38 Mikrosekunden pro Tag vor, genau wie Einsteins Denken in Bezugssystemen vorhersagt — und unkorrigiert würde dein blauer Punkt um Kilometer pro Tag abdriften. Jedes Telefon, das weiß, wo es ist, betreibt Relativität im Wirkbetrieb, auf Newtons Umlaufbahnen.`},
+    {name:`Das Internet`, year:`1969–83`, body:`Shannon bewies, dass jede Nachricht zu Bits werden kann; die Paketvermittlung ließ diese Bits ihre eigenen Wege finden, ohne dass jemand das Sagen hatte. Aus einfachen lokalen Regeln — speichern, weiterleiten, wiederholen — entstand ein Nervensystem von planetarem Maßstab, dessen Wert mit seinen Verbindungen wuchs, genau wie es die Netzwerkdenker vorhersagten.`},
+    {name:`Die Grüne Revolution`, year:`1965 →`, body:`Norman Borlaug ließ Darwins Schleife mit Absicht laufen: den Weizen variieren, die Überlebenden auswählen, wiederholen — das Saatgut zwischen zwei mexikanischen Klimazonen pendeln, um die Generationen pro Jahr zu verdoppeln. Den daraus entstandenen Zwergsorten wird zugeschrieben, bis zu einer Milliarde Menschen vor dem Hunger bewahrt zu haben.`},
+    {name:`Wikipedia`, year:`2001 →`, body:`„Jeder darf bearbeiten“ hätte eine Tragödie der Allmende sein müssen. Stattdessen entwickelten die Freiwilligen fast genau die Regeln, die Ostrom in Alpweiden und Bewässerungsdörfern fand — klare Grenzen, abgestufte Sanktionen, billige Streitschlichtung — und das größte Nachschlagewerk der Geschichte entstand ohne Plan.`},
+    {name:`Wahrheit & Versöhnung`, year:`1996`, body:`Südafrika beendete die Apartheid ohne den Bürgerkrieg, den fast alle erwarteten. Seine Übergangsverfassung benannte die Denkweise, die dies möglich machte — „ein Bedürfnis nach Ubuntu, nicht nach Vergeltung“ — und tauschte Amnestie gegen Wahrheit, um einen neuen Gesellschaftsvertrag zu erkaufen.`},
+  ],
+},
+  /* __I18N_PACKS__ */
+};
+
 /* ============================ RENDER ============================ */
 const $ = (s,el=document)=>el.querySelector(s);
 const $$ = (s,el=document)=>[...el.querySelectorAll(s)];
 const catColor = k => CATS[k].color;
 
-document.getElementById('stat-ideas').textContent = IDEAS.length;
-document.getElementById('stat-synth').textContent = SYNTH.length;
-document.getElementById('atlas-eyebrow').textContent =
-  `${IDEAS.length} ideas · ${Object.keys(CATS).length} categories · ${ERAS.length} ages`;
-document.getElementById('foot-ideas').textContent = IDEAS.length;
-document.getElementById('foot-synth').textContent = SYNTH.length;
-document.getElementById('stat-proofs').textContent = PROOFS.length;
-document.getElementById('foot-proofs').textContent = PROOFS.length;
+/* --- i18n plumbing: current language + display helpers (English fallback) --- */
+let LANG = new URLSearchParams(location.search).get('lang') || localStorage.getItem('orrery-lang') || 'en';
+if(!(LANG in I18N)) LANG = 'en';
+const ui = k => {
+  const v = I18N[LANG].ui && I18N[LANG].ui[k];
+  return v != null ? v : I18N.en.ui[k];
+};
+const dIdea  = i => Object.assign({}, IDEAS[i],  (I18N[LANG].ideas ||[])[i]);
+const dMode  = i => Object.assign({}, MODES[i],  (I18N[LANG].modes ||[])[i]);
+const dSynth = i => Object.assign({}, SYNTH[i],  (I18N[LANG].synth ||[])[i]);
+const dProof = i => Object.assign({}, PROOFS[i], (I18N[LANG].proofs||[])[i]);
+const dEra   = i => (I18N[LANG].eras || ERAS)[i];
+const dCat   = k => (I18N[LANG].cats || {})[k] || CATS[k].label;
+const fill = (tpl,map) => tpl.replace(/\{(\w+)\}/g, (_,k)=>map[k]!=null?map[k]:'{'+k+'}');
+
+function applyUI(){
+  document.documentElement.lang = LANG;
+  document.title = ui('docTitle');
+  const set = (id,html)=>{const el=document.getElementById(id); if(el) el.innerHTML=html;};
+  set('nav-mark',ui('mark')); set('nav-modes',ui('navModes')); set('nav-atlas',ui('navAtlas'));
+  set('nav-proof',ui('navProof')); set('nav-synth',ui('navSynth')); set('open-map',ui('navMap'));
+  set('hero-eyebrow',ui('heroEyebrow')); set('hero-title',ui('heroTitle')); set('hero-thesis',ui('heroThesis'));
+  set('lab-ideas',ui('statIdeas')); set('lab-lenses',ui('statLenses')); set('lab-ages',ui('statAges'));
+  set('lab-synth',ui('statSynth')); set('lab-proofs',ui('statProofs'));
+  set('astro-cap',ui('astroCap'));
+  $('#astro').setAttribute('aria-label',ui('astroAria'));
+  set('mf-eyebrow',ui('mfEyebrow')); set('mf-big',ui('mfBig')); set('mf-body',ui('mfBody'));
+  set('modes-eyebrow',ui('modesEyebrow')); set('modes-h2',ui('modesH2')); set('modes-lede',ui('modesLede'));
+  set('atlas-eyebrow',fill(ui('atlasEyebrow'),{i:IDEAS.length,c:Object.keys(CATS).length,a:ERAS.length}));
+  set('atlas-h2',ui('atlasH2')); set('atlas-lede',ui('atlasLede'));
+  const s=$('#search'); s.placeholder=ui('searchPh'); s.setAttribute('aria-label',ui('searchAria'));
+  set('proof-eyebrow',ui('proofEyebrow')); set('proof-h2',ui('proofH2')); set('proof-lede',ui('proofLede'));
+  set('synth-eyebrow',ui('synthEyebrow')); set('synth-h2',ui('synthH2')); set('synth-lede',ui('synthLede'));
+  set('foot-closer',ui('footCloser'));
+  set('foot-meta',fill(ui('footMeta'),{i:IDEAS.length,p:PROOFS.length,s:SYNTH.length}));
+  document.getElementById('stat-ideas').textContent = IDEAS.length;
+  document.getElementById('stat-synth').textContent = SYNTH.length;
+  document.getElementById('stat-proofs').textContent = PROOFS.length;
+}
 
 /* --- lineage index: deps name -> idx, plus computed descendants --- */
 const NAME2IDX = {};
@@ -577,17 +1524,21 @@ const PARENTS = IDEAS.map(d=>(d.deps||[]).map(n=>{
 }).filter(x=>x!=null));
 const CHILDREN = IDEAS.map(()=>[]);
 PARENTS.forEach((ps,i)=>ps.forEach(p=>CHILDREN[p].push(i)));
-[...SYNTH.flatMap(s=>s.parents), ...PROOFS.flatMap(p=>p.uses)].forEach(n=>{
+[...SYNTH.flatMap(s=>s.parents), ...PROOFS.flatMap(p=>p.uses), ...MODES.flatMap(m=>m.exemplars||[])].forEach(n=>{
   if(!(n in NAME2IDX)) console.warn('Unlinked ingredient name:', n);
 });
 
 /* --- modes --- */
-$('#modes-grid').innerHTML = MODES.map((m,i)=>`
+function renderModes(){
+  $('#modes-grid').innerHTML = MODES.map((m,i)=>{
+    const t=dMode(i);
+    return `
   <article class="mode-card reveal" data-i="${String(i+1).padStart(2,'0')}">
     <div class="glyph">${m.glyph}</div>
-    <h3>${m.name}</h3>
-    <p>${m.body}</p>
-  </article>`).join('');
+    <h3>${t.name}</h3>
+    <p>${t.body}</p>
+  </article>`;}).join('');
+}
 
 /* --- filters --- */
 const state = {cat:'all', era:'all', q:''};
@@ -596,7 +1547,7 @@ function chip(label, value, group, swatch){
   const b = document.createElement('button');
   b.className='chip';
   b.type='button';
-  b.setAttribute('aria-pressed', value==='all' && (group==='cat'?state.cat:state.era)==='all' ? 'true':'false');
+  b.setAttribute('aria-pressed', String(state[group]===value));
   b.dataset.group=group; b.dataset.value=value;
   b.innerHTML = (swatch?`<span class="dot" style="--swatch:${swatch}"></span>`:'') + label;
   b.addEventListener('click',()=>{
@@ -607,30 +1558,38 @@ function chip(label, value, group, swatch){
   return b;
 }
 const catBox = $('#cat-filters'), eraBox = $('#era-filters');
-catBox.appendChild(chip('All','all','cat',null));
-Object.entries(CATS).forEach(([k,v])=>catBox.appendChild(chip(v.label,k,'cat',v.color)));
-eraBox.appendChild(chip('All','all','era',null));
-ERAS.forEach((e,i)=>eraBox.appendChild(chip(e,String(i),'era',null)));
+function buildFilters(){
+  catBox.innerHTML = `<span class="flabel">${ui('lensLabel')}</span>`;
+  eraBox.innerHTML = `<span class="flabel">${ui('ageLabel')}</span>`;
+  catBox.appendChild(chip(ui('allChip'),'all','cat',null));
+  Object.entries(CATS).forEach(([k,v])=>catBox.appendChild(chip(dCat(k),k,'cat',v.color)));
+  eraBox.appendChild(chip(ui('allChip'),'all','era',null));
+  ERAS.forEach((e,i)=>eraBox.appendChild(chip(dEra(i),String(i),'era',null)));
+}
 
 /* --- atlas cards --- */
-$('#atlas-grid').innerHTML = IDEAS.map((d,i)=>`
+function renderCards(){
+  $('#atlas-grid').innerHTML = IDEAS.map((d,i)=>{
+    const t=dIdea(i);
+    return `
   <article class="idea-card reveal" id="idea-${i}" style="--cat:${catColor(d.cat)}"
            data-cat="${d.cat}" data-era="${d.era}"
-           data-search="${(d.name+' '+d.who+' '+d.idea).toLowerCase().replace(/"/g,'')}">
+           data-search="${(t.name+' '+t.who+' '+t.idea+' '+d.name+' '+d.who).toLowerCase().replace(/"/g,'')}">
     <div class="ic-top">
-      <span>№ ${String(i+1).padStart(3,'0')} · ${d.year}</span>
-      <span class="ic-cat">${CATS[d.cat].label}</span>
+      <span>№ ${String(i+1).padStart(3,'0')} · ${t.year}</span>
+      <span class="ic-cat">${dCat(d.cat)}</span>
     </div>
-    <h3 class="ic-name">${d.name}</h3>
-    <div class="ic-who">${d.who} · ${ERAS[d.era]}</div>
-    <p class="ic-idea">${d.idea}</p>
-    <div class="ic-way"><span class="way-lab">The move</span>${d.way}</div>
+    <h3 class="ic-name">${t.name}</h3>
+    <div class="ic-who">${t.who} · ${dEra(d.era)}</div>
+    <p class="ic-idea">${t.idea}</p>
+    <div class="ic-way"><span class="way-lab">${ui('moveLab')}</span>${t.way}</div>
     ${(PARENTS[i].length||CHILDREN[i].length)?`<div class="ic-links">${
-      PARENTS[i].length?`<div class="lin-row"><span class="lin-lab par">↖ draws on</span>${PARENTS[i].map(p=>`<button class="lnk par" type="button" data-jump="${p}">${IDEAS[p].name}</button>`).join('')}</div>`:''
+      PARENTS[i].length?`<div class="lin-row"><span class="lin-lab par">${ui('drawsOn')}</span>${PARENTS[i].map(p=>`<button class="lnk par" type="button" data-jump="${p}">${dIdea(p).name}</button>`).join('')}</div>`:''
     }${
-      CHILDREN[i].length?`<div class="lin-row"><span class="lin-lab chi">↘ feeds</span>${CHILDREN[i].map(c=>`<button class="lnk chi" type="button" data-jump="${c}">${IDEAS[c].name}</button>`).join('')}</div>`:''
+      CHILDREN[i].length?`<div class="lin-row"><span class="lin-lab chi">${ui('feedsLab')}</span>${CHILDREN[i].map(c=>`<button class="lnk chi" type="button" data-jump="${c}">${dIdea(c).name}</button>`).join('')}</div>`:''
     }</div>`:''}
-  </article>`).join('') + `<div class="no-match" id="no-match" style="display:none">No idea matches that filter. Try widening it.</div>`;
+  </article>`;}).join('') + `<div class="no-match" id="no-match" style="display:none">${ui('noMatch')}</div>`;
+}
 
 const countEl = $('#count');
 function applyFilters(){
@@ -645,42 +1604,228 @@ function applyFilters(){
     if(ok) shown++;
   });
   $('#no-match').style.display = shown? 'none':'block';
-  countEl.innerHTML = `Showing <b>${shown}</b> / ${IDEAS.length}`;
+  countEl.innerHTML = fill(ui('countTpl'),{n:`${shown}`,t:IDEAS.length});
 }
 $('#search').addEventListener('input', e=>{state.q=e.target.value; applyFilters();});
-applyFilters();
 
 /* --- synthesis --- */
 const ingChip = n => n in NAME2IDX
-  ? `<button class="ingredient" type="button" data-jump="${NAME2IDX[n]}">${n}</button>`
+  ? `<button class="ingredient" type="button" data-jump="${NAME2IDX[n]}">${dIdea(NAME2IDX[n]).name}</button>`
   : `<span class="ingredient">${n}</span>`;
-$('#synth-grid').innerHTML = SYNTH.map(s=>`
+function renderSynth(){
+  $('#synth-grid').innerHTML = SYNTH.map((s,i)=>{
+    const t=dSynth(i);
+    return `
   <article class="synth-card reveal">
-    <div class="recipe">${s.parents.map((p,i)=>
-      `${i?'<span class="cross">✕</span>':''}${ingChip(p)}`).join('')}</div>
-    <h3><span class="spark">✦</span> ${s.name}</h3>
-    <p>${s.body}</p>
-  </article>`).join('');
+    <div class="recipe">${s.parents.map((p,j)=>
+      `${j?'<span class="cross">✕</span>':''}${ingChip(p)}`).join('')}</div>
+    <h3><span class="spark">✦</span> ${t.name}</h3>
+    <p>${t.body}</p>
+  </article>`;}).join('');
+}
 
 /* --- proving ground --- */
-$('#proof-grid').innerHTML = PROOFS.map(p=>`
+function renderProofs(){
+  $('#proof-grid').innerHTML = PROOFS.map((p,i)=>{
+    const t=dProof(i);
+    return `
   <article class="proof-card reveal">
-    <span class="pc-year">${p.year}</span>
-    <h3>${p.name}</h3>
-    <p>${p.body}</p>
-    <div class="pc-uses"><span class="pc-lab">The moves inside ↘</span>${p.uses.map(ingChip).join('')}</div>
-  </article>`).join('');
+    <span class="pc-year">${t.year}</span>
+    <h3>${t.name}</h3>
+    <p>${t.body}</p>
+    <div class="pc-uses"><span class="pc-lab">${ui('movesInside')}</span>${p.uses.map(ingChip).join('')}</div>
+  </article>`;}).join('');
+}
 
-/* --- any lineage/ingredient chip jumps to its idea card --- */
+/* --- delegated clicks: lineage/ingredient chips jump to cards; map links open the map --- */
 document.addEventListener('click', e=>{
   const b = e.target.closest('[data-jump]');
-  if(b) jumpToIdea(+b.dataset.jump);
+  if(b){ jumpToIdea(+b.dataset.jump); return; }
+  const m = e.target.closest('#open-map, #open-map-cap');
+  if(m){ e.preventDefault(); openIdeaMap(); }
 });
 
+/* --- the full map: modes ✕ ideas ✕ proofs as a borderless SVG in a new tab --- */
+function openIdeaMap(){
+  const css = getComputedStyle(document.documentElement);
+  const CCOL = {};
+  Object.keys(CATS).forEach(k=>CCOL[k]=css.getPropertyValue('--c-'+k).trim()||'#CBA85C');
+  const BRASS='#CBA85C', LAPIS='#6E9BEE', HAZE='#8C95AC', BONE='#ECE3D0', DIM='#C7C0AE', INK='#0E1526';
+
+  const W=1600, TOP=170, ROW=30, H=TOP+IDEAS.length*ROW+90;
+  const MX=200, IX=740, PX=1360;
+  const iy=i=>TOP+i*ROW+15;
+  const spread=n=>i=>TOP+120+i*((H-TOP-300)/(n-1));
+  const my=spread(MODES.length), py=spread(PROOFS.length);
+  const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+  const edges=[], nodes=[], labels=[];
+  MODES.forEach((m,mi)=>(m.exemplars||[]).forEach(n=>{
+    const ii=NAME2IDX[n]; if(ii==null) return;
+    const y1=my(mi), y2=iy(ii), x1=MX+10, x2=IX-7;
+    const c1=x1+(x2-x1)*.45, c2=x1+(x2-x1)*.55;
+    edges.push(`<path data-edge="m${mi}|i${ii}" d="M${x1},${y1} C${c1},${y1} ${c2},${y2} ${x2},${y2}" stroke="${HAZE}" stroke-opacity=".30"/>`);
+  }));
+  PARENTS.forEach((ps,ci)=>ps.forEach(pi=>{
+    const y1=iy(pi), y2=iy(ci), depth=42+Math.abs(y2-y1)*.10;
+    edges.push(`<path data-edge="i${pi}|i${ci}" d="M${IX-7},${y1} C${IX-depth},${y1} ${IX-depth},${y2} ${IX-7},${y2}" stroke="${BRASS}" stroke-opacity=".32"/>`);
+  }));
+  PROOFS.forEach((p,pi)=>p.uses.forEach(n=>{
+    const ii=NAME2IDX[n]; if(ii==null) return;
+    const y1=iy(ii), y2=py(pi), x1=IX+7, x2=PX-10;
+    const c1=x1+(x2-x1)*.45, c2=x1+(x2-x1)*.55;
+    edges.push(`<path data-edge="i${ii}|p${pi}" d="M${x1},${y1} C${c1},${y1} ${c2},${y2} ${x2},${y2}" stroke="${LAPIS}" stroke-opacity=".38"/>`);
+  }));
+  IDEAS.forEach((d,i)=>{
+    const y=iy(i), t=dIdea(i);
+    nodes.push(`<circle data-node="i${i}" cx="${IX}" cy="${y}" r="5" fill="${CCOL[d.cat]}"/>`);
+    labels.push(`<text data-node="i${i}" x="${IX+14}" y="${y+3.5}" class="lbl"><tspan class="nm">${esc(t.name)}</tspan><tspan class="yr"> · ${esc(t.year)}</tspan></text>`);
+  });
+  MODES.forEach((m,i)=>{
+    const y=my(i), t=dMode(i);
+    nodes.push(`<circle data-node="m${i}" cx="${MX}" cy="${y}" r="6" fill="none" stroke="${BRASS}" stroke-width="1.3"/>`);
+    labels.push(`<text data-node="m${i}" x="${MX-16}" y="${y+4}" text-anchor="end" class="lbl mode">${esc(m.glyph)}&#160;&#160;<tspan class="nm">${esc(t.name)}</tspan></text>`);
+  });
+  PROOFS.forEach((p,i)=>{
+    const y=py(i), t=dProof(i);
+    nodes.push(`<rect data-node="p${i}" x="${PX-5}" y="${y-5}" width="10" height="10" transform="rotate(45 ${PX} ${y})" fill="${LAPIS}"/>`);
+    labels.push(`<text data-node="p${i}" x="${PX+16}" y="${y+4}" class="lbl proof"><tspan class="nm">${esc(t.name)}</tspan><tspan class="yr"> · ${esc(t.year)}</tspan></text>`);
+  });
+
+  // per-language label packs so the map tab can switch languages on its own
+  const uiFor=(code,k)=>{
+    const v=I18N[code].ui && I18N[code].ui[k];
+    return v!=null?v:I18N.en.ui[k];
+  };
+  const packs={};
+  Object.keys(I18N).forEach(code=>{
+    const ov=I18N[code];
+    packs[code]={
+      label: ov.label||code,
+      ui:{
+        mapTitle:uiFor(code,'mapTitle'), mapSub:uiFor(code,'mapSub'),
+        legendMode:uiFor(code,'legendMode'), legendLineage:uiFor(code,'legendLineage'), legendProof:uiFor(code,'legendProof'),
+        headModes:uiFor(code,'headModes'),
+        headIdeas:fill(uiFor(code,'headIdeas'),{n:IDEAS.length}),
+        headProofs:fill(uiFor(code,'headProofs'),{n:PROOFS.length}),
+      },
+      ideas: IDEAS.map((d,i)=>{const o=(ov.ideas||[])[i]||{}; return [o.name||d.name, o.year||d.year];}),
+      modes: MODES.map((m,i)=>{const o=(ov.modes||[])[i]||{}; return o.name||m.name;}),
+      proofs: PROOFS.map((p,i)=>{const o=(ov.proofs||[])[i]||{}; return [o.name||p.name, o.year||p.year];}),
+    };
+  });
+
+  const html = `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(ui('mapTitle'))}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:${INK}}
+  svg{display:block;width:100%;height:auto}
+  .lbl{font:11px "Space Mono",monospace;fill:${DIM};paint-order:stroke;stroke:${INK};stroke-width:3px;stroke-linejoin:round}
+  .lbl.mode{fill:${BONE};font-size:12px}
+  .lbl.proof{fill:${BONE}}
+  .yr{fill:${HAZE};font-size:9.5px}
+  .h{font:12px "Space Mono",monospace;letter-spacing:.25em;fill:${BRASS}}
+  .title{font:500 30px Fraunces,Georgia,serif;fill:${BONE}}
+  .sub{font:11px "Space Mono",monospace;letter-spacing:.1em;fill:${HAZE}}
+  [data-edge]{fill:none;stroke-width:1.2;transition:opacity .15s}
+  [data-node]{transition:opacity .15s;cursor:default}
+  svg.focus [data-edge]{opacity:.05}
+  svg.focus [data-edge].on{opacity:1;stroke-width:1.6}
+  svg.focus [data-node]{opacity:.16}
+  svg.focus [data-node].on{opacity:1}
+  .msel{position:fixed;top:16px;right:20px;z-index:5;font:11px "Space Mono",monospace;letter-spacing:.06em;background:rgba(8,13,24,.75);color:${DIM};border:1px solid rgba(203,168,92,.35);border-radius:999px;padding:6px 10px;cursor:pointer}
+  .msel:hover{border-color:${BRASS};color:${BONE}}
+</style></head><body>
+<select class="msel" id="msel" aria-label="Language"></select>
+<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" aria-label="Map of modes, ideas, and real-world proofs">
+  <text class="title" id="t-title" x="40" y="58">${esc(ui('mapTitle'))}</text>
+  <text class="sub" id="t-sub" x="40" y="86">${esc(ui('mapSub'))}</text>
+  <line x1="640" y1="82" x2="676" y2="82" stroke="${HAZE}"/><text class="sub" id="t-lm" x="684" y="86">${esc(ui('legendMode'))}</text>
+  <line x1="880" y1="82" x2="916" y2="82" stroke="${BRASS}"/><text class="sub" id="t-ll" x="924" y="86">${esc(ui('legendLineage'))}</text>
+  <line x1="1150" y1="82" x2="1186" y2="82" stroke="${LAPIS}"/><text class="sub" id="t-lp" x="1194" y="86">${esc(ui('legendProof'))}</text>
+  <text class="h" id="t-hm" x="${MX}" y="${TOP-24}" text-anchor="end">${esc(ui('headModes'))}</text>
+  <text class="h" id="t-hi" x="${IX}" y="${TOP-24}">${esc(fill(ui('headIdeas'),{n:IDEAS.length}))}</text>
+  <text class="h" id="t-hp" x="${PX+16}" y="${TOP-24}">${esc(fill(ui('headProofs'),{n:PROOFS.length}))}</text>
+  <g>${edges.join('')}</g>
+  <g>${labels.join('')}</g>
+  <g>${nodes.join('')}</g>
+</svg>
+<script>
+(function(){
+  var svg=document.querySelector('svg');
+  function setFocus(id){
+    svg.classList.add('focus');
+    var on={}; on[id]=1;
+    var edges=svg.querySelectorAll('[data-edge]');
+    for(var i=0;i<edges.length;i++){
+      var ab=edges[i].getAttribute('data-edge').split('|');
+      var hit=(ab[0]===id||ab[1]===id);
+      edges[i].classList.toggle('on',hit);
+      if(hit){on[ab[0]]=1;on[ab[1]]=1;}
+    }
+    var nodes=svg.querySelectorAll('[data-node]');
+    for(var j=0;j<nodes.length;j++){
+      nodes[j].classList.toggle('on',!!on[nodes[j].getAttribute('data-node')]);
+    }
+  }
+  function clearFocus(){
+    svg.classList.remove('focus');
+    var els=svg.querySelectorAll('.on');
+    for(var i=0;i<els.length;i++) els[i].classList.remove('on');
+  }
+  svg.addEventListener('mouseover',function(e){
+    var n=e.target.closest('[data-node]');
+    if(n) setFocus(n.getAttribute('data-node'));
+  });
+  svg.addEventListener('mouseout',function(e){
+    if(e.target.closest('[data-node]')) clearFocus();
+  });
+
+  var PACKS=${JSON.stringify(packs).replace(/</g,'\\u003c')};
+  function txt(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
+  function applyLang(code){
+    var P=PACKS[code]; if(!P) return;
+    document.title=P.ui.mapTitle;
+    txt('t-title',P.ui.mapTitle);txt('t-sub',P.ui.mapSub);
+    txt('t-lm',P.ui.legendMode);txt('t-ll',P.ui.legendLineage);txt('t-lp',P.ui.legendProof);
+    txt('t-hm',P.ui.headModes);txt('t-hi',P.ui.headIdeas);txt('t-hp',P.ui.headProofs);
+    var i,el;
+    for(i=0;i<P.ideas.length;i++){
+      el=svg.querySelector('text[data-node="i'+i+'"]');
+      if(el){el.querySelector('.nm').textContent=P.ideas[i][0];el.querySelector('.yr').textContent=' · '+P.ideas[i][1];}
+    }
+    for(i=0;i<P.modes.length;i++){
+      el=svg.querySelector('text[data-node="m'+i+'"] .nm');
+      if(el)el.textContent=P.modes[i];
+    }
+    for(i=0;i<P.proofs.length;i++){
+      el=svg.querySelector('text[data-node="p'+i+'"]');
+      if(el){el.querySelector('.nm').textContent=P.proofs[i][0];el.querySelector('.yr').textContent=' · '+P.proofs[i][1];}
+    }
+    try{localStorage.setItem('orrery-lang',code);}catch(e){}
+  }
+  var msel=document.getElementById('msel');
+  Object.keys(PACKS).forEach(function(c){
+    var o=document.createElement('option');
+    o.value=c;o.textContent=PACKS[c].label;
+    msel.appendChild(o);
+  });
+  msel.value='${LANG}';
+  msel.addEventListener('change',function(){applyLang(msel.value);});
+})();
+<\/script>
+</body></html>`;
+  window.open(URL.createObjectURL(new Blob([html],{type:'text/html'})),'_blank');
+}
+
 /* ============================ ASTROLABE ============================ */
-(function buildAstro(){
+function buildAstro(){
   const NS='http://www.w3.org/2000/svg';
   const svg = $('#astro');
+  svg.innerHTML='';
   const cx=300, cy=300;
   const rings = [60,93,126,159,192,225,258]; // ancient -> contemporary
   const mk=(tag,attrs)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;};
@@ -702,7 +1847,7 @@ document.addEventListener('click', e=>{
   IDEAS.forEach((d,i)=>{(byEra[d.era]=byEra[d.era]||[]).push(i);});
   const tip = $('#astro-tip'); const stage = $('.astro-stage');
   function showTip(idx, ptEl){
-    const d=IDEAS[idx];
+    const d=dIdea(idx);
     tip.innerHTML=`<div class="t-name">${d.name}</div><div class="t-meta">${d.who} · ${d.year}</div>`;
     const pr=ptEl.getBoundingClientRect(), sr=stage.getBoundingClientRect();
     tip.style.left=(pr.left-sr.left+pr.width/2)+'px';
@@ -746,11 +1891,11 @@ document.addEventListener('click', e=>{
     list.forEach((idx,k)=>{
       const ang = -Math.PI/2 + GAP/2 + ((k+phase)/list.length)*SPAN;
       const x=cx+r*Math.cos(ang), y=cy+r*Math.sin(ang);
-      const d=IDEAS[idx];
+      const d=IDEAS[idx], t=dIdea(idx);
       const pt=mk('circle',{class:'pt',cx:x,cy:y,r:4.4,fill:CATCOLOR[d.cat]||'#CBA85C',
-        tabindex:idx===0?'0':'-1',role:'button','aria-label':`${d.name} — ${d.who}, ${d.year}`});
+        tabindex:idx===0?'0':'-1',role:'button','aria-label':`${t.name} — ${t.who}, ${t.year}`});
       pt.style.color = pt.getAttribute('fill');
-      const title=mk('title',{}); title.textContent=`${d.name} — ${d.who} (${d.year})`; pt.appendChild(title);
+      const title=mk('title',{}); title.textContent=`${t.name} — ${t.who} (${t.year})`; pt.appendChild(title);
       PTEL[idx]=pt; PTPOS[idx]={x,y};
       pt.addEventListener('mouseenter',()=>spotlight(idx));
       pt.addEventListener('mouseleave',()=>unspotlight(idx));
@@ -768,18 +1913,18 @@ document.addEventListener('click', e=>{
     PTEL[cur].setAttribute('tabindex','0');
     PTEL[cur].focus();
   };
-  svg.addEventListener('keydown',e=>{
+  svg.onkeydown = e=>{
     const step={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];
     if(step){e.preventDefault();focusPt(cur+step);}
     else if(e.key==='Home'){e.preventDefault();focusPt(0);}
     else if(e.key==='End'){e.preventDefault();focusPt(IDEAS.length-1);}
     else if(e.key==='Enter'||e.key===' '){e.preventDefault();jumpToIdea(cur);}
-  });
+  };
 
   // era labels stacked up the reserved top wedge — drawn last so they read above the points
   rings.forEach((r,i)=>{
     const t=mk('text',{class:'era-label',x:cx+4,y:cy-r+12,'text-anchor':'start'});
-    t.textContent = ERAS[i].toUpperCase();
+    t.textContent = dEra(i).toUpperCase();
     svg.appendChild(t);
   });
 
@@ -794,7 +1939,7 @@ document.addEventListener('click', e=>{
   svg.appendChild(mk('circle',{class:'core-glyph',cx,cy,r:9}));
   const star=mk('text',{x:cx,y:cy+5,'text-anchor':'middle','font-size':16,fill:'var(--brass)','font-family':'Fraunces, serif'});
   star.textContent='✦'; svg.appendChild(star);
-})();
+}
 
 function jumpToIdea(idx){
   // reset filters so the target is visible
@@ -809,14 +1954,44 @@ function jumpToIdea(idx){
 }
 
 /* ============================ REVEAL ============================ */
-if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const io=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.08, rootMargin:'0px 0px -40px 0px'});
-  $$('.reveal').forEach(el=>io.observe(el));
-}else{
-  $$('.reveal').forEach(el=>el.classList.add('in'));
+function observeReveals(){
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const io=new IntersectionObserver((es)=>{
+      es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.08, rootMargin:'0px 0px -40px 0px'});
+    $$('.reveal').forEach(el=>io.observe(el));
+  }else{
+    $$('.reveal').forEach(el=>el.classList.add('in'));
+  }
 }
+
+/* ============================ BOOT + LANGUAGE ============================ */
+function renderAll(){
+  applyUI();
+  renderModes();
+  buildFilters();
+  renderCards();
+  renderSynth();
+  renderProofs();
+  applyFilters();
+  buildAstro();
+  observeReveals();
+}
+const langSel = document.getElementById('lang-sel');
+Object.keys(I18N).forEach(code=>{
+  const o=document.createElement('option');
+  o.value=code; o.textContent=I18N[code].label||code;
+  langSel.appendChild(o);
+});
+langSel.value = LANG;
+langSel.addEventListener('change', ()=>{
+  LANG = langSel.value;
+  localStorage.setItem('orrery-lang', LANG);
+  state.cat='all'; state.era='all'; state.q='';
+  $('#search').value='';
+  renderAll();
+});
+renderAll();
 </script>
 </body>
 </html>
